@@ -11,7 +11,7 @@
     <br />
     <br />
     <asp:Button ID="btnMes" runat="server" Text="Exibir Fluxo do Mês" 
-        Width="150px" />
+        Width="150px" onclick="btnMes_Click" />
     <br />
     <br />
     <asp:GridView ID="gvPedidos" runat="server" style="margin-bottom: 2px" 

@@ -141,9 +141,9 @@ namespace ERP.Logistica.Models
             return PedidoMedicamentoDAO.listarMedicamentosFornecedores();
         }
 
-        public static DataTable listarRequisicoesRecentes()
+        public static DataTable listarPorRequisicao(int ano, int mes)
         {
-            DataSet ds = PedidoMedicamentoDAO.buscarPorRequisicao(DateTime.Today.Year, DateTime.Today.Month);
+            DataSet ds = PedidoMedicamentoDAO.buscarInfoCompletaPorRequisicao(ano, mes);
             return ds.Tables[0];
         }
 
