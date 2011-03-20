@@ -43,5 +43,12 @@ namespace ERP.Logistica
         {
             Response.Redirect("/PedidosMedicamentosForm.aspx?ID=" + gvPedidos.DataKeys[e.NewEditIndex].Values[0].ToString());
         }
+
+        protected void btnMes_Click(object sender, EventArgs e)
+        {
+            DataTable dt = PedidosMedicamentosController.listar();
+            gvPedidos.DataSource = dt;
+            gvPedidos.DataBind();
+        }
     }
 }

@@ -57,6 +57,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="PedidosMedicamentos.aspx" />
     <Content Include="PedidosMedicamentosForm.aspx" />
+    <Content Include="PedidosMedicamentosService.asmx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -130,6 +131,10 @@
     </Compile>
     <Compile Include="PedidosMedicamentosForm.aspx.designer.cs">
       <DependentUpon>PedidosMedicamentosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosMedicamentosService.asmx.cs">
+      <DependentUpon>PedidosMedicamentosService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

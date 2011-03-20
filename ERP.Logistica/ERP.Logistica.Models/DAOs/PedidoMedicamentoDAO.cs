@@ -12,7 +12,8 @@ namespace ERP.Logistica.Models
     {
        //private static string connectionSettings = System.Configuration.ConfigurationManager.AppSettings["ERPLogisticaConnectionString"];
        //private static string connectionSettings = "Data Source=ls01;Initial Catalog=erp_logistica;Integrated Security=True";
-       private static string connectionSettings = "Data Source=JUN-PC;Initial Catalog=erp_logistica;Integrated Security=True";
+       //private static string connectionSettings = "Data Source=JUN-PC;Initial Catalog=erp_logistica;Integrated Security=True";
+       private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_logistica; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
 
        public static void criar(int quantidade, DateTime requisicao, int lote, int efetuado)
        {
@@ -98,6 +99,27 @@ namespace ERP.Logistica.Models
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
                string sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Medicamento_Fornecedor, L.Preço_Unitário, PM.Efetuado FROM (SELECT * FROM PedidoMedicamento WHERE YEAR(Requisicao) = " + ano + "AND MONTH(Requisicao) = " + mes + ") AS PM LEFT JOIN [Medicamento_Fornecedor(Lote)] AS L ON PM.Medicamento_Fornecedor = L.id;";
+               SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+               DataSet ds = new DataSet();
+               da.Fill(ds);
+               connection.Close();
+
+               return ds;
+           }
+           catch (Exception ex)
+           {
+               throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+           }
+       }
+
+       public static DataSet buscarInfoCompletaPorRequisicao(int ano, int mes)
+       {
+           try
+           {
+               SqlConnection connection = new SqlConnection(connectionSettings);
+               connection.Open();
+               string sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preço_Unitário AS Preco, PM.Requisicao AS Requisicao, PM.Efetuado FROM ((PedidoMedicamento AS PM LEFT JOIN [Medicamento_Fornecedor(Lote)] AS L ON PM.Medicamento_Fornecedor = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE YEAR(Requisicao) = " + ano + "AND MONTH(Requisicao) = " + mes + ";";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
