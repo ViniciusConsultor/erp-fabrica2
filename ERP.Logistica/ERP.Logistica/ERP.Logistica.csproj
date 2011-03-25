@@ -55,9 +55,15 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Disponibilidades.aspx" />
+    <Content Include="DisponibilidadesForm.aspx" />
+    <Content Include="EspacosFisicos.aspx" />
+    <Content Include="EspacosFisicosForm.aspx" />
+    <Content Include="PedidosEquipamentos.aspx" />
+    <Content Include="PedidosEquipamentosForm.aspx" />
     <Content Include="PedidosMedicamentos.aspx" />
     <Content Include="PedidosMedicamentosForm.aspx" />
-    <Content Include="PedidosMedicamentosService.asmx" />
+    <Content Include="PedidosWS.asmx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -115,8 +121,50 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Disponibilidades.aspx.cs">
+      <DependentUpon>Disponibilidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Disponibilidades.aspx.designer.cs">
+      <DependentUpon>Disponibilidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DisponibilidadesForm.aspx.cs">
+      <DependentUpon>DisponibilidadesForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DisponibilidadesForm.aspx.designer.cs">
+      <DependentUpon>DisponibilidadesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EspacosFisicos.aspx.cs">
+      <DependentUpon>EspacosFisicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EspacosFisicos.aspx.designer.cs">
+      <DependentUpon>EspacosFisicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EspacosFisicosForm.aspx.cs">
+      <DependentUpon>EspacosFisicosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EspacosFisicosForm.aspx.designer.cs">
+      <DependentUpon>EspacosFisicosForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosEquipamentos.aspx.cs">
+      <DependentUpon>PedidosEquipamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidosEquipamentos.aspx.designer.cs">
+      <DependentUpon>PedidosEquipamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosEquipamentosForm.aspx.cs">
+      <DependentUpon>PedidosEquipamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidosEquipamentosForm.aspx.designer.cs">
+      <DependentUpon>PedidosEquipamentosForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="PedidosMedicamentos.aspx.cs">
       <DependentUpon>PedidosMedicamentos.aspx</DependentUpon>
@@ -132,8 +180,8 @@
     <Compile Include="PedidosMedicamentosForm.aspx.designer.cs">
       <DependentUpon>PedidosMedicamentosForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PedidosMedicamentosService.asmx.cs">
-      <DependentUpon>PedidosMedicamentosService.asmx</DependentUpon>
+    <Compile Include="PedidosWS.asmx.cs">
+      <DependentUpon>PedidosWS.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,7 +218,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>32520</DevelopmentServerPort>
+          <DevelopmentServerPort>2119</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

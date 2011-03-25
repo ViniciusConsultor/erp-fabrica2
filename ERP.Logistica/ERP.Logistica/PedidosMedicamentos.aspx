@@ -2,11 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" 
+        Text="Lista de Pedidos de Medicamentos"></asp:Label>
     <br />
-    <asp:Label ID="lbGastos" runat="server" Text="Gastos do Mês:"></asp:Label>
-&nbsp;<asp:Label ID="lbValorGasto" runat="server" Text="0"></asp:Label>
     <br />
-    <asp:Label ID="lbVerba" runat="server" Text="Verba do Mês:"></asp:Label>
+    <asp:Label ID="lbVerba" runat="server" Text="Verba Disponível:"></asp:Label>
 &nbsp;<asp:Label ID="lbValorVerba" runat="server" Text="0"></asp:Label>
     <br />
     <br />
@@ -17,7 +17,7 @@
     <asp:GridView ID="gvPedidos" runat="server" style="margin-bottom: 2px" 
         AutoGenerateColumns="False" DataKeyNames="Id" 
         onrowdeleting="gvPedidos_RowDeleting" 
-    onrowediting="gvPedidos_RowEditing">
+    onrowediting="gvPedidos_RowEditing" ShowHeaderWhenEmpty="True">
         <Columns>
             <asp:BoundField DataField="id" HeaderText="Codigo" />
             <asp:BoundField DataField="Medicamento" HeaderText="Medicamento">

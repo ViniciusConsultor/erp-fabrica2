@@ -15,7 +15,7 @@ namespace ERP.Logistica
         {
             if (!((Page)System.Web.HttpContext.Current.CurrentHandler).IsPostBack)
             {
-                ddlMedForn.DataSource = PedidosMedicamentosController.listarMedicamentosFornecedores();
+                ddlMedForn.DataSource = PedidosMedicamentosController.listarLotesDisponiveis();
                 ddlMedForn.DataTextField = "Lote";
                 ddlMedForn.DataValueField = "Id";
                 ddlMedForn.DataBind();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using ERP.Logistica.Models.DAOs;
 
 namespace ERP.Logistica.Models
 {
@@ -109,14 +110,19 @@ namespace ERP.Logistica.Models
 
         public static PedidoMedicamento buscarPorId(int id)
         {
+            PedidoMedicamento pedido = null;
             DataSet ds = PedidoMedicamentoDAO.buscarPorId(id);
-            DataRow row = (DataRow)ds.Tables[0].Rows[0];
-            PedidoMedicamento pedido = new PedidoMedicamento(id, (int)row["Quantidade"], (DateTime)row["Requisicao"], (int)row["Medicamento_Fornecedor"], (int)row["Efetuado"]);
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                DataRow row = (DataRow)ds.Tables[0].Rows[0];
+                pedido = new PedidoMedicamento(id, (int)row["Quantidade"], (DateTime)row["Requisicao"], (int)row["Medicamento_Fornecedor"], (int)row["Efetuado"]);
+            }
 
             return pedido;
         }
 
-        public static List<PedidoMedicamento> buscarPorRequisicao(int ano, int mes)
+        /*public static List<PedidoMedicamento> buscarPorRequisicao(int ano, int mes)
         {
             List<PedidoMedicamento> list = new List<PedidoMedicamento>();
             DataSet ds = PedidoMedicamentoDAO.buscarPorRequisicao(ano, mes);
@@ -129,25 +135,24 @@ namespace ERP.Logistica.Models
             }
 
             return list;
-        }
+        }*/
 
         public static DataTable listar()
         {
             return PedidoMedicamentoDAO.listar();
         }
 
-        public static DataTable listarMedicamentosFornecedores()
+        public static DataTable listarLotesDisponiveis()
         {
-            return PedidoMedicamentoDAO.listarMedicamentosFornecedores();
+            return PedidoMedicamentoDAO.listarLotesDisponiveis();
         }
 
-        public static DataTable listarPorRequisicao(int ano, int mes)
+        public static DataTable listarPorRequisicao(DateTime inicio, DateTime fim, bool apenasEfetuados)
         {
-            DataSet ds = PedidoMedicamentoDAO.buscarInfoCompletaPorRequisicao(ano, mes);
-            return ds.Tables[0];
+            return PedidoMedicamentoDAO.listarPorRequisicao(inicio, fim, apenasEfetuados);
         }
 
-        public static float calcularGastoMensal(int ano, int mes)
+        /*public static float calcularGastoMensal(int ano, int mes)
         {
             List<PedidoMedicamento> list = PedidoMedicamento.buscarPorRequisicao(ano, mes);
             float gasto = 0;
@@ -161,7 +166,7 @@ namespace ERP.Logistica.Models
             }
 
             return gasto;
-        }
+        }*/
 
         #endregion
     }
