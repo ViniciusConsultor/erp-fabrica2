@@ -42,8 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caixa.cs" />
+    <Compile Include="PedidoEquipamento.cs" />
     <Compile Include="DAOs\CaixaDAO.cs" />
+    <Compile Include="DAOs\PedidoEquipamentoDAO.cs" />
+    <Compile Include="DAOs\DisponibilidadeDAO.cs" />
+    <Compile Include="DAOs\EquipamentoDAO.cs" />
+    <Compile Include="DAOs\EspacoFisicoDAO.cs" />
     <Compile Include="DAOs\PedidoMedicamentoDAO.cs" />
+    <Compile Include="Disponibilidade.cs" />
+    <Compile Include="Equipamento.cs" />
+    <Compile Include="EspacoFisico.cs" />
     <Compile Include="FinanceiroTeste.cs" />
     <Compile Include="MedicamentosTeste.cs" />
     <Compile Include="PedidoMedicamento.cs" />

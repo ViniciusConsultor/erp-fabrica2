@@ -10,7 +10,7 @@
 namespace ERP.Logistica {
     
     
-    public partial class Pedidos {
+    public partial class DisponibilidadesForm {
         
         /// <summary>
         /// Label1 control.
@@ -22,48 +22,66 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// lbVerba control.
+        /// lbNomeEquip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbVerba;
+        protected global::System.Web.UI.WebControls.Label lbNomeEquip;
         
         /// <summary>
-        /// lbValorVerba control.
+        /// tbNomeEquip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbValorVerba;
+        protected global::System.Web.UI.WebControls.TextBox tbNomeEquip;
         
         /// <summary>
-        /// btnMes control.
+        /// lbEspaco control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMes;
+        protected global::System.Web.UI.WebControls.Label lbEspaco;
         
         /// <summary>
-        /// gvPedidos control.
+        /// ddlEspaco control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvPedidos;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEspaco;
         
         /// <summary>
-        /// btnAdicionar control.
+        /// btnOK control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdicionar;
+        protected global::System.Web.UI.WebControls.Button btnOK;
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// hfId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfId;
     }
 }

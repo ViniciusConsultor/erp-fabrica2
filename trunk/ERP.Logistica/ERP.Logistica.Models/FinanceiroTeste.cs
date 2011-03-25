@@ -7,12 +7,7 @@ namespace ERP.Logistica.Models
 {
     public class FinanceiroTeste
     {
-        public static bool obterVerbaAdicional(float acrescimo)
-        {
-            return true;
-        }
-
-        public static float obterVerbaMensal()
+        public static float obterVerba(float valor)
         {
             return 10000.0F;
         }

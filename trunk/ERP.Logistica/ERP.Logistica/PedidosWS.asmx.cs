@@ -4,24 +4,30 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Data;
-using ERP.Logistica.Models;
+using ERP.Logistica.Controllers;
 
 namespace ERP.Logistica
 {
     /// <summary>
-    /// Summary description for PedidosMedicamentosService
+    /// Summary description for PedidosWS
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
-    public class PedidosMedicamentosService : System.Web.Services.WebService
+    public class PedidosWS : System.Web.Services.WebService
     {
         [WebMethod]
-        public DataTable listarPedidos(int mes, int ano)
+        public DataTable obterRelatorioMedicamentos(DateTime inicio, DateTime fim)
         {
-            return PedidoMedicamento.listarPorRequisicao(ano, mes);
+            return PedidosMedicamentosController.listarPorRequisicao(inicio, fim, true);
+        }
+
+        [WebMethod]
+        public DataTable obterRelatorioEquipamentos(DateTime inicio, DateTime fim)
+        {
+            return PedidosEquipamentosController.listarPorRequisicao(inicio, fim, true);
         }
     }
 }

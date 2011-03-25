@@ -9,22 +9,34 @@ namespace ERP.Logistica.Models
 {
     public class Caixa
     {
-        private float _verbaMensal;
+        private float _verba;
 
         public Caixa()
         {
-            this._verbaMensal = 0;
+            this._verba = 0;
         }
 
-        public float VerbaMensal
+        public float Verba
         {
-            get { return _verbaMensal; }
-            set { _verbaMensal = value; }
+            get { return _verba; }
+            set { _verba = value; }
         }
 
-        public void atualizar()
+        public bool remover(float valor)
         {
-            CaixaDAO.atualizarVerbaMensal(VerbaMensal);
+            if (Verba >= valor)
+            {
+                Verba -= valor;
+                CaixaDAO.atualizarVerba(Verba, false);
+                return true;
+            }
+            return false;
+        }
+
+        public void adicionar(float valor, bool atualizarData)
+        {
+            Verba += valor;
+            CaixaDAO.atualizarVerba(Verba, atualizarData);
         }
 
         public static Caixa obterCaixa()
@@ -34,7 +46,7 @@ namespace ERP.Logistica.Models
 
             if(dt.Rows.Count > 0)
             {
-                caixa.VerbaMensal = (float)Convert.ToDouble(dt.Rows[0]["Quantidade"]);
+                caixa.Verba = (float)Convert.ToDouble(dt.Rows[0]["Quantidade"]);
             }
             return caixa;
         }

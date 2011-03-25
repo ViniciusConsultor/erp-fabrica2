@@ -7,34 +7,35 @@ using System.Data;
 
 namespace ERP.Logistica.Controllers
 {
-    public class PedidosMedicamentosController
+    public class PedidosEquipamentosController
     {
-        public static void criar(int quantidade, DateTime requisicao, int lote, int efetuado)
+        public static void criar(DateTime requisicao, int encomenda, int efetuado, int espacoFisico)
         {
-            PedidoMedicamento pedido = new PedidoMedicamento(quantidade, requisicao, lote, efetuado);
+            PedidoEquipamento pedido = new PedidoEquipamento(requisicao, encomenda, 0, efetuado);
 
             // Contabilizar no estoque caso efetuado
-            if (efetuado == 1)
+            if (utilizarVerba(pedido.calcularValor()))
             {
+                // Cria disponibilidade e associa com pedido
+                Disponibilidade disponibilidade = new Disponibilidade(pedido.obterEquipamento(), espacoFisico);
+                pedido.Disponibilidade = disponibilidade;
+            }
+            else
+            {
+                // Pede verba adicional e verifica se a compra pode ser efetuada
+                float verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
+                Caixa caixa = Caixa.obterCaixa();
+                caixa.adicionar(verbaAdicional, true);
+
                 if (utilizarVerba(pedido.calcularValor()))
                 {
-                    MedicamentosTeste.adicionarQuantidade(pedido.Lote, pedido.Quantidade);
+                    // Cria disponibilidade e associa com pedido
+                    Disponibilidade disponibilidade = new Disponibilidade(pedido.obterEquipamento(), espacoFisico);
+                    pedido.Disponibilidade = disponibilidade;
                 }
                 else
                 {
-                    // Pede verba adicional e verifica se a compra pode ser efetuada
-                    float verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
-                    Caixa caixa = Caixa.obterCaixa();
-                    caixa.adicionar(verbaAdicional, true);
-
-                    if (utilizarVerba(pedido.calcularValor()))
-                    {
-                        MedicamentosTeste.adicionarQuantidade(pedido.Lote, pedido.Quantidade);
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    return;
                 }
             }
 
@@ -43,26 +44,28 @@ namespace ERP.Logistica.Controllers
 
         public static void apagar(int id)
         {
-            PedidoMedicamento pedido = PedidoMedicamento.buscarPorId(id);
+            PedidoEquipamento pedido = PedidoEquipamento.buscarPorId(id);
             if (pedido.Efetuado != 1)
             {
                 pedido.apagar();
             }
         }
 
-        public static void atualizar(int id, int quantidade, DateTime requisicao, int lote, int efetuado)
+        public static void atualizar(int id, DateTime requisicao, int encomenda, int efetuado, int espacoFisico)
         {
-            PedidoMedicamento pedido = PedidoMedicamento.buscarPorId(id);
-            pedido.Quantidade = quantidade;
+            PedidoEquipamento pedido = PedidoEquipamento.buscarPorId(id);
             pedido.Requisicao = requisicao;
-            pedido.Lote = lote;
+            pedido.Encomenda = encomenda;
             // Se mudou para efetuado, contabiliza o estoque, se mudou para estornado verifica se é possivel
             // antes de modificar estoque. (Preciso de interface para obter e editar o estoque)
             if (efetuado == 1 && pedido.Efetuado == 0) // Mudou para efetuado
             {
+                // Contabilizar no estoque caso efetuado
                 if (utilizarVerba(pedido.calcularValor()))
                 {
-                    MedicamentosTeste.adicionarQuantidade(pedido.Lote, pedido.Quantidade);
+                    // Cria disponibilidade e associa com pedido
+                    Disponibilidade disponibilidade = new Disponibilidade(pedido.obterEquipamento(), espacoFisico);
+                    pedido.Disponibilidade = disponibilidade;
                 }
                 else
                 {
@@ -73,7 +76,9 @@ namespace ERP.Logistica.Controllers
 
                     if (utilizarVerba(pedido.calcularValor()))
                     {
-                        MedicamentosTeste.adicionarQuantidade(pedido.Lote, pedido.Quantidade);
+                        // Cria disponibilidade e associa com pedido
+                        Disponibilidade disponibilidade = new Disponibilidade(pedido.obterEquipamento(), espacoFisico);
+                        pedido.Disponibilidade = disponibilidade;
                     }
                     else
                     {
@@ -83,9 +88,10 @@ namespace ERP.Logistica.Controllers
             }
             else if (efetuado == 0 && pedido.Efetuado == 1) // Mudou para estornado
             {
-                if (!MedicamentosTeste.removerQuantidade(pedido.Lote, pedido.Quantidade))
+                if (pedido.Disponibilidade != null)
                 {
-                    return;
+                    pedido.Disponibilidade.apagar();
+                    pedido.Disponibilidade = null;
                 }
                 // Registra reembolso
                 Caixa caixa = Caixa.obterCaixa();
@@ -95,29 +101,29 @@ namespace ERP.Logistica.Controllers
             pedido.atualizar();
         }
 
-        public static PedidoMedicamento buscarPorId(int id)
+        public static PedidoEquipamento buscarPorId(int id)
         {
-            return PedidoMedicamento.buscarPorId(id);
+            return PedidoEquipamento.buscarPorId(id);
         }
 
         public static DataTable listar()
         {
-            return PedidoMedicamento.listar();
+            return PedidoEquipamento.listar();
         }
 
-        public static DataTable listarLotesDisponiveis()
+        public static DataTable listarEncomendasDisponiveis()
         {
-            return PedidoMedicamento.listarLotesDisponiveis();
+            return PedidoEquipamento.listarEncomendasDisponiveis();
         }
 
         public static DataTable listarPorRequisicao(DateTime inicio, DateTime fim, bool apenasEfetuados)
         {
-            return PedidoMedicamento.listarPorRequisicao(inicio, fim, apenasEfetuados);
+            return PedidoEquipamento.listarPorRequisicao(inicio, fim, apenasEfetuados);
         }
 
         /*public static float calcularGastoMensal(int ano, int mes)
         {
-            return PedidoMedicamento.calcularGastoMensal(ano, mes);
+            return PedidoEquipamento.calcularGastoMensal(ano, mes);
         }*/
 
         public static bool utilizarVerba(float gastoAdicional)

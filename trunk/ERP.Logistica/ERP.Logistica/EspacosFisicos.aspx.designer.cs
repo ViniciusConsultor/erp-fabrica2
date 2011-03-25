@@ -10,7 +10,16 @@
 namespace ERP.Logistica {
     
     
-    public partial class Pedidos {
+    public partial class EspacosFisicos {
+        
+        /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
         /// Label1 control.
@@ -22,40 +31,13 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// lbVerba control.
+        /// gvEspacos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbVerba;
-        
-        /// <summary>
-        /// lbValorVerba control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbValorVerba;
-        
-        /// <summary>
-        /// btnMes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMes;
-        
-        /// <summary>
-        /// gvPedidos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvPedidos;
+        protected global::System.Web.UI.WebControls.GridView gvEspacos;
         
         /// <summary>
         /// btnAdicionar control.
