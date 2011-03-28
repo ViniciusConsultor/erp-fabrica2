@@ -15,13 +15,13 @@ namespace ERP.Logistica.Models.DAOs
        //private static string connectionSettings = "Data Source=JUN-PC;Initial Catalog=erp_logistica;Integrated Security=True";
        private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_logistica; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
 
-       public static void criar(int quantidade, DateTime requisicao, int lote, int efetuado)
+       public static void criar(int quantidade, DateTime requisicao, int catalogoMed, int efetuado)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
-               string sql = "INSERT INTO PedidoMedicamento (Quantidade, Requisicao, Medicamento_Fornecedor, Efetuado) VALUES (";
-               sql += quantidade + ", '" + requisicao.ToString("yyyy-MM-dd HH:mm:ss") + "', " + lote + "," + efetuado + ")";
+               string sql = "INSERT INTO Pedido_Medicamento (Quantidade, Requisicao, Catalogo_Medicamento, Efetuado) VALUES (";
+               sql += quantidade + ", '" + requisicao.ToString("yyyy-MM-dd HH:mm:ss") + "', " + catalogoMed + "," + efetuado + ")";
                SqlCommand cmd = new SqlCommand(sql, connection);
                cmd.CommandType = CommandType.Text;
                connection.Open();
@@ -40,7 +40,7 @@ namespace ERP.Logistica.Models.DAOs
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
-               string sql = "DELETE FROM PedidoMedicamento WHERE id = " + id;
+               string sql = "DELETE FROM Pedido_Medicamento WHERE id = " + id;
                SqlCommand cmd = new SqlCommand(sql, connection);
                cmd.CommandType = CommandType.Text;
                connection.Open();
@@ -53,12 +53,12 @@ namespace ERP.Logistica.Models.DAOs
            }
        }
 
-       public static void atualizar(int id, int quantidade, DateTime requisicao, int lote, int efetuado)
+       public static void atualizar(int id, int quantidade, DateTime requisicao, int catalogoMed, int efetuado)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
-               string sql = "UPDATE PedidoMedicamento SET Quantidade = " + quantidade + ", " + "Efetuado = " + efetuado + " WHERE id = " + id;
+               string sql = "UPDATE Pedido_Medicamento SET Quantidade = " + quantidade + ", " + "Efetuado = " + efetuado + " WHERE id = " + id;
                SqlCommand cmd = new SqlCommand(sql, connection);
                cmd.CommandType = CommandType.Text;
                connection.Open();
@@ -77,7 +77,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT * FROM PedidoMedicamento WHERE id = " + id;
+               string sql = "SELECT * FROM Pedido_Medicamento WHERE id = " + id;
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -98,7 +98,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Medicamento_Fornecedor, L.Preço_Unitário, PM.Efetuado FROM (SELECT * FROM PedidoMedicamento WHERE YEAR(Requisicao) = " + ano + "AND MONTH(Requisicao) = " + mes + ") AS PM LEFT JOIN [Medicamento_Fornecedor(Lote)] AS L ON PM.Medicamento_Fornecedor = L.id;";
+               string sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Medicamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Medicamento WHERE YEAR(Requisicao) = " + ano + "AND MONTH(Requisicao) = " + mes + ") AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -113,13 +113,13 @@ namespace ERP.Logistica.Models.DAOs
            }
        }*/
 
-       public static float buscarPrecoDeLote(int idLote)
+       public static float buscarPrecoDeLote(int idCatalogoMed)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT Preço_Unitário FROM [Medicamento_Fornecedor(Lote)] WHERE id = " + idLote + ";";
+               string sql = "SELECT Preco_Unitario FROM Catalogo_Medicamento WHERE id = " + idCatalogoMed + ";";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -147,7 +147,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preço_Unitário AS Preco, PM.Requisicao, PM.Efetuado FROM ((PedidoMedicamento AS PM LEFT JOIN [Medicamento_Fornecedor(Lote)] AS L ON PM.Medicamento_Fornecedor = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id ORDER BY Requisicao DESC;";
+               string sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preco_Unitario AS Preco, PM.Requisicao, PM.Efetuado FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id ORDER BY Requisicao DESC;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -171,11 +171,11 @@ namespace ERP.Logistica.Models.DAOs
                string sql;
                if (apenasEfetuados)
                {
-                   sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preço_Unitário AS Preco, PM.Requisicao AS Requisicao FROM ((PedidoMedicamento AS PM LEFT JOIN [Medicamento_Fornecedor(Lote)] AS L ON PM.Medicamento_Fornecedor = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PM.Efetuado = 1 ORDER BY Requisicao DESC;";
+                   sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preco_Unitario AS Preco, PM.Requisicao AS Requisicao FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PM.Efetuado = 1 ORDER BY Requisicao DESC;";
                }
                else
                {
-                   sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preço_Unitário AS Preco, PM.Requisicao AS Requisicao, PM.Efetuado FROM ((PedidoMedicamento AS PM LEFT JOIN [Medicamento_Fornecedor(Lote)] AS L ON PM.Medicamento_Fornecedor = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY Requisicao DESC;";
+                   sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preco_Unitario AS Preco, PM.Requisicao AS Requisicao, PM.Efetuado FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY Requisicao DESC;";
                }
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
@@ -191,13 +191,13 @@ namespace ERP.Logistica.Models.DAOs
            }
        }
 
-       public static DataTable listarLotesDisponiveis()
+       public static DataTable listarCatalogoMedDisponiveis()
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT L.id AS Id, M.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), L.Preço_Unitário) AS Lote FROM ([Medicamento_Fornecedor(Lote)] AS L LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id;";
+               string sql = "SELECT L.id AS Id, M.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), L.Preco_Unitario) AS Lote FROM (Catalogo_Medicamento AS L LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();

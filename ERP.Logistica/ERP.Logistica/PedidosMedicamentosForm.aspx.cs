@@ -15,7 +15,7 @@ namespace ERP.Logistica
         {
             if (!((Page)System.Web.HttpContext.Current.CurrentHandler).IsPostBack)
             {
-                ddlMedForn.DataSource = PedidosMedicamentosController.listarLotesDisponiveis();
+                ddlMedForn.DataSource = PedidosMedicamentosController.listarCatalogoMedDisponiveis();
                 ddlMedForn.DataTextField = "Lote";
                 ddlMedForn.DataValueField = "Id";
                 ddlMedForn.DataBind();
@@ -25,7 +25,7 @@ namespace ERP.Logistica
                 {
                     PedidoMedicamento pedido = PedidosMedicamentosController.buscarPorId(Convert.ToInt32(Request.QueryString["ID"]));
                     hfId.Value = pedido.Id.ToString();
-                    ddlMedForn.SelectedValue = pedido.Lote.ToString();
+                    ddlMedForn.SelectedValue = pedido.CatalogoMed.ToString();
                     ddlMedForn.Enabled = false;
                     tbQuant.Text = pedido.Quantidade.ToString();
                     tbQuant.Enabled = false;
@@ -45,7 +45,7 @@ namespace ERP.Logistica
                 PedidoMedicamento pedido = PedidosMedicamentosController.buscarPorId(Convert.ToInt32(hfId.Value));
                 if (pedido.Efetuado != Convert.ToInt32(rblEfetuado.SelectedValue))
                 {
-                    PedidosMedicamentosController.atualizar(pedido.Id, pedido.Quantidade, DateTime.Now, pedido.Lote, Convert.ToInt32(rblEfetuado.SelectedValue));
+                    PedidosMedicamentosController.atualizar(pedido.Id, pedido.Quantidade, DateTime.Now, pedido.CatalogoMed, Convert.ToInt32(rblEfetuado.SelectedValue));
                 }
             }
             Response.Redirect("/PedidosMedicamentos.aspx");

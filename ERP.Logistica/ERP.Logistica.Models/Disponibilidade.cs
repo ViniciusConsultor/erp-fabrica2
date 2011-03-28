@@ -90,7 +90,7 @@ namespace ERP.Logistica.Models
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = (DataRow)ds.Tables[0].Rows[0];
-                espaco = new Disponibilidade(id, (int)row["Equipamento"], (int)row["EspacoFisico"]);
+                espaco = new Disponibilidade(id, (int)row["Equipamento"], (int)row["Espaco_Fisico"]);
             }
 
             return espaco;

@@ -9,9 +9,9 @@ namespace ERP.Logistica.Controllers
 {
     public class PedidosEquipamentosController
     {
-        public static void criar(DateTime requisicao, int encomenda, int efetuado, int espacoFisico)
+        public static void criar(DateTime requisicao, int catalogoEquip, int efetuado, int espacoFisico)
         {
-            PedidoEquipamento pedido = new PedidoEquipamento(requisicao, encomenda, 0, efetuado);
+            PedidoEquipamento pedido = new PedidoEquipamento(requisicao, catalogoEquip, 0, efetuado);
 
             // Contabilizar no estoque caso efetuado
             if (utilizarVerba(pedido.calcularValor()))
@@ -51,11 +51,11 @@ namespace ERP.Logistica.Controllers
             }
         }
 
-        public static void atualizar(int id, DateTime requisicao, int encomenda, int efetuado, int espacoFisico)
+        public static void atualizar(int id, DateTime requisicao, int catalogoEquip, int efetuado, int espacoFisico)
         {
             PedidoEquipamento pedido = PedidoEquipamento.buscarPorId(id);
             pedido.Requisicao = requisicao;
-            pedido.Encomenda = encomenda;
+            pedido.CatalogoEquip = catalogoEquip;
             // Se mudou para efetuado, contabiliza o estoque, se mudou para estornado verifica se é possivel
             // antes de modificar estoque. (Preciso de interface para obter e editar o estoque)
             if (efetuado == 1 && pedido.Efetuado == 0) // Mudou para efetuado
@@ -111,9 +111,9 @@ namespace ERP.Logistica.Controllers
             return PedidoEquipamento.listar();
         }
 
-        public static DataTable listarEncomendasDisponiveis()
+        public static DataTable listarCatalogoEquipDisponiveis()
         {
-            return PedidoEquipamento.listarEncomendasDisponiveis();
+            return PedidoEquipamento.listarCatalogoEquipDisponiveis();
         }
 
         public static DataTable listarPorRequisicao(DateTime inicio, DateTime fim, bool apenasEfetuados)

@@ -12,33 +12,33 @@ namespace ERP.Logistica.Models
         private int _id;
         private int _quantidade;
         private DateTime _requisicao;
-        private int _lote;
-        private float _lotePreco;
+        private int _catalogoMed;
+        private float _catalogoMedPreco;
         private int _efetuado;
 
         #region Constructors
 
-        public PedidoMedicamento(int quantidade, DateTime requisicao, int lote, int efetuado)
+        public PedidoMedicamento(int quantidade, DateTime requisicao, int catalogoMed, int efetuado)
         {
             this._quantidade = quantidade;
             this._requisicao = requisicao;
-            this._lote = lote;
-            this._lotePreco = PedidoMedicamentoDAO.buscarPrecoDeLote(lote);
+            this._catalogoMed = catalogoMed;
+            this._catalogoMedPreco = PedidoMedicamentoDAO.buscarPrecoDeLote(catalogoMed);
             this._efetuado = efetuado;
         }
 
-        public PedidoMedicamento(int id, int quantidade, DateTime requisicao, int lote, int efetuado)
-            : this(quantidade, requisicao, lote, efetuado)
+        public PedidoMedicamento(int id, int quantidade, DateTime requisicao, int catalogoMed, int efetuado)
+            : this(quantidade, requisicao, catalogoMed, efetuado)
         {
             this._id = id;
         }
 
-        public PedidoMedicamento(int id, int quantidade, DateTime requisicao, int lote, float preco, int efetuado)
+        public PedidoMedicamento(int id, int quantidade, DateTime requisicao, int catalogoMed, float preco, int efetuado)
         {
             this._quantidade = quantidade;
             this._requisicao = requisicao;
-            this._lote = lote;
-            this._lotePreco = preco;
+            this._catalogoMed = catalogoMed;
+            this._catalogoMedPreco = preco;
             this._efetuado = efetuado;
         }
 
@@ -63,19 +63,19 @@ namespace ERP.Logistica.Models
             set { _requisicao = value; }
         }
 
-        public int Lote
+        public int CatalogoMed
         {
-            get { return _lote; }
+            get { return _catalogoMed; }
             set
             {
-                _lote = value;
-                _lotePreco = PedidoMedicamentoDAO.buscarPrecoDeLote(_lote);
+                _catalogoMed = value;
+                _catalogoMedPreco = PedidoMedicamentoDAO.buscarPrecoDeLote(_catalogoMed);
             }
         }
 
-        public float LotePreco
+        public float CatalogoMedPreco
         {
-            get { return _lotePreco; }
+            get { return _catalogoMedPreco; }
         }
 
         public int Efetuado
@@ -88,12 +88,12 @@ namespace ERP.Logistica.Models
 
         public void criar()
         {
-            PedidoMedicamentoDAO.criar(Quantidade, DateTime.Now, Lote, Efetuado);
+            PedidoMedicamentoDAO.criar(Quantidade, DateTime.Now, CatalogoMed, Efetuado);
         }
 
         public void atualizar()
         {
-            PedidoMedicamentoDAO.atualizar(Id, Quantidade, Requisicao, Lote, Efetuado);
+            PedidoMedicamentoDAO.atualizar(Id, Quantidade, Requisicao, CatalogoMed, Efetuado);
         }
 
         public void apagar()
@@ -103,7 +103,7 @@ namespace ERP.Logistica.Models
 
         public float calcularValor()
         {
-            return Quantidade * LotePreco;
+            return Quantidade * CatalogoMedPreco;
         }
 
         #region Static Methods
@@ -116,7 +116,7 @@ namespace ERP.Logistica.Models
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = (DataRow)ds.Tables[0].Rows[0];
-                pedido = new PedidoMedicamento(id, (int)row["Quantidade"], (DateTime)row["Requisicao"], (int)row["Medicamento_Fornecedor"], (int)row["Efetuado"]);
+                pedido = new PedidoMedicamento(id, (int)row["Quantidade"], (DateTime)row["Requisicao"], (int)row["Catalogo_Medicamento"], (int)row["Efetuado"]);
             }
 
             return pedido;
@@ -130,7 +130,7 @@ namespace ERP.Logistica.Models
 
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                pedido = new PedidoMedicamento((int)row["id"], (int)row["Quantidade"], (DateTime)row["Requisicao"], (int)row["Medicamento_Fornecedor"], (float)Convert.ToDouble(row["Preço_Unitário"]), (int)row["Efetuado"]);
+                pedido = new PedidoMedicamento((int)row["id"], (int)row["Quantidade"], (DateTime)row["Requisicao"], (int)row["Catalogo_Medicamento"], (float)Convert.ToDouble(row["Preco_Unitario"]), (int)row["Efetuado"]);
                 list.Add(pedido);
             }
 
@@ -142,9 +142,9 @@ namespace ERP.Logistica.Models
             return PedidoMedicamentoDAO.listar();
         }
 
-        public static DataTable listarLotesDisponiveis()
+        public static DataTable listarCatalogoMedDisponiveis()
         {
-            return PedidoMedicamentoDAO.listarLotesDisponiveis();
+            return PedidoMedicamentoDAO.listarCatalogoMedDisponiveis();
         }
 
         public static DataTable listarPorRequisicao(DateTime inicio, DateTime fim, bool apenasEfetuados)
