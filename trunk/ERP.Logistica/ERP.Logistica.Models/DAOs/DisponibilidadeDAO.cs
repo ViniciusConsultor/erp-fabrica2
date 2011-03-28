@@ -19,9 +19,9 @@ namespace ERP.Logistica.Models.DAOs
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "INSERT INTO Disponibilidade (Equipamento, EspacoFisico) VALUES (";
+                string sql = "INSERT INTO Disponibilidade (Equipamento, Espaco_Fisico) VALUES (";
                 sql += equipamento + ", " + espacoFisico + ")";
-                string sqlID = "SELECT TOP 1 Id FROM Disponibilidade WHERE Equipamento = " + equipamento + "AND EspacoFisico = " + espacoFisico + " ORDER BY Id DESC;";
+                string sqlID = "SELECT TOP 1 Id FROM Disponibilidade WHERE Equipamento = " + equipamento + "AND Espaco_Fisico = " + espacoFisico + " ORDER BY Id DESC;";
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
@@ -72,7 +72,7 @@ namespace ERP.Logistica.Models.DAOs
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "UPDATE Disponibilidade SET Equipamento = " + equipamento + ", EspacoFisico = " + espacoFisico + " WHERE id = " + id;
+                string sql = "UPDATE Disponibilidade SET Equipamento = " + equipamento + ", Espaco_Fisico = " + espacoFisico + " WHERE id = " + id;
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
@@ -113,7 +113,7 @@ namespace ERP.Logistica.Models.DAOs
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
                 // TODO: Incluir nomes
-                string sql = "SELECT D.Id, E.Nome AS 'Equipamento', EF.Nome AS 'Espaco', EF.Andar AS 'Andar', EF.Numero AS 'Numero' FROM ((Disponibilidade AS D LEFT JOIN Equipamento AS E ON D.Equipamento = E.id) LEFT JOIN EspacoFisico AS EF ON D.EspacoFisico = EF.id);";
+                string sql = "SELECT D.Id, E.Nome AS 'Equipamento', EF.Nome AS 'Espaco', EF.Andar AS 'Andar', EF.Numero AS 'Numero' FROM ((Disponibilidade AS D LEFT JOIN Equipamento AS E ON D.Equipamento = E.id) LEFT JOIN Espaco_Fisico AS EF ON D.Espaco_Fisico = EF.id);";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 DataSet ds = new DataSet();

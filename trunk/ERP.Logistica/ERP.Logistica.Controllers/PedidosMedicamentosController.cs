@@ -9,16 +9,16 @@ namespace ERP.Logistica.Controllers
 {
     public class PedidosMedicamentosController
     {
-        public static void criar(int quantidade, DateTime requisicao, int lote, int efetuado)
+        public static void criar(int quantidade, DateTime requisicao, int catalogoMed, int efetuado)
         {
-            PedidoMedicamento pedido = new PedidoMedicamento(quantidade, requisicao, lote, efetuado);
+            PedidoMedicamento pedido = new PedidoMedicamento(quantidade, requisicao, catalogoMed, efetuado);
 
             // Contabilizar no estoque caso efetuado
             if (efetuado == 1)
             {
                 if (utilizarVerba(pedido.calcularValor()))
                 {
-                    MedicamentosTeste.adicionarQuantidade(pedido.Lote, pedido.Quantidade);
+                    MedicamentosTeste.adicionarQuantidade(pedido.CatalogoMed, pedido.Quantidade);
                 }
                 else
                 {
@@ -29,7 +29,7 @@ namespace ERP.Logistica.Controllers
 
                     if (utilizarVerba(pedido.calcularValor()))
                     {
-                        MedicamentosTeste.adicionarQuantidade(pedido.Lote, pedido.Quantidade);
+                        MedicamentosTeste.adicionarQuantidade(pedido.CatalogoMed, pedido.Quantidade);
                     }
                     else
                     {
@@ -55,14 +55,14 @@ namespace ERP.Logistica.Controllers
             PedidoMedicamento pedido = PedidoMedicamento.buscarPorId(id);
             pedido.Quantidade = quantidade;
             pedido.Requisicao = requisicao;
-            pedido.Lote = lote;
+            pedido.CatalogoMed = lote;
             // Se mudou para efetuado, contabiliza o estoque, se mudou para estornado verifica se é possivel
             // antes de modificar estoque. (Preciso de interface para obter e editar o estoque)
             if (efetuado == 1 && pedido.Efetuado == 0) // Mudou para efetuado
             {
                 if (utilizarVerba(pedido.calcularValor()))
                 {
-                    MedicamentosTeste.adicionarQuantidade(pedido.Lote, pedido.Quantidade);
+                    MedicamentosTeste.adicionarQuantidade(pedido.CatalogoMed, pedido.Quantidade);
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace ERP.Logistica.Controllers
 
                     if (utilizarVerba(pedido.calcularValor()))
                     {
-                        MedicamentosTeste.adicionarQuantidade(pedido.Lote, pedido.Quantidade);
+                        MedicamentosTeste.adicionarQuantidade(pedido.CatalogoMed, pedido.Quantidade);
                     }
                     else
                     {
@@ -83,7 +83,7 @@ namespace ERP.Logistica.Controllers
             }
             else if (efetuado == 0 && pedido.Efetuado == 1) // Mudou para estornado
             {
-                if (!MedicamentosTeste.removerQuantidade(pedido.Lote, pedido.Quantidade))
+                if (!MedicamentosTeste.removerQuantidade(pedido.CatalogoMed, pedido.Quantidade))
                 {
                     return;
                 }
@@ -105,9 +105,9 @@ namespace ERP.Logistica.Controllers
             return PedidoMedicamento.listar();
         }
 
-        public static DataTable listarLotesDisponiveis()
+        public static DataTable listarCatalogoMedDisponiveis()
         {
-            return PedidoMedicamento.listarLotesDisponiveis();
+            return PedidoMedicamento.listarCatalogoMedDisponiveis();
         }
 
         public static DataTable listarPorRequisicao(DateTime inicio, DateTime fim, bool apenasEfetuados)

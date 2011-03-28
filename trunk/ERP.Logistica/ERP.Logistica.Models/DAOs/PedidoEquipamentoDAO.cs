@@ -15,13 +15,13 @@ namespace ERP.Logistica.Models.DAOs
        //private static string connectionSettings = "Data Source=JUN-PC;Initial Catalog=erp_logistica;Integrated Security=True";
        private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_logistica; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
 
-       public static void criar(int disponibilidade, DateTime requisicao, int encomenda, int efetuado)
+       public static void criar(int disponibilidade, DateTime requisicao, int catalogoEquip, int efetuado)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
-               string sql = "INSERT INTO PedidoEquipamento (Disponibilidade, Requisicao, Equipamentos_Fornecedores, Efetuado) VALUES (";
-               sql += disponibilidade + ", '" + requisicao.ToString("yyyy-MM-dd HH:mm:ss") + "', " + encomenda + "," + efetuado + ")";
+               string sql = "INSERT INTO Pedido_Equipamento (Disponibilidade, Requisicao, Catalogo_Equipamento, Efetuado) VALUES (";
+               sql += disponibilidade + ", '" + requisicao.ToString("yyyy-MM-dd HH:mm:ss") + "', " + catalogoEquip + "," + efetuado + ")";
                SqlCommand cmd = new SqlCommand(sql, connection);
                cmd.CommandType = CommandType.Text;
                connection.Open();
@@ -40,7 +40,7 @@ namespace ERP.Logistica.Models.DAOs
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
-               string sql = "DELETE FROM PedidoEquipamento WHERE id = " + id;
+               string sql = "DELETE FROM Pedido_Equipamento WHERE id = " + id;
                SqlCommand cmd = new SqlCommand(sql, connection);
                cmd.CommandType = CommandType.Text;
                connection.Open();
@@ -53,12 +53,12 @@ namespace ERP.Logistica.Models.DAOs
            }
        }
 
-       public static void atualizar(int id, int disponibilidade, DateTime requisicao, int encomenda, int efetuado)
+       public static void atualizar(int id, int disponibilidade, DateTime requisicao, int catalogoEquip, int efetuado)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
-               string sql = "UPDATE PedidoEquipamento SET Disponibilidade = " + disponibilidade + ", " + "Efetuado = " + efetuado + " WHERE id = " + id;
+               string sql = "UPDATE Pedido_Equipamento SET Disponibilidade = " + disponibilidade + ", " + "Efetuado = " + efetuado + " WHERE id = " + id;
                SqlCommand cmd = new SqlCommand(sql, connection);
                cmd.CommandType = CommandType.Text;
                connection.Open();
@@ -77,7 +77,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT * FROM PedidoEquipamento WHERE id = " + id;
+               string sql = "SELECT * FROM Pedido_Equipamento WHERE id = " + id;
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -98,7 +98,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT PE.id, PE.Disponibilidade, PE.Requisicao, PE.Equipamentos_Fornecedores, EN.Preço_Unitário, PE.Efetuado FROM (SELECT * FROM PedidoEquipamento WHERE YEAR(Requisicao) = " + ano + "AND MONTH(Requisicao) = " + mes + ") AS PE LEFT JOIN [Equipamentos_Fornecedores(Encomenda)] AS EN ON PE.Equipamentos_Fornecedores = EN.id;";
+               string sql = "SELECT PE.id, PE.Disponibilidade, PE.Requisicao, PE.Catalogo_Equipamento, EN.Preco_Unitario, PE.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE YEAR(Requisicao) = " + ano + "AND MONTH(Requisicao) = " + mes + ") AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -113,13 +113,13 @@ namespace ERP.Logistica.Models.DAOs
            }
        }*/
 
-       public static float buscarPrecoDeEncomenda(int idEncomenda)
+       public static float buscarPrecoDeEncomenda(int idCatalogoEquip)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT Preço_Unitário FROM [Equipamentos_Fornecedores(Encomenda)] WHERE id = " + idEncomenda + ";";
+               string sql = "SELECT Preco_Unitario FROM Catalogo_Equipamento WHERE id = " + idCatalogoEquip + ";";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -141,13 +141,13 @@ namespace ERP.Logistica.Models.DAOs
            }
        }
 
-       public static int buscarEquipamentoDeEncomenda(int idEncomenda)
+       public static int buscarEquipamentoDeEncomenda(int idCatalogoEquip)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT Equipamento FROM [Equipamentos_Fornecedores(Encomenda)] WHERE id = " + idEncomenda + ";";
+               string sql = "SELECT Equipamento FROM Catalogo_Equipamento WHERE id = " + idCatalogoEquip + ";";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -175,7 +175,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT PE.id, E.Nome AS Equipamento, F.Nome AS Fornecedor, PE.Disponibilidade, EN.Preço_Unitário AS Preco, PE.Requisicao AS Requisicao, PE.Efetuado FROM ((PedidoEquipamento AS PE LEFT JOIN [Equipamentos_Fornecedores(Encomenda)] AS EN ON PE.Equipamentos_Fornecedores = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id ORDER BY Requisicao DESC;";
+               string sql = "SELECT PE.id, E.Nome AS Equipamento, F.Nome AS Fornecedor, PE.Disponibilidade, EN.Preco_Unitario AS Preco, PE.Requisicao AS Requisicao, PE.Efetuado FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id ORDER BY Requisicao DESC;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -199,11 +199,11 @@ namespace ERP.Logistica.Models.DAOs
                string sql;
                if (apenasEfetuados)
                {
-                   sql = "SELECT PE.id, E.Nome AS Equipamento, F.Nome AS Fornecedor, EN.Preço_Unitário AS Preco, PE.Requisicao AS Requisicao FROM ((PedidoEquipamento AS PE LEFT JOIN [Equipamentos_Fornecedores(Encomenda)] AS EN ON PE.Equipamentos_Fornecedores = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PE.Efetuado = 1 ORDER BY Requisicao DESC;";
+                   sql = "SELECT PE.id, E.Nome AS Equipamento, F.Nome AS Fornecedor, EN.Preco_Unitario AS Preco, PE.Requisicao AS Requisicao FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PE.Efetuado = 1 ORDER BY Requisicao DESC;";
                }
                else
                {
-                   sql = "SELECT PE.id, E.Nome AS Equipamento, F.Nome AS Fornecedor, EN.Preço_Unitário AS Preco, PE.Requisicao AS Requisicao, PE.Efetuado FROM ((PedidoEquipamento AS PE LEFT JOIN [Equipamentos_Fornecedores(Encomenda)] AS EN ON PE.Equipamentos_Fornecedores = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY Requisicao DESC;";
+                   sql = "SELECT PE.id, E.Nome AS Equipamento, F.Nome AS Fornecedor, EN.Preco_Unitario AS Preco, PE.Requisicao AS Requisicao, PE.Efetuado FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY Requisicao DESC;";
                }
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
@@ -219,13 +219,13 @@ namespace ERP.Logistica.Models.DAOs
            }
        }
 
-       public static DataTable listarEncomendasDisponiveis()
+       public static DataTable listarCatalogoEquipDisponiveis()
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT EN.id AS Id, E.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), EN.Preço_Unitário) AS Encomenda FROM ([Equipamentos_Fornecedores(Encomenda)] AS EN LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id;";
+               string sql = "SELECT EN.id AS Id, E.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), EN.Preco_Unitario) AS Encomenda FROM (Catalogo_Equipamento AS EN LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();

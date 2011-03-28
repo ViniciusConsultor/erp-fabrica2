@@ -19,7 +19,7 @@ namespace ERP.Logistica.Models.DAOs
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "INSERT INTO EspacoFisico (Nome, Andar, Numero) VALUES (";
+                string sql = "INSERT INTO Espaco_Fisico (Nome, Andar, Numero) VALUES (";
                 sql += "'" + nome + "', " + andar + ", " + numero + ")";
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
@@ -39,7 +39,7 @@ namespace ERP.Logistica.Models.DAOs
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "DELETE FROM EspacoFisico WHERE id = " + id;
+                string sql = "DELETE FROM Espaco_Fisico WHERE id = " + id;
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
@@ -57,7 +57,7 @@ namespace ERP.Logistica.Models.DAOs
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "UPDATE EspacoFisico SET Nome = '" + nome + "', Andar = " + andar + ", Numero = " + numero + " WHERE id = " + id;
+                string sql = "UPDATE Espaco_Fisico SET Nome = '" + nome + "', Andar = " + andar + ", Numero = " + numero + " WHERE id = " + id;
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
@@ -76,7 +76,7 @@ namespace ERP.Logistica.Models.DAOs
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
-                string sql = "SELECT * FROM EspacoFisico WHERE id = " + id;
+                string sql = "SELECT * FROM Espaco_Fisico WHERE id = " + id;
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 DataSet ds = new DataSet();
@@ -97,7 +97,7 @@ namespace ERP.Logistica.Models.DAOs
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
-                string sql = "SELECT * FROM EspacoFisico;";
+                string sql = "SELECT * FROM Espaco_Fisico;";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 DataSet ds = new DataSet();
@@ -118,7 +118,7 @@ namespace ERP.Logistica.Models.DAOs
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
-                string sql = "SELECT Id, Nome + ' - ' + CONVERT(VARCHAR(50), Andar) + ' - ' + CONVERT(VARCHAR(50), Numero) AS 'EspacoFisico' FROM EspacoFisico;";
+                string sql = "SELECT Id, Nome + ' - ' + CONVERT(VARCHAR(50), Andar) + ' - ' + CONVERT(VARCHAR(50), Numero) AS 'EspacoFisico' FROM Espaco_Fisico;";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 DataSet ds = new DataSet();

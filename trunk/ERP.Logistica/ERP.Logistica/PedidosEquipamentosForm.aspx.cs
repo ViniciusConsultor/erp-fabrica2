@@ -15,7 +15,7 @@ namespace ERP.Logistica
         {
             if (!((Page)System.Web.HttpContext.Current.CurrentHandler).IsPostBack)
             {
-                ddlEquipForn.DataSource = PedidosEquipamentosController.listarEncomendasDisponiveis();
+                ddlEquipForn.DataSource = PedidosEquipamentosController.listarCatalogoEquipDisponiveis();
                 ddlEquipForn.DataTextField = "Encomenda";
                 ddlEquipForn.DataValueField = "Id";
                 ddlEquipForn.DataBind();
@@ -29,7 +29,7 @@ namespace ERP.Logistica
                 {
                     PedidoEquipamento pedido = PedidosEquipamentosController.buscarPorId(Convert.ToInt32(Request.QueryString["ID"]));
                     hfId.Value = pedido.Id.ToString();
-                    ddlEquipForn.SelectedValue = pedido.Encomenda.ToString();
+                    ddlEquipForn.SelectedValue = pedido.CatalogoEquip.ToString();
                     ddlEquipForn.Enabled = false;
                     if (pedido.Disponibilidade != null && pedido.Disponibilidade.EspacoFisico != null)
                     {
@@ -62,7 +62,7 @@ namespace ERP.Logistica
                 PedidoEquipamento pedido = PedidosEquipamentosController.buscarPorId(Convert.ToInt32(hfId.Value));
                 if (pedido.Efetuado != Convert.ToInt32(rblEfetuado.SelectedValue))
                 {
-                    PedidosEquipamentosController.atualizar(pedido.Id, DateTime.Now, pedido.Encomenda, Convert.ToInt32(rblEfetuado.SelectedValue), Convert.ToInt32(ddlAloc.SelectedValue));
+                    PedidosEquipamentosController.atualizar(pedido.Id, DateTime.Now, pedido.CatalogoEquip, Convert.ToInt32(rblEfetuado.SelectedValue), Convert.ToInt32(ddlAloc.SelectedValue));
                 }
             }
             Response.Redirect("/PedidosEquipamentos.aspx");
