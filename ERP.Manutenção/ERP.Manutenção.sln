@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Manutenção", "ERP.Manutenção\ERP.Manutenção.csproj", "{D70B5F7A-DDCA-4140-906C-DCBD5D1986D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Manutencao.Controllers", "ERP.Manutencao.Controllers\ERP.Manutencao.Controllers.csproj", "{4570B57F-4A8E-44E9-9F4A-A080130BF178}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Manutencao.Models", "ERP.Manutencao.Models\ERP.Manutencao.Models.csproj", "{4C6677D8-9A83-42CF-A9D0-B8546DE285B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D70B5F7A-DDCA-4140-906C-DCBD5D1986D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D70B5F7A-DDCA-4140-906C-DCBD5D1986D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D70B5F7A-DDCA-4140-906C-DCBD5D1986D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D70B5F7A-DDCA-4140-906C-DCBD5D1986D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4570B57F-4A8E-44E9-9F4A-A080130BF178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4570B57F-4A8E-44E9-9F4A-A080130BF178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4570B57F-4A8E-44E9-9F4A-A080130BF178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4570B57F-4A8E-44E9-9F4A-A080130BF178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C6677D8-9A83-42CF-A9D0-B8546DE285B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C6677D8-9A83-42CF-A9D0-B8546DE285B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C6677D8-9A83-42CF-A9D0-B8546DE285B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C6677D8-9A83-42CF-A9D0-B8546DE285B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
