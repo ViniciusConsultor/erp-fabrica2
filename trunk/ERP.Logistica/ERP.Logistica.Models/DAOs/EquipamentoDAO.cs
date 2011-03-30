@@ -14,6 +14,62 @@ namespace ERP.Logistica.Models.DAOs
         //private static string connectionSettings = "Data Source=JUN-PC;Initial Catalog=erp_logistica;Integrated Security=True";
         private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_logistica; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
 
+        public static void criar(string nome, string descricao)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                string sql = "INSERT INTO Equipamento (Nome, Descricao) VALUES (";
+                sql +=  "'" + nome + "','" + descricao + ")";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.CommandType = CommandType.Text;
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Dispose();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método criar: " + ex.Message);
+            }
+        }
+
+
+        public static void apagar(int id)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                string sql = "DELETE FROM Equipamento WHERE id = " + id;
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.CommandType = CommandType.Text;
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Dispose();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método apagar: " + ex.Message);
+            }
+        }
+
+        public static void atualizar(int id, int quantidade, string nome, string descricao, string medida)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                string sql = "UPDATE Equipamento SET Nome = '" + nome + "'," + "Descricao = '" + descricao + " WHERE id = " + id;
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.CommandType = CommandType.Text;
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Dispose();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método atualizar: " + ex.Message);
+            }
+        }
+        
         public static DataSet buscarPorId(int id)
         {
             try

@@ -95,7 +95,7 @@ namespace ERP.Logistica.Models
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
-                string sql = "SELECT R.id as id,R.Nome AS Equipamento, R.Preco_Unitario AS Preco_Unitario, F.Nome AS Fornecedor, R.Vigencia_Inicio AS Vigencia_Inicio FROM Fornecedor AS F inner join (SELECT CE.id,M.Nome, CE.Preco_Unitario, CE.Fornecedor, CE.Vigencia_Inicio FROM Catalogo_Equipamento AS CM inner join Equipamento AS M on CE.Medicamento=M.id) AS R ON R.Fornecedor=F.id";
+                string sql = "SELECT R.id as id,R.Nome AS Equipamento, R.Preco_Unitario AS Preco_Unitario, F.Nome AS Fornecedor, R.Vigencia_Inicio AS Vigencia_Inicio FROM Fornecedor AS F inner join (SELECT CE.id,M.Nome, CE.Preco_Unitario, CE.Fornecedor, CE.Vigencia_Inicio FROM Catalogo_Equipamento AS CE inner join Equipamento AS M on CE.Equipamento=M.id) AS R ON R.Fornecedor=F.id";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 DataSet ds = new DataSet();

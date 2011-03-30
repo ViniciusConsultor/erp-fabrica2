@@ -54,6 +54,21 @@ namespace ERP.Logistica.Models
 
         #region Static Methods
 
+        public void criar()
+        {
+            EquipamentoDAO.criar( Nome, Descricao);
+        }
+
+        public void atualizar()
+        {
+            EquipamentoDAO.atualizar(Id, Nome, Descricao);
+        }
+
+        public void apagar()
+        {
+            EquipamentoDAO.apagar(Id);
+        }
+
         public static Equipamento buscarPorId(int id)
         {
             Equipamento equipamento = null;
