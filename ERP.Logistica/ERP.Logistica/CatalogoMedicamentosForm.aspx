@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" 
-        Text="Catálogo"></asp:Label>
+        Text="Catálogo Medicamentos"></asp:Label>
     <br />
     <br />
     <br />
@@ -41,10 +41,10 @@
     <asp:RequiredFieldValidator ID="rfvVigencia" runat="server" 
         ControlToValidate="tbVigencia" ErrorMessage="* Campo Obrigatório" 
         ForeColor="Red"></asp:RequiredFieldValidator>
-    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
-        ControlToValidate="tbVigencia" ErrorMessage="*Formato de Data Inválido" 
-        ForeColor="Red" 
-        ValidationExpression="(([0-1][0-9]|2[0-9])/02/(2000|2004|2008|2012|2016|2020|2024|2028|2032|2036))|(([0-1][0-9]|2[0-8])/02/[0-9][0-9][0-9][0-9])|(([0-2][0-9]|30)/(04|06|09|11)/[0-9][0-9][0-9][0-9])|(([0-2][0-9]|3[0-1])/(01|03|05|07|08|10|12)/[0-9][0-9][0-9][0-9])"></asp:RegularExpressionValidator>
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" 
+    runat="server" ControlToValidate="tbVigencia" 
+    ErrorMessage="*Formato de Data Inválido" ForeColor="Red" 
+    ValidationExpression="(([0-1][0-9]|2[0-9])/02/(2000|2004|2008|2012|2016|2020|2024|2028|2032|2036))|(([0-1][0-9]|2[0-8])/02/[0-9][0-9][0-9][0-9])|(([0-2][0-9]|30)/(04|06|09|11)/[0-9][0-9][0-9][0-9])|(([0-2][0-9]|3[0-1])/(01|03|05|07|08|10|12)/[0-9][0-9][0-9][0-9])"></asp:RegularExpressionValidator>
     <br />
     <asp:TextBox ID="tbVigencia" runat="server"></asp:TextBox>
     <br />

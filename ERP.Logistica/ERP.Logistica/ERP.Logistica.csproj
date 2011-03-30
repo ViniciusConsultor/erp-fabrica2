@@ -56,6 +56,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="CatalogoEquipamentos.aspx" />
+    <Content Include="CatalogoEquipamentosForm.aspx" />
     <Content Include="CatalogoMedicamentos.aspx" />
     <Content Include="CatalogoMedicamentosForm.aspx" />
     <Content Include="Disponibilidades.aspx" />
@@ -132,6 +133,13 @@
     </Compile>
     <Compile Include="CatalogoEquipamentos.aspx.designer.cs">
       <DependentUpon>CatalogoEquipamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoEquipamentosForm.aspx.cs">
+      <DependentUpon>CatalogoEquipamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoEquipamentosForm.aspx.designer.cs">
+      <DependentUpon>CatalogoEquipamentosForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="CatalogoMedicamentos.aspx.cs">
       <DependentUpon>CatalogoMedicamentos.aspx</DependentUpon>
