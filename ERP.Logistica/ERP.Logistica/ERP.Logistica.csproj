@@ -55,10 +55,22 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="CatalogoEquipamentos.aspx" />
+    <Content Include="CatalogoMedicamentos.aspx" />
+    <Content Include="CatalogoMedicamentosForm.aspx" />
     <Content Include="Disponibilidades.aspx" />
     <Content Include="DisponibilidadesForm.aspx" />
     <Content Include="EspacosFisicos.aspx" />
     <Content Include="EspacosFisicosForm.aspx" />
+    <Content Include="Estoques.aspx" />
+    <Content Include="EstoquesForm.aspx" />
+    <Content Include="Fornecedores.aspx" />
+    <Content Include="FornecedoresForm.aspx" />
+    <Content Include="GerenciaEstMed.aspx" />
+    <Content Include="GerenciaEstMedLotes.aspx" />
+    <Content Include="GerenciaLotesQuantidades.aspx" />
+    <Content Include="Medicamentos.aspx" />
+    <Content Include="MedicamentosForm.aspx" />
     <Content Include="PedidosEquipamentos.aspx" />
     <Content Include="PedidosEquipamentosForm.aspx" />
     <Content Include="PedidosMedicamentos.aspx" />
@@ -114,6 +126,27 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CatalogoEquipamentos.aspx.cs">
+      <DependentUpon>CatalogoEquipamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoEquipamentos.aspx.designer.cs">
+      <DependentUpon>CatalogoEquipamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoMedicamentos.aspx.cs">
+      <DependentUpon>CatalogoMedicamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoMedicamentos.aspx.designer.cs">
+      <DependentUpon>CatalogoMedicamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoMedicamentosForm.aspx.cs">
+      <DependentUpon>CatalogoMedicamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoMedicamentosForm.aspx.designer.cs">
+      <DependentUpon>CatalogoMedicamentosForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,8 +182,71 @@
     <Compile Include="EspacosFisicosForm.aspx.designer.cs">
       <DependentUpon>EspacosFisicosForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Estoques.aspx.cs">
+      <DependentUpon>Estoques.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Estoques.aspx.designer.cs">
+      <DependentUpon>Estoques.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EstoquesForm.aspx.cs">
+      <DependentUpon>EstoquesForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EstoquesForm.aspx.designer.cs">
+      <DependentUpon>EstoquesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fornecedores.aspx.cs">
+      <DependentUpon>Fornecedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fornecedores.aspx.designer.cs">
+      <DependentUpon>Fornecedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FornecedoresForm.aspx.cs">
+      <DependentUpon>FornecedoresForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FornecedoresForm.aspx.designer.cs">
+      <DependentUpon>FornecedoresForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GerenciaEstMed.aspx.cs">
+      <DependentUpon>GerenciaEstMed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GerenciaEstMed.aspx.designer.cs">
+      <DependentUpon>GerenciaEstMed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GerenciaEstMedLotes.aspx.cs">
+      <DependentUpon>GerenciaEstMedLotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GerenciaEstMedLotes.aspx.designer.cs">
+      <DependentUpon>GerenciaEstMedLotes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GerenciaLotesQuantidades.aspx.cs">
+      <DependentUpon>GerenciaLotesQuantidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GerenciaLotesQuantidades.aspx.designer.cs">
+      <DependentUpon>GerenciaLotesQuantidades.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Medicamentos.aspx.cs">
+      <DependentUpon>Medicamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Medicamentos.aspx.designer.cs">
+      <DependentUpon>Medicamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MedicamentosForm.aspx.cs">
+      <DependentUpon>MedicamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MedicamentosForm.aspx.designer.cs">
+      <DependentUpon>MedicamentosForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="PedidosEquipamentos.aspx.cs">
       <DependentUpon>PedidosEquipamentos.aspx</DependentUpon>
