@@ -1,7 +1,0 @@
-C:\Users\5944412\Documents\Visual Studio 2010\Projects\ERP.Manutenção\ERP.Manutencao.Controllers\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\5944412\Documents\Visual Studio 2010\Projects\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Debug\ERP.Manutencao.Controllers.dll
-C:\Users\5944412\Documents\Visual Studio 2010\Projects\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Debug\ERP.Manutencao.Controllers.pdb
-C:\Users\5944412\Documents\Visual Studio 2010\Projects\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Debug\ERP.Manutencao.Models.dll
-C:\Users\5944412\Documents\Visual Studio 2010\Projects\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Debug\ERP.Manutencao.Models.pdb
-C:\Users\5944412\Documents\Visual Studio 2010\Projects\ERP.Manutenção\ERP.Manutencao.Controllers\obj\Debug\ERP.Manutencao.Controllers.dll
-C:\Users\5944412\Documents\Visual Studio 2010\Projects\ERP.Manutenção\ERP.Manutencao.Controllers\obj\Debug\ERP.Manutencao.Controllers.pdb
