@@ -142,20 +142,23 @@ namespace ERP.Logistica.Models
             return pedido;
         }
 
-        /*public static List<PedidoMedicamento> buscarPorRequisicao(int ano, int mes)
+        public static double calcularValorEstornadoAte(DateTime limite, bool todos)
         {
-            List<PedidoMedicamento> list = new List<PedidoMedicamento>();
-            DataSet ds = PedidoMedicamentoDAO.buscarPorRequisicao(ano, mes);
-            PedidoMedicamento pedido;
+            double valor = 0;
+            DataSet ds = PedidoMedicamentoDAO.buscarEstornadosAte(limite, todos);
 
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                pedido = new PedidoMedicamento((int)row["id"], (int)row["Quantidade"], (DateTime)row["Requisicao"], (int)row["Catalogo_Medicamento"], (float)Convert.ToDouble(row["Preco_Unitario"]), (int)row["Efetuado"]);
-                list.Add(pedido);
+                valor += (Convert.ToDouble(row["Preco_Unitario"]) * (int)row["Quantidade"]);
             }
 
-            return list;
-        }*/
+            return valor;
+        }
+
+        public static void marcarEstornoReportado(DateTime limite)
+        {
+            PedidoMedicamentoDAO.marcarEstornoReportado(limite);
+        }
 
         public static DataTable listar()
         {
@@ -172,21 +175,6 @@ namespace ERP.Logistica.Models
             return PedidoMedicamentoDAO.listarPorRequisicao(inicio, fim, apenasEfetuados);
         }
 
-        /*public static float calcularGastoMensal(int ano, int mes)
-        {
-            List<PedidoMedicamento> list = PedidoMedicamento.buscarPorRequisicao(ano, mes);
-            float gasto = 0;
-
-            foreach (PedidoMedicamento pm in list)
-            {
-                if (pm.Efetuado == 1)
-                {
-                    gasto += (pm.Quantidade * pm.LotePreco);
-                }
-            }
-
-            return gasto;
-        }*/
 
         #endregion
     }

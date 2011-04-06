@@ -88,10 +88,14 @@ namespace ERP.Logistica.Controllers
             return PedidoMedicamento.listarPorRequisicao(inicio, fim, apenasEfetuados);
         }
 
-        /*public static float calcularGastoMensal(int ano, int mes)
+        public static double calcularValorEstornado(DateTime limite, bool todos)
         {
-            return PedidoMedicamento.calcularGastoMensal(ano, mes);
-        }*/
+            double valor = PedidoMedicamento.calcularValorEstornadoAte(limite, todos);
+
+            PedidoMedicamento.marcarEstornoReportado(limite);
+
+            return valor;
+        }
 
         public static bool utilizarVerba(double gastoAdicional)
         {

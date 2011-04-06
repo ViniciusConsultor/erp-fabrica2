@@ -7,7 +7,7 @@
     <Columns>
         <asp:BoundField DataField="Medicamento" HeaderText="Medicamento" />
         <asp:BoundField DataField="Quantidade" HeaderText="Quantidade Total" />
-        <asp:CommandField EditText="Adionar/Remover" HeaderText="Adicionar/Remover" 
+        <asp:CommandField EditText="Adicionar/Remover" HeaderText="Adicionar/Remover" 
             ShowEditButton="True" />
     </Columns>
 </asp:GridView>

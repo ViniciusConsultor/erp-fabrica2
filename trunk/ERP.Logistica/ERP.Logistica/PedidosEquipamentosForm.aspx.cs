@@ -57,11 +57,11 @@ namespace ERP.Logistica
             {
                 if (ddlAloc.SelectedValue == null || ddlAloc.SelectedValue == "")
                 {
-                    PedidosEquipamentosController.criar(DateTime.Now, Convert.ToInt32(ddlEquipForn.SelectedValue), Convert.ToInt32(rblEfetuado.SelectedValue), 0);
+                    PedidosEquipamentosController.criar(DateTime.Now, Convert.ToInt32(ddlEquipForn.SelectedValue), 1, 0);
                 }
                 else
                 {
-                    PedidosEquipamentosController.criar(DateTime.Now, Convert.ToInt32(ddlEquipForn.SelectedValue), Convert.ToInt32(rblEfetuado.SelectedValue), Convert.ToInt32(ddlAloc.SelectedValue));
+                    PedidosEquipamentosController.criar(DateTime.Now, Convert.ToInt32(ddlEquipForn.SelectedValue), 1, Convert.ToInt32(ddlAloc.SelectedValue));
                 }
             }
             else
