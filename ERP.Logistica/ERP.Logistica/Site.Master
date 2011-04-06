@@ -39,7 +39,7 @@
                                 Value="Equipamentos"></asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem Text="Equipamentos" Value="Equipamentos">
-                            <asp:MenuItem Text="Catálogo" Value="Catálogo"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Equipamentos.aspx" Text="Cadastro" Value="Cadastro"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/Disponibilidades.aspx" Text="Disponíveis" 
                                 Value="Disponíveis"></asp:MenuItem>
                         </asp:MenuItem>

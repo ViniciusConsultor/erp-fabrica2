@@ -9,9 +9,9 @@ namespace ERP.Logistica.Controllers
 {
     public class MedicamentoController
     {
-        public static void criar(int quantidade, string nome, string descricao, string medida)
+        public static void criar(string nome, string descricao, string medida)
         {
-            Medicamento medicamento = new Medicamento(quantidade, nome, descricao, medida);
+            Medicamento medicamento = new Medicamento(nome, descricao, medida);
             medicamento.criar();
         }
 
@@ -24,10 +24,9 @@ namespace ERP.Logistica.Controllers
             //}
         }
 
-        public static void atualizar(int id, int quantidade, string nome, string descricao, string medida)
+        public static void atualizar(int id, string nome, string descricao, string medida)
         {
             Medicamento medicamento = Medicamento.buscarPorId(id);
-            medicamento.Quantidade = quantidade;
             medicamento.Nome = nome;
             medicamento.Descricao = descricao;
             medicamento.Medida = medida;

@@ -19,8 +19,6 @@ namespace ERP.Logistica
                 {
                     Medicamento medicamento = MedicamentoController.buscarPorId(Convert.ToInt32(Request.QueryString["ID"]));
                     hfId.Value = medicamento.Id.ToString();
-                    tbQuant.Text = medicamento.Quantidade.ToString();
-                    tbQuant.Enabled = true;
                     tbNome.Text = medicamento.Nome.ToString();
                     tbNome.Enabled = false;
                     tbDescricao.Text = medicamento.Descricao.ToString();
@@ -35,13 +33,13 @@ namespace ERP.Logistica
         {
             if (hfId.Value == "Novo")
             {
-                MedicamentoController.criar(Convert.ToInt32(tbQuant.Text), tbNome.Text, tbDescricao.Text, tbMedida.Text);
+                MedicamentoController.criar(tbNome.Text, tbDescricao.Text, tbMedida.Text);
             }
             else
             {
                 // caso de update
                 Medicamento medicamento = MedicamentoController.buscarPorId(Convert.ToInt32(hfId.Value));
-                MedicamentoController.atualizar(medicamento.Id, Convert.ToInt32(tbQuant.Text), medicamento.Nome, tbDescricao.Text, tbMedida.Text);
+                MedicamentoController.atualizar(medicamento.Id, medicamento.Nome, tbDescricao.Text, tbMedida.Text);
             }
             Response.Redirect("/Medicamentos.aspx");
         }

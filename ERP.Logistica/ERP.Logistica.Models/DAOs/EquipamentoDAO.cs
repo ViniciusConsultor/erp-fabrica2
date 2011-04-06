@@ -20,7 +20,7 @@ namespace ERP.Logistica.Models.DAOs
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 string sql = "INSERT INTO Equipamento (Nome, Descricao) VALUES (";
-                sql +=  "'" + nome + "','" + descricao + ")";
+                sql +=  "'" + nome + "','" + descricao + "')";
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
@@ -98,6 +98,27 @@ namespace ERP.Logistica.Models.DAOs
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
                 string sql = "SELECT Id, Nome + ' (' + CONVERT(VARCHAR(50), Id) + ') ' AS 'Equipamento' FROM Equipamento;";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+            }
+        }
+
+        public static DataTable listar()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                connection.Open();
+                string sql = "SELECT * FROM Equipamento";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 DataSet ds = new DataSet();
