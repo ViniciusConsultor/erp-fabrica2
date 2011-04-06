@@ -45,6 +45,7 @@
     <Compile Include="EquipamentoController.cs" />
     <Compile Include="EstoqueController.cs" />
     <Compile Include="FornecedorController.cs" />
+    <Compile Include="LoginController.cs" />
     <Compile Include="MedicamentoController.cs" />
     <Compile Include="PedidosEquipamentosController.cs" />
     <Compile Include="DisponibilidadesController.cs" />
