@@ -1,5 +1,0 @@
-C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Models\bin\Debug\ERP.Logistica.Models.dll
-C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Models\bin\Debug\ERP.Logistica.Models.pdb
-C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Models\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Models\obj\Debug\ERP.Logistica.Models.dll
-C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Models\obj\Debug\ERP.Logistica.Models.pdb
