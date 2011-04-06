@@ -14,13 +14,13 @@ namespace ERP.Logistica.Models
         //private static string connectionSettings = "Data Source=ls01;Initial Catalog=erp_logistica;Integrated Security=True";
         private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_logistica; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
 
-        public static void criar(int quantidade, string nome, string descricao, string medida)
+        public static void criar(string nome, string descricao, string medida)
         {
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "INSERT INTO Medicamento (Quantidade, Nome, Descricao, Medida) VALUES (";
-                sql += quantidade + ",'" + nome + "','" + descricao + "','" + medida + "')";
+                string sql = "INSERT INTO Medicamento (Nome, Descricao, Medida) VALUES (";
+                sql += "'" + nome + "','" + descricao + "','" + medida + "')";
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
@@ -52,12 +52,12 @@ namespace ERP.Logistica.Models
             }
         }
 
-        public static void atualizar(int id, int quantidade, string nome, string descricao, string medida)
+        public static void atualizar(int id, string nome, string descricao, string medida)
         {
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "UPDATE Medicamento SET Quantidade = " + quantidade + ", " + "Nome = '" + nome + "'," + "Descricao = '" + descricao + "'," + "Medida = '" + medida + "' WHERE id = " + id;
+                string sql = "UPDATE Medicamento SET " + "Nome = '" + nome + "'," + "Descricao = '" + descricao + "'," + "Medida = '" + medida + "' WHERE id = " + id;
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
@@ -97,7 +97,7 @@ namespace ERP.Logistica.Models
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
-                string sql = "SELECT id, Quantidade, Nome, Descricao, Medida FROM Medicamento natural join Medicamento_Fornecedor as on Medicamento.id = Medicamento_Fornecedor.MedicamentoId WHERE FornecedorId = " + idFornecedor;
+                string sql = "SELECT id, Nome, Descricao, Medida FROM Medicamento natural join Medicamento_Fornecedor as on Medicamento.id = Medicamento_Fornecedor.MedicamentoId WHERE FornecedorId = " + idFornecedor;
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 DataSet ds = new DataSet();

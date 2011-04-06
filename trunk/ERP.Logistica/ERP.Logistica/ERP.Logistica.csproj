@@ -61,6 +61,8 @@
     <Content Include="CatalogoMedicamentosForm.aspx" />
     <Content Include="Disponibilidades.aspx" />
     <Content Include="DisponibilidadesForm.aspx" />
+    <Content Include="Equipamentos.aspx" />
+    <Content Include="EquipamentosForm.aspx" />
     <Content Include="EspacosFisicos.aspx" />
     <Content Include="EspacosFisicosForm.aspx" />
     <Content Include="Estoques.aspx" />
@@ -175,6 +177,20 @@
     </Compile>
     <Compile Include="DisponibilidadesForm.aspx.designer.cs">
       <DependentUpon>DisponibilidadesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Equipamentos.aspx.cs">
+      <DependentUpon>Equipamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Equipamentos.aspx.designer.cs">
+      <DependentUpon>Equipamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EquipamentosForm.aspx.cs">
+      <DependentUpon>EquipamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EquipamentosForm.aspx.designer.cs">
+      <DependentUpon>EquipamentosForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="EspacosFisicos.aspx.cs">
       <DependentUpon>EspacosFisicos.aspx</DependentUpon>

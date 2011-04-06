@@ -77,7 +77,7 @@ namespace ERP.Logistica.Models
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = (DataRow)ds.Tables[0].Rows[0];
-                equipamento = new Equipamento(id, (string)row["Nome"], (string)row["Descrição"]);
+                equipamento = new Equipamento(id, (string)row["Nome"], (string)row["Descricao"]);
             }
 
             return equipamento;
@@ -85,7 +85,7 @@ namespace ERP.Logistica.Models
 
         public static DataTable listar()
         {
-            //TODO: Implementar
+            return EquipamentoDAO.listar();
             return null;
         }
 

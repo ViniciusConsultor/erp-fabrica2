@@ -11,7 +11,6 @@
             <asp:BoundField DataField="Nome" HeaderText="Nome" />
             <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
             <asp:BoundField DataField="Medida" HeaderText="Medida" />
-            <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" />
             <asp:CommandField HeaderText="Edit" ShowEditButton="True" />
             <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" />
         </Columns>

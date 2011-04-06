@@ -9,34 +9,27 @@ namespace ERP.Logistica.Models
     public class Medicamento
     {
         private int _id;
-        private int _quantidade;
 		private string _nome;
 		private string _descricao;
 		private string _medida;
 
         #region Constructors
 
-        public Medicamento(int quantidade, string nome, string descricao, string medida)
+        public Medicamento(string nome, string descricao, string medida)
         {
-            this._quantidade = quantidade;
             this._nome = nome;
             this._descricao = descricao;
             this._medida = medida;
         }
 
-        public Medicamento(int id, int quantidade, string nome, string descricao, string medida)
-            : this(quantidade, nome, descricao, medida)
+        public Medicamento(int id, string nome, string descricao, string medida)
+            : this(nome, descricao, medida)
         {
             this._id = id;
         }
-
-        public Medicamento(string nome, string descricao, string medida)
-			: this( 0, nome, descricao, medida)
-        {
-        }
 		
 		public Medicamento(string nome, string medida)
-			: this( 0, nome, null, medida)
+			: this( nome, null, medida)
         {
         }
 
@@ -48,12 +41,6 @@ namespace ERP.Logistica.Models
         public int Id
         {
             get { return _id; }
-        }
-
-        public int Quantidade
-        {
-            get { return _quantidade; }
-            set { _quantidade = value; }
         }
 
         public string Nome
@@ -78,36 +65,18 @@ namespace ERP.Logistica.Models
 
         public void criar()
         {
-            MedicamentoDAO.criar(Quantidade, Nome, Descricao, Medida);
+            MedicamentoDAO.criar(Nome, Descricao, Medida);
         }
 
         public void atualizar()
         {
-            MedicamentoDAO.atualizar(Id, Quantidade, Nome, Descricao, Medida);
+            MedicamentoDAO.atualizar(Id, Nome, Descricao, Medida);
         }
 
         public void apagar()
         {
             MedicamentoDAO.apagar(Id);
         }
-		
-		public void adicionar(int quantidade)
-		{
-			Quantidade += quantidade;
-			this.atualizar();
-		}
-		
-		public void remover(int quantidade)
-		{
-			if (Quantidade >= quantidade)
-			{
-				Quantidade -= quantidade;
-				this.atualizar();
-				if (Quantidade == 0)
-				{
-				}
-			}
-		}
 
         #region Static Methods
 
@@ -115,7 +84,7 @@ namespace ERP.Logistica.Models
         {
             DataSet ds = MedicamentoDAO.buscarPorId(id);
             DataRow row = (DataRow)ds.Tables[0].Rows[0];
-            Medicamento medicamento = new Medicamento(id, (int)row["Quantidade"], (string)row["Nome"], (string)row["Descricao"], (string)row["Medida"]);
+            Medicamento medicamento = new Medicamento(id, (string)row["Nome"], (string)row["Descricao"], (string)row["Medida"]);
 
             return medicamento;
         }
@@ -124,11 +93,6 @@ namespace ERP.Logistica.Models
         {
             return MedicamentoDAO.listar();
         }
-
-        /*public static DataTable listarFornecedores(Medicamento medicamento)
-        {
-            return FornecedoresDAO.listarFornecedores(medicamento);
-        }*/
 
         #endregion
     }

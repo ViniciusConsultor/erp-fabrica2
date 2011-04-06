@@ -10,7 +10,7 @@
 namespace ERP.Logistica {
     
     
-    public partial class MedicamentoForm {
+    public partial class EquipamentosForm {
         
         /// <summary>
         /// Label1 control.
@@ -58,15 +58,6 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// rfvDescricao control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescricao;
-        
-        /// <summary>
         /// tbDescricao control.
         /// </summary>
         /// <remarks>
@@ -74,24 +65,6 @@ namespace ERP.Logistica {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbDescricao;
-        
-        /// <summary>
-        /// Label4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
-        
-        /// <summary>
-        /// tbMedida control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbMedida;
         
         /// <summary>
         /// btnOk control.
