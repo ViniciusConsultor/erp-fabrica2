@@ -29,5 +29,17 @@ namespace ERP.Logistica
         {
             return PedidosEquipamentosController.listarPorRequisicao(inicio, fim, true);
         }
+
+        [WebMethod]
+        public double obterValorEstornadoMedicamentos(DateTime limite)
+        {
+            return PedidosMedicamentosController.calcularValorEstornado(limite, false);
+        }
+
+        [WebMethod]
+        public double obterValorEstornadoEquipamentos(DateTime limite)
+        {
+            return PedidosEquipamentosController.calcularValorEstornado(limite, false);
+        }
     }
 }

@@ -20,7 +20,7 @@
     onrowediting="gvPedidos_RowEditing" ShowHeaderWhenEmpty="True">
         <Columns>
             <asp:BoundField DataField="id" HeaderText="Codigo" />
-            <asp:BoundField DataField="Medicamento" HeaderText="Medicamento">
+            <asp:BoundField DataField="Produto" HeaderText="Medicamento">
             <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
             <asp:BoundField DataField="Fornecedor" HeaderText="Fornecedor">
@@ -38,10 +38,11 @@
             <asp:BoundField DataField="Efetuado" HeaderText="Efetuado">
             <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
-            <asp:CommandField ShowDeleteButton="True" DeleteText="Remover">
+            <asp:CommandField ShowDeleteButton="True" DeleteText="Remover" 
+                HeaderText="Remover">
             <ItemStyle HorizontalAlign="Center" />
             </asp:CommandField>
-            <asp:CommandField EditText="Editar" ShowEditButton="True" />
+            <asp:CommandField EditText="Editar" ShowEditButton="True" HeaderText="Editar" />
         </Columns>
     </asp:GridView>
     <br />

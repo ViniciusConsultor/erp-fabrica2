@@ -92,13 +92,21 @@ namespace ERP.Logistica.Models.DAOs
            }
        }
 
-       /*public static DataSet buscarPorRequisicao(int ano, int mes)
+       public static DataSet buscarEstornadosAte(DateTime limite, bool todos)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT PE.id, PE.Disponibilidade, PE.Requisicao, PE.Catalogo_Equipamento, EN.Preco_Unitario, PE.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE YEAR(Requisicao) = " + ano + "AND MONTH(Requisicao) = " + mes + ") AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id;";
+               string sql;
+               if (!todos)
+               {
+                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Equipamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Reportar_Estorno = 1) AS PM LEFT JOIN Catalogo_Equipamento AS L ON PM.Catalogo_Equipamento = L.id;";
+               }
+               else
+               {
+                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Equipamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "') AS PM LEFT JOIN Catalogo_Equipamento AS L ON PM.Catalogo_Equipamento = L.id;";
+               }
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -111,7 +119,25 @@ namespace ERP.Logistica.Models.DAOs
            {
                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
            }
-       }*/
+       }
+
+       public static void marcarEstornoReportado(DateTime limite)
+       {
+           try
+           {
+               SqlConnection connection = new SqlConnection(connectionSettings);
+               string sql = "UPDATE Pedido_Equipamento SET Reportar_Estorno = 0 WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Reportar_Estorno = 1;";
+               SqlCommand cmd = new SqlCommand(sql, connection);
+               cmd.CommandType = CommandType.Text;
+               connection.Open();
+               cmd.ExecuteNonQuery();
+               connection.Dispose();
+           }
+           catch (Exception ex)
+           {
+               throw new Exception("Ocorreu um erro no método marcarEstornoReportado: " + ex.Message);
+           }
+       }
 
        public static double buscarPrecoDeEncomenda(int idCatalogoEquip)
        {
@@ -175,7 +201,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT PE.id, E.Nome AS Equipamento, F.Nome AS Fornecedor, PE.Disponibilidade, EN.Preco_Unitario AS Preco, PE.Requisicao AS Requisicao, PE.Efetuado FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id ORDER BY Requisicao DESC;";
+               string sql = "SELECT PE.id, E.Nome AS 'Produto', F.Nome AS 'Fornecedor', 1 AS 'Quantidade', EN.Preco_Unitario AS 'Preco', PE.Requisicao AS 'Requisicao', PE.Efetuado FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id ORDER BY Requisicao DESC;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -199,11 +225,11 @@ namespace ERP.Logistica.Models.DAOs
                string sql;
                if (apenasEfetuados)
                {
-                   sql = "SELECT PE.id, E.Nome AS Equipamento, F.Nome AS Fornecedor, EN.Preco_Unitario AS Preco, PE.Requisicao AS Requisicao FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PE.Efetuado = 1 ORDER BY Requisicao DESC;";
+                   sql = "SELECT PE.id, E.Nome AS 'Produto', F.Nome AS 'Fornecedor', 1 AS 'Quantidade', EN.Preco_Unitario AS 'Preco', PE.Requisicao AS 'Requisicao' FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PE.Efetuado = 1 ORDER BY Requisicao DESC;";
                }
                else
                {
-                   sql = "SELECT PE.id, E.Nome AS Equipamento, F.Nome AS Fornecedor, EN.Preco_Unitario AS Preco, PE.Requisicao AS Requisicao, PE.Efetuado FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY Requisicao DESC;";
+                   sql = "SELECT PE.id, E.Nome AS 'Produto', F.Nome AS 'Fornecedor', 1 AS 'Quantidade', EN.Preco_Unitario AS 'Preco', PE.Requisicao AS 'Requisicao', PE.Efetuado FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY Requisicao DESC;";
                }
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 

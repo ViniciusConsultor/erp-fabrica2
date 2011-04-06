@@ -92,7 +92,7 @@ namespace ERP.Logistica.Models.DAOs
            }
        }
 
-       /*public static DataSet buscarPorRequisicao(int ano, int mes)
+       public static DataSet buscar(int ano, int mes)
        {
            try
            {
@@ -111,7 +111,54 @@ namespace ERP.Logistica.Models.DAOs
            {
                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
            }
-       }*/
+       }
+
+       public static DataSet buscarEstornadosAte(DateTime limite, bool todos)
+       {
+           try
+           {
+               SqlConnection connection = new SqlConnection(connectionSettings);
+               connection.Open();
+               string sql;
+               if (!todos)
+               {
+                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Medicamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Medicamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Reportar_Estorno = 1) AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id;";
+               }
+               else
+               {
+                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Medicamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Medicamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "') AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id;";
+               }
+               SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+               DataSet ds = new DataSet();
+               da.Fill(ds);
+               connection.Close();
+
+               return ds;
+           }
+           catch (Exception ex)
+           {
+               throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+           }
+       }
+
+       public static void marcarEstornoReportado(DateTime limite)
+       {
+           try
+           {
+               SqlConnection connection = new SqlConnection(connectionSettings);
+               string sql = "UPDATE Pedido_Medicamento SET Reportar_Estorno = 0 WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Reportar_Estorno = 1;";
+               SqlCommand cmd = new SqlCommand(sql, connection);
+               cmd.CommandType = CommandType.Text;
+               connection.Open();
+               cmd.ExecuteNonQuery();
+               connection.Dispose();
+           }
+           catch (Exception ex)
+           {
+               throw new Exception("Ocorreu um erro no método marcarEstornoReportado: " + ex.Message);
+           }
+       }
 
        public static double buscarPrecoDeLote(int idCatalogoMed)
        {
@@ -147,7 +194,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preco_Unitario AS Preco, PM.Requisicao, PM.Efetuado FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id ORDER BY Requisicao DESC;";
+               string sql = "SELECT PM.id AS 'Id', M.Nome AS 'Produto', F.Nome AS 'Fornecedor', PM.Quantidade AS 'Quantidade', L.Preco_Unitario AS 'Preco', PM.Requisicao AS 'Requisicao', PM.Efetuado FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id ORDER BY Requisicao DESC;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
@@ -171,11 +218,11 @@ namespace ERP.Logistica.Models.DAOs
                string sql;
                if (apenasEfetuados)
                {
-                   sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preco_Unitario AS Preco, PM.Requisicao AS Requisicao FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PM.Efetuado = 1 ORDER BY Requisicao DESC;";
+                   sql = "SELECT PM.id AS 'Id', M.Nome AS 'Produto', F.Nome AS 'Fornecedor', PM.Quantidade AS 'Quantidade', L.Preco_Unitario AS 'Preco', PM.Requisicao AS 'Requisicao' FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PM.Efetuado = 1 ORDER BY Requisicao DESC;";
                }
                else
                {
-                   sql = "SELECT PM.id, M.Nome AS Medicamento, F.Nome AS Fornecedor, PM.Quantidade, L.Preco_Unitario AS Preco, PM.Requisicao AS Requisicao, PM.Efetuado FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY Requisicao DESC;";
+                   sql = "SELECT PM.id AS 'Id', M.Nome AS 'Produto', F.Nome AS 'Fornecedor', PM.Quantidade AS 'Quantidade', L.Preco_Unitario AS 'Preco', PM.Requisicao AS 'Requisicao', PM.Efetuado FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY Requisicao DESC;";
                }
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 

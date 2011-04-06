@@ -114,7 +114,7 @@ namespace ERP.Logistica.Models
             {
                 // Cria disponibilidade caso ela não seja encontrada no banco e o pedido esteja efetuado
                 Disponibilidade disponibilidade = Disponibilidade.buscarPorId(Disponibilidade.Id);
-                if (disponibilidade == null && Efetuado == 1)
+                if (disponibilidade == null && Efetuado == 2)
                 {
                     Disponibilidade.criar();
                 }
@@ -167,20 +167,23 @@ namespace ERP.Logistica.Models
             return pedido;
         }
 
-        /*public static List<PedidoEquipamento> buscarPorRequisicao(int ano, int mes)
+        public static double calcularValorEstornadoAte(DateTime limite, bool todos)
         {
-            List<PedidoEquipamento> list = new List<PedidoEquipamento>();
-            DataSet ds = PedidoEquipamentoDAO.buscarPorRequisicao(ano, mes);
-            PedidoEquipamento pedido;
+            double valor = 0;
+            DataSet ds = PedidoEquipamentoDAO.buscarEstornadosAte(limite, todos);
 
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                pedido = new PedidoEquipamento((int)row["id"], (DateTime)row["Requisicao"], (int)row["Catalogo_Equipamento"], (float)Convert.ToDouble(row["Preco_Unitario"]), (int)row["Disponibilidade"], (int)row["Efetuado"]);
-                list.Add(pedido);
+                valor += Convert.ToDouble(row["Preco_Unitario"]);
             }
 
-            return list;
-        }*/
+            return valor;
+        }
+
+        public static void marcarEstornoReportado(DateTime limite)
+        {
+            PedidoEquipamentoDAO.marcarEstornoReportado(limite);
+        }
 
         public static DataTable listar()
         {
@@ -196,22 +199,6 @@ namespace ERP.Logistica.Models
         {
             return PedidoEquipamentoDAO.listarPorRequisicao(inicio, fim, apenasEfetuados);
         }
-
-        /*public static float calcularGastoMensal(int ano, int mes)
-        {
-            List<PedidoEquipamento> list = PedidoEquipamento.buscarPorRequisicao(ano, mes);
-            float gasto = 0;
-
-            foreach (PedidoEquipamento pe in list)
-            {
-                if (pe.Efetuado == 1)
-                {
-                    gasto += (pe.EncomendaPreco);
-                }
-            }
-
-            return gasto;
-        }*/
 
         #endregion
     }
