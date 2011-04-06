@@ -42,5 +42,10 @@ namespace ERP.Logistica.Controllers
         {
             return Disponibilidade.listar();
         }
+
+        public static DataTable WebListar()
+        {
+            return Disponibilidade.WebListar();
+        }
     }
 }

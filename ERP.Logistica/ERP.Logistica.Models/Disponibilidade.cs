@@ -102,6 +102,11 @@ namespace ERP.Logistica.Models
             return DisponibilidadeDAO.listar();
         }
 
+        public static DataTable WebListar()
+        {
+            return DisponibilidadeDAO.WebListar();
+        }
+
         #endregion
     }
 }
