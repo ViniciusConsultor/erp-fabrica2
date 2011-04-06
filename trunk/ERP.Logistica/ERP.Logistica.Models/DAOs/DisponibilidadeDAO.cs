@@ -127,5 +127,27 @@ namespace ERP.Logistica.Models.DAOs
                 throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
             }
         }
+
+        public static DataTable WebListar()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                connection.Open();
+                // TODO: Incluir nomes
+                string sql = "SELECT D.Id AS 'EquipamentoId', E.Nome AS 'Equipamento', EF.Id AS 'EspacoFisicoId', EF.Nome AS 'Espaco', EF.Andar AS 'Andar', EF.Numero AS 'Numero' FROM ((Disponibilidade AS D LEFT JOIN Equipamento AS E ON D.Equipamento = E.id) LEFT JOIN Espaco_Fisico AS EF ON D.Espaco_Fisico = EF.id);";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+            }
+        }
     }
 }
