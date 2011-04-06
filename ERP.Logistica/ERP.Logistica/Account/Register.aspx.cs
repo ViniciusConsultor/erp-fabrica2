@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ERP.Logistica.Controllers;
+using ERP.Logistica.Models;
 
 namespace ERP.Logistica.Account
 {
@@ -13,19 +15,28 @@ namespace ERP.Logistica.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+
         }
 
-        protected void RegisterUser_CreatedUser(object sender, EventArgs e)
+        protected void CreateUserButton_Click(object sender, EventArgs e)
         {
-            FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
-
-            string continueUrl = RegisterUser.ContinueDestinationPageUrl;
-            if (String.IsNullOrEmpty(continueUrl))
+            if (hfId.Value == "Novo")
             {
-                continueUrl = "~/";
+                LoginController.criar(tbUserName.Text, tbPassword.Text, tbEmail.Text);
             }
-            Response.Redirect(continueUrl);
+            else
+            {
+                ERP.Logistica.Models.Login user = LoginController.buscarPorId(Convert.ToInt32(hfId.Value));
+                LoginController.atualizar(user.Id, tbUserName.Text, tbPassword.Text, tbEmail.Text);
+
+            }
+
+            Response.Redirect("/Account/Login.aspx");
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Account/Login.aspx");
         }
 
     }
