@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ERP.Logistica.Controllers
 {
-    class EquipamentoController
+    public class EquipamentoController
     {
         public static void criar(string nome, string descricao)
         {
@@ -41,6 +41,11 @@ namespace ERP.Logistica.Controllers
         public static DataTable listar()
         {
             return Equipamento.listar();
+        }
+
+        public static DataTable listarEquipamentosDisponiveis()
+        {
+            return Equipamento.listarEquipamentosDisponiveis();
         }
     }
 }

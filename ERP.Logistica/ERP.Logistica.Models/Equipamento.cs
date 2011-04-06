@@ -52,8 +52,6 @@ namespace ERP.Logistica.Models
 
         #endregion
 
-        #region Static Methods
-
         public void criar()
         {
             EquipamentoDAO.criar( Nome, Descricao);
@@ -69,6 +67,8 @@ namespace ERP.Logistica.Models
             EquipamentoDAO.apagar(Id);
         }
 
+        #region Static Methods
+
         public static Equipamento buscarPorId(int id)
         {
             Equipamento equipamento = null;
@@ -81,6 +81,17 @@ namespace ERP.Logistica.Models
             }
 
             return equipamento;
+        }
+
+        public static DataTable listar()
+        {
+            //TODO: Implementar
+            return null;
+        }
+
+        public static DataTable listarEquipamentosDisponiveis()
+        {
+            return EquipamentoDAO.listarEquipamentosDisponiveis();
         }
 
         #endregion

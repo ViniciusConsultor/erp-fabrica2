@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Panel ID="Panel1" runat="server" Height="177px">
         <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" 
             Text="Lista de Equipamentos Disponíveis"></asp:Label>
         <br />
@@ -20,5 +19,8 @@
                 <asp:CommandField EditText="Editar" ShowEditButton="True" />
             </Columns>
         </asp:GridView>
-    </asp:Panel>
+        <br />
+        <asp:Button ID="btnAdicionar" runat="server" onclick="btnAdicionar_Click" 
+            Text="Cadastrar Equipamento Disponível" Width="217px" />
+        <br />
 </asp:Content>

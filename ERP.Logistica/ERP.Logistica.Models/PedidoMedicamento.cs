@@ -13,8 +13,9 @@ namespace ERP.Logistica.Models
         private int _quantidade;
         private DateTime _requisicao;
         private int _catalogoMed;
-        private float _catalogoMedPreco;
+        private double _catalogoMedPreco;
         private int _efetuado;
+        private int _reportarEstorno;
 
         #region Constructors
 
@@ -25,21 +26,24 @@ namespace ERP.Logistica.Models
             this._catalogoMed = catalogoMed;
             this._catalogoMedPreco = PedidoMedicamentoDAO.buscarPrecoDeLote(catalogoMed);
             this._efetuado = efetuado;
+            this._reportarEstorno = 0;
         }
 
-        public PedidoMedicamento(int id, int quantidade, DateTime requisicao, int catalogoMed, int efetuado)
+        public PedidoMedicamento(int id, int quantidade, DateTime requisicao, int catalogoMed, int efetuado, int reportarEstorno)
             : this(quantidade, requisicao, catalogoMed, efetuado)
         {
             this._id = id;
+            this._reportarEstorno = reportarEstorno;
         }
 
-        public PedidoMedicamento(int id, int quantidade, DateTime requisicao, int catalogoMed, float preco, int efetuado)
+        public PedidoMedicamento(int id, int quantidade, DateTime requisicao, int catalogoMed, double preco, int efetuado, int reportarEstorno)
         {
             this._quantidade = quantidade;
             this._requisicao = requisicao;
             this._catalogoMed = catalogoMed;
             this._catalogoMedPreco = preco;
             this._efetuado = efetuado;
+            this._reportarEstorno = reportarEstorno;
         }
 
         #endregion
@@ -73,7 +77,7 @@ namespace ERP.Logistica.Models
             }
         }
 
-        public float CatalogoMedPreco
+        public double CatalogoMedPreco
         {
             get { return _catalogoMedPreco; }
         }
@@ -82,6 +86,12 @@ namespace ERP.Logistica.Models
         {
             get { return _efetuado; }
             set { _efetuado = value; }
+        }
+
+        public int ReportarEstorno
+        {
+            get { return _reportarEstorno; }
+            set { _reportarEstorno = value; }
         }
 
         #endregion
@@ -93,7 +103,7 @@ namespace ERP.Logistica.Models
 
         public void atualizar()
         {
-            PedidoMedicamentoDAO.atualizar(Id, Quantidade, Requisicao, CatalogoMed, Efetuado);
+            PedidoMedicamentoDAO.atualizar(Id, Quantidade, Requisicao, CatalogoMed, Efetuado, ReportarEstorno);
         }
 
         public void apagar()
@@ -101,9 +111,19 @@ namespace ERP.Logistica.Models
             PedidoMedicamentoDAO.apagar(Id);
         }
 
-        public float calcularValor()
+        public double calcularValor()
         {
             return Quantidade * CatalogoMedPreco;
+        }
+
+        public bool apagavel()
+        {
+            return (Efetuado == 0 && ReportarEstorno == 0);
+        }
+
+        public bool editavel()
+        {
+            return (Efetuado == 1);
         }
 
         #region Static Methods
@@ -116,7 +136,7 @@ namespace ERP.Logistica.Models
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = (DataRow)ds.Tables[0].Rows[0];
-                pedido = new PedidoMedicamento(id, (int)row["Quantidade"], (DateTime)row["Requisicao"], (int)row["Catalogo_Medicamento"], (int)row["Efetuado"]);
+                pedido = new PedidoMedicamento(id, (int)row["Quantidade"], (DateTime)row["Requisicao"], (int)row["Catalogo_Medicamento"], (int)row["Efetuado"], (int)row["Reportar_Estorno"]);
             }
 
             return pedido;

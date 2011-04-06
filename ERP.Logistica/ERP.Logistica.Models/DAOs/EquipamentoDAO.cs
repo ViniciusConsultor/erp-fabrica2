@@ -52,7 +52,7 @@ namespace ERP.Logistica.Models.DAOs
             }
         }
 
-        public static void atualizar(int id, int quantidade, string nome, string descricao, string medida)
+        public static void atualizar(int id, string nome, string descricao)
         {
             try
             {
@@ -84,6 +84,27 @@ namespace ERP.Logistica.Models.DAOs
                 connection.Close();
 
                 return ds;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+            }
+        }
+
+        public static DataTable listarEquipamentosDisponiveis()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                connection.Open();
+                string sql = "SELECT Id, Nome + ' (' + CONVERT(VARCHAR(50), Id) + ') ' AS 'Equipamento' FROM Equipamento;";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+
+                return ds.Tables[0];
             }
             catch (Exception ex)
             {

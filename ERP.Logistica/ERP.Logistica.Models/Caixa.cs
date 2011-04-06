@@ -9,44 +9,53 @@ namespace ERP.Logistica.Models
 {
     public class Caixa
     {
-        private float _verba;
+        private double _verba;
+        private DateTime _ultimoAcrescimo;
 
-        public Caixa()
+        public Caixa(DateTime ultimoAcrescimo)
         {
+            this._ultimoAcrescimo = ultimoAcrescimo;
             this._verba = 0;
         }
 
-        public float Verba
+        public double Verba
         {
             get { return _verba; }
             set { _verba = value; }
         }
 
-        public bool remover(float valor)
+        public DateTime UltimoAcrescimo
+        {
+            get { return _ultimoAcrescimo; }
+        }
+
+        public bool remover(double valor)
         {
             if (Verba >= valor)
             {
                 Verba -= valor;
-                CaixaDAO.atualizarVerba(Verba, false);
+                CaixaDAO.atualizarVerba(Verba, UltimoAcrescimo);
                 return true;
             }
             return false;
         }
 
-        public void adicionar(float valor, bool atualizarData)
+        public void adicionar(double valor, bool atualizarData)
         {
             Verba += valor;
-            CaixaDAO.atualizarVerba(Verba, atualizarData);
+            this._ultimoAcrescimo = DateTime.Now;
+            CaixaDAO.atualizarVerba(Verba, UltimoAcrescimo);
         }
 
         public static Caixa obterCaixa()
         {
             DataTable dt = CaixaDAO.obterVerba();
-            Caixa caixa = new Caixa();
+            Caixa caixa = null;
 
             if(dt.Rows.Count > 0)
             {
-                caixa.Verba = (float)Convert.ToDouble(dt.Rows[0]["Quantidade"]);
+                caixa = new Caixa(Convert.ToDateTime(dt.Rows[0]["Ultimo_Acrescimo"]));
+                caixa.Verba = Convert.ToDouble(dt.Rows[0]["Quantidade"]);
             }
             return caixa;
         }

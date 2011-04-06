@@ -8,8 +8,8 @@
     <br />
     <asp:Label ID="lbNomeEquip" runat="server" Text="Nome do Equipamento (Codigo)"></asp:Label>
     <br />
-    <asp:TextBox ID="tbNomeEquip" runat="server" Font-Size="Small" Height="20px" 
-        Width="200px" MaxLength="50" ReadOnly="True"></asp:TextBox>
+    <asp:DropDownList ID="ddlEquip" runat="server" Height="19px" Width="315px">
+    </asp:DropDownList>
     <br />
     <br />
     <asp:Label ID="lbEspaco" runat="server" Text="Espaço Fisico"></asp:Label>

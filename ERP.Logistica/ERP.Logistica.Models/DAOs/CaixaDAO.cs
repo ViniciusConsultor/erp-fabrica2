@@ -15,20 +15,12 @@ namespace ERP.Logistica.Models.DAOs
         private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_logistica; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
 
 
-        public static void atualizarVerba(float verba, bool atualizarData)
+        public static void atualizarVerba(double verba, DateTime ultimoAcrescimo)
         {
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql;
-                if (atualizarData)
-                {
-                    sql = "UPDATE Caixa SET Quantidade = " + verba + ", Ultimo_Acrescimo = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE Recurso = 'Verba'";
-                }
-                else
-                {
-                    sql = "UPDATE Caixa SET Quantidade = " + verba + " WHERE Recurso = 'Verba'";
-                }
+                string sql = "UPDATE Caixa SET Quantidade = " + verba + ", Ultimo_Acrescimo = '" + ultimoAcrescimo.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE Recurso = 'Verba'";
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();

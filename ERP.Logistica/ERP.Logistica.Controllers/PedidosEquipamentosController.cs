@@ -14,26 +14,14 @@ namespace ERP.Logistica.Controllers
             PedidoEquipamento pedido = new PedidoEquipamento(requisicao, catalogoEquip, 0, efetuado);
 
             // Contabilizar no estoque caso efetuado
-            if (utilizarVerba(pedido.calcularValor()))
-            {
-                // Cria disponibilidade e associa com pedido
-                Disponibilidade disponibilidade = new Disponibilidade(pedido.obterEquipamento(), espacoFisico);
-                pedido.Disponibilidade = disponibilidade;
-            }
-            else
+            if (!utilizarVerba(pedido.calcularValor()))
             {
                 // Pede verba adicional e verifica se a compra pode ser efetuada
-                float verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
+                double verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
                 Caixa caixa = Caixa.obterCaixa();
                 caixa.adicionar(verbaAdicional, true);
 
-                if (utilizarVerba(pedido.calcularValor()))
-                {
-                    // Cria disponibilidade e associa com pedido
-                    Disponibilidade disponibilidade = new Disponibilidade(pedido.obterEquipamento(), espacoFisico);
-                    pedido.Disponibilidade = disponibilidade;
-                }
-                else
+                if (!utilizarVerba(pedido.calcularValor()))
                 {
                     return;
                 }
@@ -42,13 +30,16 @@ namespace ERP.Logistica.Controllers
             pedido.criar();
         }
 
-        public static void apagar(int id)
+        public static bool apagar(int id)
         {
             PedidoEquipamento pedido = PedidoEquipamento.buscarPorId(id);
-            if (pedido.Efetuado != 1)
+            // Apaga caso seja um estorno já reportado ao Financeiro
+            if (pedido.apagavel())
             {
                 pedido.apagar();
+                return true;
             }
+            return false;
         }
 
         public static void atualizar(int id, DateTime requisicao, int catalogoEquip, int efetuado, int espacoFisico)
@@ -58,41 +49,18 @@ namespace ERP.Logistica.Controllers
             pedido.CatalogoEquip = catalogoEquip;
             // Se mudou para efetuado, contabiliza o estoque, se mudou para estornado verifica se é possivel
             // antes de modificar estoque. (Preciso de interface para obter e editar o estoque)
-            if (efetuado == 1 && pedido.Efetuado == 0) // Mudou para efetuado
+            if (efetuado == 2 && pedido.Efetuado == 1) // Mudou para efetuado
             {
-                // Contabilizar no estoque caso efetuado
-                if (utilizarVerba(pedido.calcularValor()))
-                {
-                    // Cria disponibilidade e associa com pedido
-                    Disponibilidade disponibilidade = new Disponibilidade(pedido.obterEquipamento(), espacoFisico);
-                    pedido.Disponibilidade = disponibilidade;
-                }
-                else
-                {
-                    // Pede verba adicional e verifica se a compra pode ser efetuada
-                    float verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
-                    Caixa caixa = Caixa.obterCaixa();
-                    caixa.adicionar(verbaAdicional, true);
-
-                    if (utilizarVerba(pedido.calcularValor()))
-                    {
-                        // Cria disponibilidade e associa com pedido
-                        Disponibilidade disponibilidade = new Disponibilidade(pedido.obterEquipamento(), espacoFisico);
-                        pedido.Disponibilidade = disponibilidade;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                // Cria disponibilidade e associa com pedido
+                Equipamento equipamento = Equipamento.buscarPorId(pedido.obterEquipamento());
+                EspacoFisico espaco = EspacoFisico.buscarPorId(espacoFisico);
+                Disponibilidade disponibilidade = new Disponibilidade(equipamento, espaco);
+                pedido.Disponibilidade = disponibilidade;
             }
             else if (efetuado == 0 && pedido.Efetuado == 1) // Mudou para estornado
             {
-                if (pedido.Disponibilidade != null)
-                {
-                    pedido.Disponibilidade.apagar();
-                    pedido.Disponibilidade = null;
-                }
+                pedido.ReportarEstorno = 1;
+
                 // Registra reembolso
                 Caixa caixa = Caixa.obterCaixa();
                 caixa.adicionar(pedido.calcularValor(), false);
@@ -126,7 +94,7 @@ namespace ERP.Logistica.Controllers
             return PedidoEquipamento.calcularGastoMensal(ano, mes);
         }*/
 
-        public static bool utilizarVerba(float gastoAdicional)
+        public static bool utilizarVerba(double gastoAdicional)
         {
             Caixa caixa = Caixa.obterCaixa();
             if (caixa.Verba >= gastoAdicional)

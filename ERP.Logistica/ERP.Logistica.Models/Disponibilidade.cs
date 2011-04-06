@@ -15,17 +15,16 @@ namespace ERP.Logistica.Models
 
         #region Constructors
 
-        public Disponibilidade(int equipamento, int espacoFisico)
+        public Disponibilidade(Equipamento equipamento, EspacoFisico espacoFisico)
         {
-            this._equipamento = Equipamento.buscarPorId(equipamento);
-            this._espacoFisico = EspacoFisico.buscarPorId(espacoFisico);
+            this._equipamento = equipamento;
+            this._espacoFisico = espacoFisico;
         }
 
-        public Disponibilidade(int id, int equipamento, int espacoFisico)
+        public Disponibilidade(int id, Equipamento equipamento, EspacoFisico espacoFisico)
+            : this(equipamento, espacoFisico)
         {
             this._id = id;
-            this._equipamento = Equipamento.buscarPorId(equipamento);
-            this._espacoFisico = EspacoFisico.buscarPorId(espacoFisico);
         }
 
         #endregion
@@ -84,16 +83,18 @@ namespace ERP.Logistica.Models
 
         public static Disponibilidade buscarPorId(int id)
         {
-            Disponibilidade espaco = null;
+            Disponibilidade disp = null;
             DataSet ds = DisponibilidadeDAO.buscarPorId(id);
 
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = (DataRow)ds.Tables[0].Rows[0];
-                espaco = new Disponibilidade(id, (int)row["Equipamento"], (int)row["Espaco_Fisico"]);
+                Equipamento equipamento = Equipamento.buscarPorId((int)row["Equipamento"]);
+                EspacoFisico espaco = EspacoFisico.buscarPorId((int)row["Espaco_Fisico"]);
+                disp = new Disponibilidade(id, equipamento, espaco);
             }
 
-            return espaco;
+            return disp;
         }
 
         public static DataTable listar()

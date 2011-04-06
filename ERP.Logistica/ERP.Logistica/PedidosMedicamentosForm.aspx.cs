@@ -16,9 +16,13 @@ namespace ERP.Logistica
             if (!((Page)System.Web.HttpContext.Current.CurrentHandler).IsPostBack)
             {
                 ddlMedForn.DataSource = PedidosMedicamentosController.listarCatalogoMedDisponiveis();
-                ddlMedForn.DataTextField = "Lote";
+                ddlMedForn.DataTextField = "Catalogo_Medicamento";
                 ddlMedForn.DataValueField = "Id";
                 ddlMedForn.DataBind();
+                rblEfetuado.Visible = false;
+                lbEstado.Visible = false;
+                tbValidade.Visible = false;
+                lbValidade.Visible = false;
 
                 // Pedido Existente
                 if (Request.QueryString["ID"] != "Novo" && Request.QueryString["ID"] != null)
@@ -29,7 +33,14 @@ namespace ERP.Logistica
                     ddlMedForn.Enabled = false;
                     tbQuant.Text = pedido.Quantidade.ToString();
                     tbQuant.Enabled = false;
-                    rblEfetuado.SelectedValue = pedido.Efetuado.ToString();
+                    if (pedido.editavel())
+                    {
+                        rblEfetuado.SelectedValue = "2";
+                        rblEfetuado.Visible = true;
+                        lbEstado.Visible = true;
+                        tbValidade.Visible = true;
+                        lbValidade.Visible = true;
+                    }
                 }
             }
         }
@@ -38,15 +49,26 @@ namespace ERP.Logistica
         {
             if (hfId.Value == "Novo")
             {
-                PedidosMedicamentosController.criar(Convert.ToInt32(tbQuant.Text), DateTime.Now, Convert.ToInt32(ddlMedForn.SelectedValue), Convert.ToInt32(rblEfetuado.SelectedValue));
+                PedidosMedicamentosController.criar(Convert.ToInt32(tbQuant.Text), DateTime.Now, Convert.ToInt32(ddlMedForn.SelectedValue), 1);
             }
             else
             {
-                PedidoMedicamento pedido = PedidosMedicamentosController.buscarPorId(Convert.ToInt32(hfId.Value));
-                if (pedido.Efetuado != Convert.ToInt32(rblEfetuado.SelectedValue))
+                DateTime validade = DateTime.Today;
+                if (rblEfetuado.SelectedValue == "2")
                 {
-                    PedidosMedicamentosController.atualizar(pedido.Id, pedido.Quantidade, DateTime.Now, pedido.CatalogoMed, Convert.ToInt32(rblEfetuado.SelectedValue));
+                    if (tbValidade.Text == "")
+                    {
+                        vValidadeObrig.IsValid = false;
+                        return;
+                    }
+                    else
+                    {
+                        validade = Convert.ToDateTime(tbValidade.Text);
+                    }
                 }
+
+                PedidoMedicamento pedido = PedidosMedicamentosController.buscarPorId(Convert.ToInt32(hfId.Value));
+                PedidosMedicamentosController.atualizar(pedido.Id, pedido.Quantidade, DateTime.Now, pedido.CatalogoMed, Convert.ToInt32(rblEfetuado.SelectedValue), validade);
             }
             Response.Redirect("/PedidosMedicamentos.aspx");
         }
@@ -55,7 +77,6 @@ namespace ERP.Logistica
         {
             Response.Redirect("/PedidosMedicamentos.aspx");
         }
-
 
     }
 }
