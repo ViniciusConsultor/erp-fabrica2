@@ -31,13 +31,13 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label lbNomeEquip;
         
         /// <summary>
-        /// tbNomeEquip control.
+        /// ddlEquip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNomeEquip;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEquip;
         
         /// <summary>
         /// lbEspaco control.

@@ -14,79 +14,52 @@ namespace ERP.Logistica.Controllers
             PedidoMedicamento pedido = new PedidoMedicamento(quantidade, requisicao, catalogoMed, efetuado);
 
             // Contabilizar no estoque caso efetuado
-            if (efetuado == 1)
+            if (!utilizarVerba(pedido.calcularValor()))
             {
-                if (utilizarVerba(pedido.calcularValor()))
-                {
-                    MedicamentosTeste.adicionarQuantidade(pedido.CatalogoMed, pedido.Quantidade);
-                }
-                else
-                {
-                    // Pede verba adicional e verifica se a compra pode ser efetuada
-                    float verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
-                    Caixa caixa = Caixa.obterCaixa();
-                    caixa.adicionar(verbaAdicional, true);
+                // Pede verba adicional e verifica se a compra pode ser efetuada
+                double verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
+                Caixa caixa = Caixa.obterCaixa();
+                caixa.adicionar(verbaAdicional, true);
 
-                    if (utilizarVerba(pedido.calcularValor()))
-                    {
-                        MedicamentosTeste.adicionarQuantidade(pedido.CatalogoMed, pedido.Quantidade);
-                    }
-                    else
-                    {
-                        return;
-                    }
+                if (!utilizarVerba(pedido.calcularValor()))
+                {
+                    return;
                 }
             }
 
             pedido.criar();
         }
 
-        public static void apagar(int id)
+        public static bool apagar(int id)
         {
             PedidoMedicamento pedido = PedidoMedicamento.buscarPorId(id);
-            if (pedido.Efetuado != 1)
+            // Apaga caso seja um estorno já reportado ao Financeiro
+            if (pedido.apagavel())
             {
                 pedido.apagar();
+                return true;
             }
+            return false;
         }
 
-        public static void atualizar(int id, int quantidade, DateTime requisicao, int lote, int efetuado)
+        public static void atualizar(int id, int quantidade, DateTime requisicao, int catalogMed, int efetuado, DateTime validade)
         {
             PedidoMedicamento pedido = PedidoMedicamento.buscarPorId(id);
             pedido.Quantidade = quantidade;
             pedido.Requisicao = requisicao;
-            pedido.CatalogoMed = lote;
+            pedido.CatalogoMed = catalogMed;
             // Se mudou para efetuado, contabiliza o estoque, se mudou para estornado verifica se é possivel
             // antes de modificar estoque. (Preciso de interface para obter e editar o estoque)
-            if (efetuado == 1 && pedido.Efetuado == 0) // Mudou para efetuado
+            if (efetuado == 2 && pedido.Efetuado == 1) // Mudou para efetuado
             {
-                if (utilizarVerba(pedido.calcularValor()))
-                {
-                    MedicamentosTeste.adicionarQuantidade(pedido.CatalogoMed, pedido.Quantidade);
-                }
-                else
-                {
-                    // Pede verba adicional e verifica se a compra pode ser efetuada
-                    float verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
-                    Caixa caixa = Caixa.obterCaixa();
-                    caixa.adicionar(verbaAdicional, true);
-
-                    if (utilizarVerba(pedido.calcularValor()))
-                    {
-                        MedicamentosTeste.adicionarQuantidade(pedido.CatalogoMed, pedido.Quantidade);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                CatalogoMedicamento catalogo = CatalogoMedicamento.buscarPorId(catalogMed);
+                Estoque estoque = new Estoque(catalogo.Medicamento, quantidade, validade, "");
+                estoque.criar();
             }
             else if (efetuado == 0 && pedido.Efetuado == 1) // Mudou para estornado
             {
-                if (!MedicamentosTeste.removerQuantidade(pedido.CatalogoMed, pedido.Quantidade))
-                {
-                    return;
-                }
+                pedido.ReportarEstorno = 1;
+
                 // Registra reembolso
                 Caixa caixa = Caixa.obterCaixa();
                 caixa.adicionar(pedido.calcularValor(), false);
@@ -120,7 +93,7 @@ namespace ERP.Logistica.Controllers
             return PedidoMedicamento.calcularGastoMensal(ano, mes);
         }*/
 
-        public static bool utilizarVerba(float gastoAdicional)
+        public static bool utilizarVerba(double gastoAdicional)
         {
             Caixa caixa = Caixa.obterCaixa();
             if (caixa.Verba >= gastoAdicional)

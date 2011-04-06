@@ -7,7 +7,7 @@ namespace ERP.Logistica.Models
 {
     public class FinanceiroTeste
     {
-        public static float obterVerba(float valor)
+        public static double obterVerba(double valor)
         {
             return 10000.0F;
         }

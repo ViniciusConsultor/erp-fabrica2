@@ -33,5 +33,10 @@ namespace ERP.Logistica
             DisponibilidadesController.apagar(Convert.ToInt32(gvDisp.DataKeys[e.RowIndex].Values[0].ToString()));
             atualizar();
         }
+
+        protected void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/DisponibilidadesForm.aspx?ID=Novo");
+        }
     }
 }

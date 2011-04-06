@@ -53,12 +53,12 @@ namespace ERP.Logistica.Models.DAOs
            }
        }
 
-       public static void atualizar(int id, int disponibilidade, DateTime requisicao, int catalogoEquip, int efetuado)
+       public static void atualizar(int id, int disponibilidade, DateTime requisicao, int catalogoEquip, int efetuado, int reportarEstorno)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
-               string sql = "UPDATE Pedido_Equipamento SET Disponibilidade = " + disponibilidade + ", " + "Efetuado = " + efetuado + " WHERE id = " + id;
+               string sql = "UPDATE Pedido_Equipamento SET Disponibilidade = " + disponibilidade + ", " + "Efetuado = " + efetuado + ", Reportar_Estorno = " + reportarEstorno + " WHERE id = " + id;
                SqlCommand cmd = new SqlCommand(sql, connection);
                cmd.CommandType = CommandType.Text;
                connection.Open();
@@ -113,7 +113,7 @@ namespace ERP.Logistica.Models.DAOs
            }
        }*/
 
-       public static float buscarPrecoDeEncomenda(int idCatalogoEquip)
+       public static double buscarPrecoDeEncomenda(int idCatalogoEquip)
        {
            try
            {
@@ -128,11 +128,11 @@ namespace ERP.Logistica.Models.DAOs
 
                if (ds.Tables[0].Rows.Count > 0)
                {
-                   return (float)Convert.ToDouble(ds.Tables[0].Rows[0][0]);
+                   return Convert.ToDouble(ds.Tables[0].Rows[0][0]);
                }
                else
                {
-                   return 0F;
+                   return 0.0;
                }
            }
            catch (Exception ex)
@@ -225,7 +225,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT EN.id AS Id, E.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), EN.Preco_Unitario) AS Encomenda FROM (Catalogo_Equipamento AS EN LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id;";
+               string sql = "SELECT EN.id AS Id, E.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), EN.Preco_Unitario) AS Catalogo_Equipamento FROM (Catalogo_Equipamento AS EN LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();

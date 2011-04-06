@@ -12,9 +12,10 @@ namespace ERP.Logistica.Models
         private int _id;
         private DateTime _requisicao;
         private int _catalogoEquip;
-        private float _catalogoEquipPreco;
+        private double _catalogoEquipPreco;
         private int _efetuado;
         private Disponibilidade _disponibilidade;
+        private int _reportarEstorno;
 
         #region Constructors
 
@@ -33,7 +34,7 @@ namespace ERP.Logistica.Models
             this._id = id;
         }
 
-        public PedidoEquipamento(int id, DateTime requisicao, int catalogoEquip, float preco, int disponibilidade, int efetuado)
+        public PedidoEquipamento(int id, DateTime requisicao, int catalogoEquip, double preco, int disponibilidade, int efetuado)
         {
             this._id = id;
             this._requisicao = requisicao;
@@ -68,7 +69,7 @@ namespace ERP.Logistica.Models
             }
         }
 
-        public float CatalogoEquipPreco
+        public double CatalogoEquipPreco
         {
             get { return _catalogoEquipPreco; }
         }
@@ -83,6 +84,12 @@ namespace ERP.Logistica.Models
         {
             get { return _efetuado; }
             set { _efetuado = value; }
+        }
+
+        public int ReportarEstorno
+        {
+            get { return _reportarEstorno; }
+            set { _reportarEstorno = value; }
         }
 
         #endregion
@@ -111,11 +118,11 @@ namespace ERP.Logistica.Models
                 {
                     Disponibilidade.criar();
                 }
-                PedidoEquipamentoDAO.atualizar(Id, Disponibilidade.Id, Requisicao, CatalogoEquip, Efetuado);
+                PedidoEquipamentoDAO.atualizar(Id, Disponibilidade.Id, Requisicao, CatalogoEquip, Efetuado, ReportarEstorno);
             }
             else
             {
-                PedidoEquipamentoDAO.atualizar(Id, 0, Requisicao, CatalogoEquip, Efetuado);
+                PedidoEquipamentoDAO.atualizar(Id, 0, Requisicao, CatalogoEquip, Efetuado, ReportarEstorno);
             }
         }
 
@@ -124,9 +131,19 @@ namespace ERP.Logistica.Models
             PedidoEquipamentoDAO.apagar(Id);
         }
 
-        public float calcularValor()
+        public double calcularValor()
         {
             return CatalogoEquipPreco;
+        }
+
+        public bool apagavel()
+        {
+            return (Efetuado == 0 && ReportarEstorno == 0);
+        }
+
+        public bool editavel()
+        {
+            return (Efetuado == 1);
         }
 
         public int obterEquipamento()

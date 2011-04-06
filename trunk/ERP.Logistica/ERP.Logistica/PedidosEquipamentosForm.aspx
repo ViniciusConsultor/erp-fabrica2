@@ -25,7 +25,7 @@
     <asp:Label ID="lbEstado" runat="server" Text="Estado do Pedido"></asp:Label>
     <asp:RadioButtonList ID="rblEfetuado" runat="server">
         <asp:ListItem Value="0">Estornado</asp:ListItem>
-        <asp:ListItem Value="1" Selected="True">Efetuado</asp:ListItem>
+        <asp:ListItem Value="2" Selected="True">Efetuado</asp:ListItem>
     </asp:RadioButtonList>
     <br />
     <asp:Button ID="btnOK" runat="server" onclick="btnOK_Click" Text="Executar" 

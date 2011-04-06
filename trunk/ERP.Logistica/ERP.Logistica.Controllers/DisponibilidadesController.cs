@@ -9,6 +9,14 @@ namespace ERP.Logistica.Controllers
 {
     public class DisponibilidadesController
     {
+        public static void criar(int idEquip, int idEspaco)
+        {
+            Equipamento equipamento = Equipamento.buscarPorId(idEquip);
+            EspacoFisico espaco = EspacoFisico.buscarPorId(idEspaco);
+            Disponibilidade disponibilidade = new Disponibilidade(equipamento, espaco);
+            disponibilidade.criar();
+        }
+
         public static void apagar(int id)
         {
             Disponibilidade espaco = Disponibilidade.buscarPorId(id);

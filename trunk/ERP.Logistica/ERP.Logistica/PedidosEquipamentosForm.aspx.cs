@@ -16,13 +16,15 @@ namespace ERP.Logistica
             if (!((Page)System.Web.HttpContext.Current.CurrentHandler).IsPostBack)
             {
                 ddlEquipForn.DataSource = PedidosEquipamentosController.listarCatalogoEquipDisponiveis();
-                ddlEquipForn.DataTextField = "Encomenda";
+                ddlEquipForn.DataTextField = "Catalogo_Equipamento";
                 ddlEquipForn.DataValueField = "Id";
                 ddlEquipForn.DataBind();
                 ddlAloc.DataSource = EspacosFisicosController.listarEspacosFisicosDisponiveis();
                 ddlAloc.DataTextField = "EspacoFisico";
                 ddlAloc.DataValueField = "Id";
                 ddlAloc.DataBind();
+                rblEfetuado.Visible = false;
+                lbEstado.Visible = false;
 
                 // Pedido Existente
                 if (Request.QueryString["ID"] != "Novo" && Request.QueryString["ID"] != null)
@@ -39,7 +41,12 @@ namespace ERP.Logistica
                     {
                         ddlAloc.Enabled = false;
                     }
-                    rblEfetuado.SelectedValue = pedido.Efetuado.ToString();
+                    if (pedido.editavel())
+                    {
+                        rblEfetuado.SelectedValue = "2";
+                        rblEfetuado.Visible = true;
+                        lbEstado.Visible = true;
+                    }
                 }
             }
         }

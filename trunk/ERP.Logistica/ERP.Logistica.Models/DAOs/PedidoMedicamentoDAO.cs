@@ -53,12 +53,12 @@ namespace ERP.Logistica.Models.DAOs
            }
        }
 
-       public static void atualizar(int id, int quantidade, DateTime requisicao, int catalogoMed, int efetuado)
+       public static void atualizar(int id, int quantidade, DateTime requisicao, int catalogoMed, int efetuado, int reportarEstorno)
        {
            try
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
-               string sql = "UPDATE Pedido_Medicamento SET Quantidade = " + quantidade + ", " + "Efetuado = " + efetuado + " WHERE id = " + id;
+               string sql = "UPDATE Pedido_Medicamento SET Quantidade = " + quantidade + ", " + "Efetuado = " + efetuado + ", Reportar_Estorno = " + reportarEstorno + " WHERE id = " + id;
                SqlCommand cmd = new SqlCommand(sql, connection);
                cmd.CommandType = CommandType.Text;
                connection.Open();
@@ -113,7 +113,7 @@ namespace ERP.Logistica.Models.DAOs
            }
        }*/
 
-       public static float buscarPrecoDeLote(int idCatalogoMed)
+       public static double buscarPrecoDeLote(int idCatalogoMed)
        {
            try
            {
@@ -128,11 +128,11 @@ namespace ERP.Logistica.Models.DAOs
 
                if (ds.Tables[0].Rows.Count > 0)
                {
-                   return (float)Convert.ToDouble(ds.Tables[0].Rows[0][0]);
+                   return Convert.ToDouble(ds.Tables[0].Rows[0][0]);
                }
                else
                {
-                   return 0F;
+                   return 0.0;
                }
            }
            catch (Exception ex)
@@ -197,7 +197,7 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT L.id AS Id, M.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), L.Preco_Unitario) AS Lote FROM (Catalogo_Medicamento AS L LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id;";
+               string sql = "SELECT L.id AS Id, M.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), L.Preco_Unitario) AS Catalogo_Medicamento FROM (Catalogo_Medicamento AS L LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id;";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();

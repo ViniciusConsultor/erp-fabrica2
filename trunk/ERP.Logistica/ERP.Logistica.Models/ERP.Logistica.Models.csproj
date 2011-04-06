@@ -63,7 +63,6 @@
     <Compile Include="Equipamento.cs" />
     <Compile Include="EspacoFisico.cs" />
     <Compile Include="FinanceiroTeste.cs" />
-    <Compile Include="MedicamentosTeste.cs" />
     <Compile Include="PedidoMedicamento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
