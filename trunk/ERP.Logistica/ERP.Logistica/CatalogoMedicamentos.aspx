@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" 
-            Text="Lista de Catálogos Medicamentos"></asp:Label>
+            Text="Lista de Catálogos de Medicamentos"></asp:Label>
     <br />
     <asp:GridView ID="gvCatalogo" runat="server" AutoGenerateColumns="False" 
         onrowdeleting="gvCatalogo_RowDeleting" 
