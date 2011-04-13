@@ -53,7 +53,7 @@ namespace ERP.Logistica
                 CatalogoMedicamento catalogo = CatalogoMedicamentoController.buscarPorId(Convert.ToInt32(hfId.Value));
                 CatalogoMedicamentoController.atualizar(catalogo.Id, catalogo.Medicamento.Id, catalogo.Fornecedor.Id, Convert.ToInt32(tbPreco.Text),Convert.ToDateTime(tbVigencia.Text));
             }
-            Response.Redirect("/CatalogoMediacamentos.aspx");
+            Response.Redirect("/CatalogoMedicamentos.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
