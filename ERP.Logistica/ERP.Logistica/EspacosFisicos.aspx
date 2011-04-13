@@ -5,7 +5,6 @@
         <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" 
             Text="Lista de Espaços Físicos"></asp:Label>
         <br />
-        <br />
     <asp:GridView ID="gvEspacos" runat="server" 
     AutoGenerateColumns="False" DataKeyNames="Id" 
     onrowdeleting="gvEspacos_RowDeleting" onrowediting="gvEspacos_RowEditing" 

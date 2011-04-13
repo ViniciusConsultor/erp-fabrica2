@@ -5,7 +5,6 @@
         <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" 
             Text="Lista de Equipamentos Disponíveis"></asp:Label>
         <br />
-        <br />
         <asp:GridView ID="gvDisp" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="Id" onrowdeleting="gvDisp_RowDeleting" 
             onrowediting="gvDisp_RowEditing" ShowHeaderWhenEmpty="True">
