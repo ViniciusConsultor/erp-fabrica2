@@ -86,12 +86,6 @@ namespace ERP.Logistica.Models
         public static DataTable listar()
         {
             return EquipamentoDAO.listar();
-            return null;
-        }
-
-        public static DataTable listarEquipamentosDisponiveis()
-        {
-            return EquipamentoDAO.listarEquipamentosDisponiveis();
         }
 
         #endregion

@@ -42,10 +42,5 @@ namespace ERP.Logistica.Controllers
         {
             return Equipamento.listar();
         }
-
-        public static DataTable listarEquipamentosDisponiveis()
-        {
-            return Equipamento.listarEquipamentosDisponiveis();
-        }
     }
 }

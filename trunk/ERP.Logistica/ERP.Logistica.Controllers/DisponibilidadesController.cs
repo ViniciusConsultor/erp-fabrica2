@@ -43,6 +43,11 @@ namespace ERP.Logistica.Controllers
             return Disponibilidade.listar();
         }
 
+        public static DataTable listarEquipamentosDisponiveis()
+        {
+            return Disponibilidade.listarEquipamentosDisponiveis();
+        }
+
         public static DataTable WebListar()
         {
             return Disponibilidade.WebListar();

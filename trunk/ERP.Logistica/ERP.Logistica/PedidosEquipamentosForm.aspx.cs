@@ -39,7 +39,7 @@ namespace ERP.Logistica
                     {
                         ddlAloc.SelectedValue = pedido.Disponibilidade.EspacoFisico.Id.ToString();
                     }
-                    if (pedido.Efetuado == 1) // Se o pedido foi efetuado, não permite definição de uma alocação
+                    if (pedido.Efetuado == 2) // Se o pedido foi efetuado, não permite definição de uma alocação
                     {
                         ddlAloc.Enabled = false;
                     }
