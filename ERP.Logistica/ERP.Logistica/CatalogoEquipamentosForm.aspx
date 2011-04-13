@@ -16,8 +16,8 @@
 <br />
 <br />
 <asp:Label ID="Label3" runat="server" Text="Equipamento"></asp:Label>
-    <asp:RequiredFieldValidator ID="Medicamento" runat="server" 
-        ControlToValidate="ddlMedicamento" ErrorMessage="* Campo Obrigatório" 
+    <asp:RequiredFieldValidator ID="Equipamento" runat="server" 
+        ControlToValidate="ddlEquipamento" ErrorMessage="* Campo Obrigatório" 
         ForeColor="Red"></asp:RequiredFieldValidator>
 <br />
 <asp:DropDownList ID="ddlEquipamento" runat="server">
