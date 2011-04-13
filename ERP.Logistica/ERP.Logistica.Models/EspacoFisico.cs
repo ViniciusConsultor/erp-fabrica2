@@ -13,22 +13,25 @@ namespace ERP.Logistica.Models
         private string _nome;
         private int _andar;
         private int _numero;
+        private string _especialidade;
 
         #region Constructor
 
-        public EspacoFisico(string nome, int andar, int numero)
+        public EspacoFisico(string nome, int andar, int numero, string especialidade)
         {
             this._nome = nome;
             this._andar = andar;
             this._numero = numero;
+            this._especialidade = especialidade;
         }
 
-        public EspacoFisico(int id, string nome, int andar, int numero)
+        public EspacoFisico(int id, string nome, int andar, int numero, string especialidade)
         {
             this._id = id;
             this._nome = nome;
             this._andar = andar;
             this._numero = numero;
+            this._especialidade = especialidade;
         }
 
         #endregion
@@ -65,16 +68,22 @@ namespace ERP.Logistica.Models
             set { _numero = value; }
         }
 
+
+        public string Especialidade
+        {
+            get { return _especialidade; }
+            set { _especialidade = value; }
+        }
         #endregion
 
         public void criar()
         {
-            EspacoFisicoDAO.criar(Nome, Andar, Numero);
+            EspacoFisicoDAO.criar(Nome, Andar, Numero, Especialidade);
         }
 
         public void atualizar()
         {
-            EspacoFisicoDAO.atualizar(Id, Nome, Andar, Numero);
+            EspacoFisicoDAO.atualizar(Id, Nome, Andar, Numero, Especialidade);
         }
 
         public void apagar()
@@ -92,7 +101,7 @@ namespace ERP.Logistica.Models
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = (DataRow)ds.Tables[0].Rows[0];
-                espaco = new EspacoFisico(id, (string)row["Nome"], (int)row["Andar"], (int)row["Numero"]);
+                espaco = new EspacoFisico(id, (string)row["Nome"], (int)row["Andar"], (int)row["Numero"], (string)row["Especialidade"]);
             }
 
             return espaco;

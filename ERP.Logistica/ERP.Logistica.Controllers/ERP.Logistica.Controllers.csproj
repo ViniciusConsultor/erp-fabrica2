@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,7 @@
     <Compile Include="CatalogoEquipamentoController.cs" />
     <Compile Include="CatalogoMedicamentoController.cs" />
     <Compile Include="EquipamentoController.cs" />
+    <Compile Include="EspecialidadeController.cs" />
     <Compile Include="EstoqueController.cs" />
     <Compile Include="FornecedorController.cs" />
     <Compile Include="LoginController.cs" />

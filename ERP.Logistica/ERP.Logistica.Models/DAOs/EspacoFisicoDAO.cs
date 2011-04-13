@@ -14,13 +14,13 @@ namespace ERP.Logistica.Models.DAOs
         //private static string connectionSettings = "Data Source=JUN-PC;Initial Catalog=erp_logistica;Integrated Security=True";
         private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_logistica; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
 
-        public static void criar(string nome, int andar, int numero)
+        public static void criar(string nome, int andar, int numero, string especialidade)
         {
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "INSERT INTO Espaco_Fisico (Nome, Andar, Numero) VALUES (";
-                sql += "'" + nome + "', " + andar + ", " + numero + ")";
+                string sql = "INSERT INTO Espaco_Fisico (Nome, Andar, Numero, Especialidade) VALUES (";
+                sql += "'" + nome + "', " + andar + ", " + numero + ", " + especialidade + ")";
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
@@ -52,12 +52,12 @@ namespace ERP.Logistica.Models.DAOs
             }
         }
 
-        public static void atualizar(int id, string nome, int andar, int numero)
+        public static void atualizar(int id, string nome, int andar, int numero, string especialidade)
         {
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "UPDATE Espaco_Fisico SET Nome = '" + nome + "', Andar = " + andar + ", Numero = " + numero + " WHERE id = " + id;
+                string sql = "UPDATE Espaco_Fisico SET Nome = '" + nome + "', Andar = " + andar + ", Numero = " + numero + ", Especialidade = " + especialidade + " WHERE id = " + id;
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
@@ -132,5 +132,6 @@ namespace ERP.Logistica.Models.DAOs
                 throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
             }
         }
+
     }
 }

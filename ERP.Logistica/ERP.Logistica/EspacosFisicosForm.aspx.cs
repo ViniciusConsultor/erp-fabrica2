@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ERP.Logistica.Controllers;
 using ERP.Logistica.Models;
+using System.Data;
 
 namespace ERP.Logistica
 {
@@ -15,6 +16,13 @@ namespace ERP.Logistica
         {
             if (!((Page)System.Web.HttpContext.Current.CurrentHandler).IsPostBack)
             {
+                
+                ddEspecialidade.DataTextField = "Nome";
+                ddEspecialidade.DataValueField = "Id";
+                ddEspecialidade.DataSource = EspecialidadeController.listaEspecialidades();
+                ddEspecialidade.DataBind();
+                //ddEspecialidade.Items.Insert(0, "Selecione a Especialidade");
+
                 // Pedido Existente
                 if (Request.QueryString["ID"] != "Novo" && Request.QueryString["ID"] != null)
                 {
@@ -23,6 +31,8 @@ namespace ERP.Logistica
                     tbNome.Text = espaco.Nome;
                     tbAndar.Text = espaco.Andar.ToString();
                     tbNumero.Text = espaco.Numero.ToString();
+                    ddEspecialidade.SelectedValue = espaco.Especialidade.ToString();
+                    
                 }
             }
         }
@@ -38,17 +48,17 @@ namespace ERP.Logistica
             {
                 if (tbAndar.Text != "")
                 {
-                    EspacosFisicosController.criar(tbNome.Text, Convert.ToInt32(tbAndar.Text), Convert.ToInt32(tbNumero.Text));
+                    EspacosFisicosController.criar(tbNome.Text, Convert.ToInt32(tbAndar.Text), Convert.ToInt32(tbNumero.Text), ddEspecialidade.SelectedValue);
                 }
                 else
                 {
-                    EspacosFisicosController.criar(tbNome.Text, 0, Convert.ToInt32(tbNumero.Text));
+                    EspacosFisicosController.criar(tbNome.Text, 0, Convert.ToInt32(tbNumero.Text), ddEspecialidade.SelectedValue);
                 }
             }
             else
             {
                 EspacoFisico espaco = EspacosFisicosController.buscarPorId(Convert.ToInt32(hfId.Value));
-                EspacosFisicosController.atualizar(espaco.Id, tbNome.Text, Convert.ToInt32(tbAndar.Text), Convert.ToInt32(tbNumero.Text));
+                EspacosFisicosController.atualizar(espaco.Id, tbNome.Text, Convert.ToInt32(tbAndar.Text), Convert.ToInt32(tbNumero.Text), ddEspecialidade.SelectedValue);
             }
             Response.Redirect("/EspacosFisicos.aspx");
         }
