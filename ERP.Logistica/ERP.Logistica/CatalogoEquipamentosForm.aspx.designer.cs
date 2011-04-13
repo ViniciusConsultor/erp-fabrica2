@@ -31,6 +31,15 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
+        /// rfvFornecedor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFornecedor;
+        
+        /// <summary>
         /// ddlFornecedor control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace ERP.Logistica {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// Medicamento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Medicamento;
         
         /// <summary>
         /// ddlEquipamento control.
@@ -67,6 +85,15 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
+        /// CompareValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
+        
+        /// <summary>
         /// tbPreco control.
         /// </summary>
         /// <remarks>
@@ -74,6 +101,15 @@ namespace ERP.Logistica {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPreco;
+        
+        /// <summary>
+        /// rfvPreco control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPreco;
         
         /// <summary>
         /// Label5 control.
@@ -85,6 +121,15 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        
+        /// <summary>
         /// tbVigencia control.
         /// </summary>
         /// <remarks>
@@ -92,6 +137,15 @@ namespace ERP.Logistica {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbVigencia;
+        
+        /// <summary>
+        /// rfvVigencia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvVigencia;
         
         /// <summary>
         /// btnOk control.
