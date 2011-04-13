@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ERP.Logistica.Controllers;
 using System.Data;
 using ERP.Logistica.Models;
+using System.Drawing;
 
 namespace ERP.Logistica
 {

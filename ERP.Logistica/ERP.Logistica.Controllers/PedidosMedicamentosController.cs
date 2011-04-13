@@ -9,7 +9,7 @@ namespace ERP.Logistica.Controllers
 {
     public class PedidosMedicamentosController
     {
-        public static void criar(int quantidade, DateTime requisicao, int catalogoMed, int efetuado)
+        public static int criar(int quantidade, DateTime requisicao, int catalogoMed, int efetuado)
         {
             PedidoMedicamento pedido = new PedidoMedicamento(quantidade, requisicao, catalogoMed, efetuado);
 
@@ -21,13 +21,18 @@ namespace ERP.Logistica.Controllers
                 Caixa caixa = Caixa.obterCaixa();
                 caixa.adicionar(verbaAdicional, true);
 
+                // Considera que o processo de calculo da verba já leva em conta a obtenção de todos os estornos
+                PedidoMedicamento.marcarEstornoReportado(DateTime.Now);
+
                 if (!utilizarVerba(pedido.calcularValor()))
                 {
-                    return;
+                    return -1;
                 }
             }
 
             pedido.criar();
+
+            return 0;
         }
 
         public static bool apagar(int id)
