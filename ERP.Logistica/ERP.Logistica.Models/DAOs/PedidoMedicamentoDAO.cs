@@ -244,7 +244,8 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT L.id AS Id, M.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), L.Preco_Unitario) AS Catalogo_Medicamento FROM (Catalogo_Medicamento AS L LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id;";
+               //string sql = "SELECT L.id AS Id, M.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), L.Preco_Unitario) AS Catalogo_Medicamento FROM (Catalogo_Medicamento AS L LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id;";
+               string sql = "SELECT L.id AS Id, M.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), L.Preco_Unitario) AS 'Catalogo_Medicamento', L.Fornecedor, L.Medicamento, L.Vigencia_Inicio FROM ((Catalogo_Medicamento AS L LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id) WHERE Vigencia_Inicio = (SELECT MAX(Vigencia_Inicio) FROM Catalogo_Medicamento AS LAUX WHERE LAUX.Fornecedor = L.Fornecedor AND LAUX.Medicamento = L.Medicamento)";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();

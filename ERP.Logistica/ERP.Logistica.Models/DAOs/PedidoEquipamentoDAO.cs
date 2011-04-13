@@ -251,7 +251,8 @@ namespace ERP.Logistica.Models.DAOs
            {
                SqlConnection connection = new SqlConnection(connectionSettings);
                connection.Open();
-               string sql = "SELECT EN.id AS Id, E.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), EN.Preco_Unitario) AS Catalogo_Equipamento FROM (Catalogo_Equipamento AS EN LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id;";
+               //string sql = "SELECT EN.id AS Id, E.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), EN.Preco_Unitario) AS Catalogo_Equipamento FROM (Catalogo_Equipamento AS EN LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id;";
+               string sql = "SELECT EN.id AS Id, E.Nome + ' - ' + F.Nome + ' - ' + CONVERT(VARCHAR(50), EN.Preco_Unitario) AS Catalogo_Equipamento, EN.Equipamento, EN.Fornecedor, EN.Vigencia_Inicio FROM (Catalogo_Equipamento AS EN LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Vigencia_Inicio = (SELECT MAX(Vigencia_Inicio) FROM Catalogo_Equipamento AS ENAUX WHERE ENAUX.Equipamento = EN.Equipamento AND ENAUX.Fornecedor = EN.Fornecedor);";
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                DataSet ds = new DataSet();
