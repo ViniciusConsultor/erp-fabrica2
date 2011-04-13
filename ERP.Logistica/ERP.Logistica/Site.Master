@@ -50,6 +50,8 @@
                                 Value="Catalogo"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/Estoques.aspx" Text="Estoque" Value="Estoque">
                             </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/PedidosMedicamentos.aspx" Text="Pedidos" 
+                                Value="Pedidos"></asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/EspacosFisicos.aspx" Text="Espacos Fisicos" 
                             Value="Espacos Fisicos"></asp:MenuItem>

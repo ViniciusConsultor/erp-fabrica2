@@ -26,6 +26,8 @@ namespace ERP.Logistica
                 rblEfetuado.Visible = false;
                 lbEstado.Visible = false;
 
+                lbValorVerba.Text = Caixa.obterCaixa().Verba.ToString();
+
                 // Pedido Existente
                 if (Request.QueryString["ID"] != "Novo" && Request.QueryString["ID"] != null)
                 {
@@ -55,13 +57,22 @@ namespace ERP.Logistica
         {
             if (hfId.Value == "Novo")
             {
+                int retorno = 0;
+
                 if (ddlAloc.SelectedValue == null || ddlAloc.SelectedValue == "")
                 {
-                    PedidosEquipamentosController.criar(DateTime.Now, Convert.ToInt32(ddlEquipForn.SelectedValue), 1, 0);
+                    retorno = PedidosEquipamentosController.criar(DateTime.Now, Convert.ToInt32(ddlEquipForn.SelectedValue), 1, 0);
                 }
                 else
                 {
-                    PedidosEquipamentosController.criar(DateTime.Now, Convert.ToInt32(ddlEquipForn.SelectedValue), 1, Convert.ToInt32(ddlAloc.SelectedValue));
+                    retorno = PedidosEquipamentosController.criar(DateTime.Now, Convert.ToInt32(ddlEquipForn.SelectedValue), 1, Convert.ToInt32(ddlAloc.SelectedValue));
+                }
+
+                if(retorno == -1)
+                {
+                    vVerba.IsValid = false;
+                    lbValorVerba.Text = Caixa.obterCaixa().Verba.ToString();
+                    return;
                 }
             }
             else

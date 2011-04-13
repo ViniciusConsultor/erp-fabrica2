@@ -15,6 +15,13 @@
             Text="Exibir Fluxo do Mês" Width="150px" />
         <br />
         <br />
+        Legenda Efetuado:<br />
+        0 = Estornado
+        <asp:Label ID="lbAviso" runat="server" 
+            Text="(Apenas Estornos já Reportados ao Financeiro podem ser Removidos)"></asp:Label>
+        <br />
+        1 = Aguardando<br /> 2 = Efetuado (Produto Recebido)<br />
+        <br />
         <asp:GridView ID="gvPedidos" runat="server" style="margin-bottom: 2px" 
         AutoGenerateColumns="False" DataKeyNames="Id" 
         onrowdeleting="gvPedidos_RowDeleting" 
