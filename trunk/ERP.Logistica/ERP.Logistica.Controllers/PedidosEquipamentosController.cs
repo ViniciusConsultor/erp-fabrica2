@@ -9,7 +9,7 @@ namespace ERP.Logistica.Controllers
 {
     public class PedidosEquipamentosController
     {
-        public static void criar(DateTime requisicao, int catalogoEquip, int efetuado, int espacoFisico)
+        public static int criar(DateTime requisicao, int catalogoEquip, int efetuado, int espacoFisico)
         {
             PedidoEquipamento pedido = new PedidoEquipamento(requisicao, catalogoEquip, 0, efetuado);
 
@@ -21,13 +21,18 @@ namespace ERP.Logistica.Controllers
                 Caixa caixa = Caixa.obterCaixa();
                 caixa.adicionar(verbaAdicional, true);
 
+                // Considera que o processo de calculo da verba já leva em conta a obtenção de todos os estornos
+                PedidoEquipamento.marcarEstornoReportado(DateTime.Now);
+
                 if (!utilizarVerba(pedido.calcularValor()))
                 {
-                    return;
+                    return -1;
                 }
             }
 
             pedido.criar();
+
+            return 0;
         }
 
         public static bool apagar(int id)
