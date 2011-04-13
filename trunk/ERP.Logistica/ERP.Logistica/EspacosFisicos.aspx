@@ -14,6 +14,7 @@
             <asp:BoundField DataField="Nome" HeaderText="Nome" />
             <asp:BoundField DataField="Andar" HeaderText="Andar" />
             <asp:BoundField DataField="Numero" HeaderText="Numero" />
+            <asp:BoundField DataField="Especialidade" HeaderText="Especialidade" />
             <asp:CommandField DeleteText="Remover" 
             ShowDeleteButton="True" />
             <asp:CommandField EditText="Editar" 

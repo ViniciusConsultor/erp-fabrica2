@@ -35,6 +35,11 @@
     ForeColor="Red"></asp:RequiredFieldValidator>
     <br />
 <br />
+<asp:Label ID="lbEspecialidade" runat="server" Text="Especialidade da Sala: "></asp:Label>
+<br />
+<asp:DropDownList ID="ddEspecialidade" runat="server" Width="200px">
+</asp:DropDownList>
+<br />
 <br />
     <asp:Button ID="btnOK" runat="server" onclick="btnOK_Click" Text="Salvar" 
         Width="100px" />

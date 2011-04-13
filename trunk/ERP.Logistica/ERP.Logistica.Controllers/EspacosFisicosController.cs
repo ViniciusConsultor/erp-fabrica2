@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using ERP.Logistica.Models;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace ERP.Logistica.Controllers
 {
     public class EspacosFisicosController
     {
-        public static void criar(string nome, int andar, int numero)
+        public static void criar(string nome, int andar, int numero, string especialidade)
         {
-            EspacoFisico espaco = new EspacoFisico(nome, andar, numero);
+            EspacoFisico espaco = new EspacoFisico(nome, andar, numero, especialidade);
             espaco.criar();
         }
 
@@ -21,12 +22,13 @@ namespace ERP.Logistica.Controllers
             espaco.apagar();
         }
 
-        public static void atualizar(int id, string nome, int andar, int numero)
+        public static void atualizar(int id, string nome, int andar, int numero, string especialidade)
         {
             EspacoFisico espaco = EspacoFisico.buscarPorId(id);
             espaco.Nome = nome;
             espaco.Andar = andar;
             espaco.Numero = numero;
+            espaco.Especialidade = especialidade;
             espaco.atualizar();
         }
 
@@ -37,7 +39,19 @@ namespace ERP.Logistica.Controllers
 
         public static DataTable listar()
         {
-            return EspacoFisico.listar();
+            DataTable espaco = EspacoFisico.listar(); 
+            DataTable especialidades = EspecialidadeController.listaEspecialidades();
+
+            foreach (DataRow row1 in especialidades.Rows)
+            {
+                foreach (DataRow row2 in espaco.Rows)
+                {
+                    if (row2.ItemArray[4].Equals(row1.ItemArray[0]))
+                        row2.SetField(espaco.Columns[4],row1.ItemArray[1]);
+                }
+            }
+
+            return espaco;
         }
 
         public static DataTable listarEspacosFisicosDisponiveis()
