@@ -57,7 +57,7 @@ namespace ERP.Logistica.Models.DAOs
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "UPDATE Equipamento SET Nome = '" + nome + "'," + "Descricao = '" + descricao + " WHERE id = " + id;
+                string sql = "UPDATE Equipamento SET Nome = '" + nome + "'," + "Descricao = '" + descricao + "' WHERE id = " + id;
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();

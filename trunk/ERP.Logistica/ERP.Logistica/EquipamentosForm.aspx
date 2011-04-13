@@ -21,7 +21,7 @@
 <asp:Button ID="btnOk" runat="server" onclick="btnOk_Click" Text="Salvar" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:Button ID="btnCancelar" runat="server" onclick="btnCancelar_Click" 
-    Text="Cancelar" />
+    Text="Cancelar" CausesValidation="False" />
 &nbsp;
 <br />
 <br />
