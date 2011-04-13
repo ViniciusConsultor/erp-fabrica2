@@ -58,22 +58,13 @@ namespace ERP.Manutenção {
         protected global::System.Web.UI.WebControls.Label lblLocal;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// ddLocal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
-        /// tbLocal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbLocal;
+        protected global::System.Web.UI.WebControls.DropDownList ddLocal;
         
         /// <summary>
         /// lbEquipamento control.
@@ -85,13 +76,13 @@ namespace ERP.Manutenção {
         protected global::System.Web.UI.WebControls.Label lbEquipamento;
         
         /// <summary>
-        /// tbEquipamento control.
+        /// ddEquipamento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEquipamento;
+        protected global::System.Web.UI.WebControls.DropDownList ddEquipamento;
         
         /// <summary>
         /// lbEstado control.
