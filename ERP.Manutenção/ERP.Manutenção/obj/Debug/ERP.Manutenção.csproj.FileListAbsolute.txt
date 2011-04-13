@@ -16,3 +16,12 @@ C:\Users\5944412\Desktop\ERP.Manutenção\ERP.Manutenção\bin\ERP.Manutencao.Mo
 C:\Users\5944412\Desktop\ERP.Manutenção\ERP.Manutenção\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\5944412\Desktop\ERP.Manutenção\ERP.Manutenção\obj\Debug\ERP.Manutenção.dll
 C:\Users\5944412\Desktop\ERP.Manutenção\ERP.Manutenção\obj\Debug\ERP.Manutenção.pdb
+C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutenção\bin\ERP.Manutenção.dll
+C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutenção\bin\ERP.Manutenção.pdb
+C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutenção\bin\ERP.Manutencao.Controllers.dll
+C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutenção\bin\ERP.Manutencao.Models.dll
+C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutenção\bin\ERP.Manutencao.Controllers.pdb
+C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutenção\bin\ERP.Manutencao.Models.pdb
+C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutenção\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutenção\obj\Debug\ERP.Manutenção.dll
+C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutenção\obj\Debug\ERP.Manutenção.pdb

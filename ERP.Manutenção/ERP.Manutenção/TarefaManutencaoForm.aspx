@@ -17,18 +17,15 @@
     <br />
     <br />
     <asp:Label ID="lblLocal" runat="server" Text="Local "></asp:Label>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-        ControlToValidate="tbLocal" ErrorMessage="* Local é Obrigatório." 
-        ForeColor="Red"></asp:RequiredFieldValidator>
     <br />
-    <asp:TextBox ID="tbLocal" runat="server" Height="20px" MaxLength="50" 
-        Width="200px"></asp:TextBox>
+    <asp:DropDownList ID="ddLocal" runat="server" Height="22px" Width="120px">
+    </asp:DropDownList>
     <br />
     <br />
     <asp:Label ID="lbEquipamento" runat="server" Text="Equipamento"></asp:Label>
     <br />
-    <asp:TextBox ID="tbEquipamento" runat="server" Height="20px" MaxLength="50" 
-        Width="200px"></asp:TextBox>
+    <asp:DropDownList ID="ddEquipamento" runat="server" Height="22px" Width="120px">
+    </asp:DropDownList>
     <br />
     <br />
     <asp:Label ID="lbEstado" runat="server" Text="Estado"></asp:Label>

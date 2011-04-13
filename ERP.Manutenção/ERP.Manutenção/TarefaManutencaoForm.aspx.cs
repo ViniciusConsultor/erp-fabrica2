@@ -21,14 +21,24 @@ namespace ERP.Manutenção
                 ddEstado.Items.Insert(3, "Periódico");              
                 ddEstado.DataBind();
 
+                ddLocal.DataTextField = "Espaco";
+                ddLocal.DataValueField = "EspacoFisicoId";
+                ddLocal.DataSource = DisponibilidadeController.listarLocais();
+                ddLocal.DataBind();
+
+                ddEquipamento.DataTextField = "Equipamento";
+                ddEquipamento.DataValueField = "EquipamentoId";
+                ddEquipamento.DataSource = DisponibilidadeController.listarEquipamentos();
+                ddEquipamento.DataBind();
+
                 if (Request.QueryString["ID"] != "Novo" && Request.QueryString["ID"] != null)
                 {
                     Manutencao.Models.TarefaManutencao tarefa = Manutencao.Models.TarefaManutencao.buscarPorId(Convert.ToInt32(Request.QueryString["ID"]));
                     hfId.Value = tarefa.Id.ToString();
                     ddEstado.SelectedValue = tarefa.Estado;
                     tbDescricao.Text = tarefa.Descricao;
-                    tbLocal.Text = tarefa.Local;
-                    tbEquipamento.Text = tarefa.Equipamento;
+                    ddLocal.SelectedValue = tarefa.Local;
+                    ddEquipamento.SelectedValue = tarefa.Equipamento;
                     tbDataIni.Text = tarefa.InicioManutencao.ToString().Substring(0, 10);
                     tbHoraIni.Text = tarefa.InicioManutencao.ToString().Substring(11, 5);
                     tbDataFim.Text = tarefa.FimManutencao.ToString().Substring(0, 10);
@@ -43,12 +53,12 @@ namespace ERP.Manutenção
 
             if (hfId.Value == "Novo")
             {
-                TarefaManutencaoController.criar(tbDescricao.Text, tbLocal.Text, tbEquipamento.Text, ddEstado.SelectedValue, Convert.ToDateTime(tbDataIni.Text + " " + tbHoraIni.Text + ":00"), Convert.ToDateTime(tbDataFim.Text + " " + tbHoraFim.Text + ":00")/*clInicioManutencao.SelectedDate, clFimManutencao.SelectedDate*/);
+                TarefaManutencaoController.criar(tbDescricao.Text, ddLocal.SelectedValue, ddEquipamento.SelectedValue, ddEstado.SelectedValue, Convert.ToDateTime(tbDataIni.Text + " " + tbHoraIni.Text + ":00"), Convert.ToDateTime(tbDataFim.Text + " " + tbHoraFim.Text + ":00")/*clInicioManutencao.SelectedDate, clFimManutencao.SelectedDate*/);
             }
             else
             {
                 Manutencao.Models.TarefaManutencao tarefa = TarefaManutencaoController.buscarPorId(Convert.ToInt32(hfId.Value));
-                TarefaManutencaoController.atualizar(tarefa.Id, tbDescricao.Text, tbLocal.Text, tbEquipamento.Text, ddEstado.SelectedValue, Convert.ToDateTime(tbDataIni.Text + " " + tbHoraIni.Text + ":00"), Convert.ToDateTime(tbDataFim.Text + " " + tbHoraFim.Text + ":00")/*clInicioManutencao.SelectedDate, clFimManutencao.SelectedDate*/);
+                TarefaManutencaoController.atualizar(tarefa.Id, tbDescricao.Text, ddLocal.SelectedValue, ddEquipamento.SelectedValue, ddEstado.SelectedValue, Convert.ToDateTime(tbDataIni.Text + " " + tbHoraIni.Text + ":00"), Convert.ToDateTime(tbDataFim.Text + " " + tbHoraFim.Text + ":00")/*clInicioManutencao.SelectedDate, clFimManutencao.SelectedDate*/);
 
             }
             Response.Redirect("/TarefaManutencao.aspx");
