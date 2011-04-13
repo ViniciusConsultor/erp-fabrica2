@@ -61,6 +61,7 @@
     <Content Include="CatalogoMedicamentosForm.aspx" />
     <Content Include="Disponibilidades.aspx" />
     <Content Include="DisponibilidadesForm.aspx" />
+    <Content Include="DisponibilidadeWS.asmx" />
     <Content Include="Equipamentos.aspx" />
     <Content Include="EquipamentosForm.aspx" />
     <Content Include="EspacosFisicos.aspx" />
@@ -179,6 +180,10 @@
     </Compile>
     <Compile Include="DisponibilidadesForm.aspx.designer.cs">
       <DependentUpon>DisponibilidadesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DisponibilidadeWS.asmx.cs">
+      <DependentUpon>DisponibilidadeWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Equipamentos.aspx.cs">
       <DependentUpon>Equipamentos.aspx</DependentUpon>
