@@ -9,8 +9,8 @@
         <asp:Label ID="lbVerba" runat="server" Text="Verba Disponível:"></asp:Label>
         &nbsp;<asp:Label ID="lbValorVerba" runat="server" Text="0"></asp:Label>
         &nbsp;<asp:CustomValidator ID="vVerba" runat="server" 
-        ErrorMessage="* Não Há Verba Suficiente" ForeColor="Red"></asp:CustomValidator>
-    <br />
+    ErrorMessage="* Não Há Verba Suficiente" ForeColor="Red"></asp:CustomValidator>
+<br />
     <br />
     <asp:Label ID="lbQuant" runat="server" Text="Quantidade"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:CompareValidator ID="CompareValidator1" runat="server" 

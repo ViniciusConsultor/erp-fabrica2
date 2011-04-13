@@ -5,12 +5,12 @@
     <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" 
         Text="Pedido de Equipamento"></asp:Label>
 <br />
-    <br />
+<br />
         <asp:Label ID="lbVerba" runat="server" Text="Verba Disponível:"></asp:Label>
         &nbsp;<asp:Label ID="lbValorVerba" runat="server" Text="0"></asp:Label>
         &nbsp;<asp:CustomValidator ID="vVerba" runat="server" 
-        ErrorMessage="* Não Há Verba Suficiente" ForeColor="Red"></asp:CustomValidator>
-    <br />
+    ErrorMessage="* Não Há Verba Suficiente" ForeColor="Red"></asp:CustomValidator>
+<br />
 <br />
     <asp:Label ID="lbEquipForn" runat="server" Text="Equipamento e Fornecedor"></asp:Label>
     &nbsp;<asp:RequiredFieldValidator ID="rfvMedForn" runat="server" 
