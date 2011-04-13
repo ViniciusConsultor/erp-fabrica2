@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" 
+            Text="Lista de Medicamentos"></asp:Label>
     <br />
     <asp:GridView ID="gvMedicamento" runat="server" AutoGenerateColumns="False" 
         DataKeyNames="Id" onrowdeleting="gvMedicamento_RowDeleting" 
@@ -16,9 +18,6 @@
         </Columns>
     </asp:GridView>
     <br />
-    <br />
     <asp:Button ID="btnAdicionar" runat="server" onclick="btnAdicionar_Click" 
     Text="Adicionar" />
-    <p>
-    </p>
-</asp:Content>
+    </asp:Content>
