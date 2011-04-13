@@ -19,7 +19,7 @@ namespace ERP.Logistica
                 ddlEspaco.DataTextField = "EspacoFisico";
                 ddlEspaco.DataValueField = "Id";
                 ddlEspaco.DataBind();
-                ddlEquip.DataSource = EquipamentoController.listarEquipamentosDisponiveis();
+                ddlEquip.DataSource = DisponibilidadesController.listarEquipamentosDisponiveis();
                 ddlEquip.DataTextField = "Equipamento";
                 ddlEquip.DataValueField = "Id";
                 ddlEquip.DataBind();
