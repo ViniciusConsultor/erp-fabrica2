@@ -3,7 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <br />
-<asp:GridView ID="gvCatalogo" runat="server" AutoGenerateColumns="False">
+<asp:GridView ID="gvCatalogo" runat="server" AutoGenerateColumns="False" 
+        DataKeyNames="Id" onrowdeleting="gvCatalogo_RowDeleting" 
+        onrowediting="gvCatalogo_RowEditing">
     <Columns>
         <asp:BoundField DataField="Id" HeaderText="Código" />
         <asp:BoundField DataField="Equipamento" HeaderText="Equipamento" />
