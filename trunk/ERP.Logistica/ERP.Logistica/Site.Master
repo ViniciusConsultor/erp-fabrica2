@@ -32,28 +32,28 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem Text="Pedidos" Value="Pedidos">
-                            <asp:MenuItem NavigateUrl="~/PedidosMedicamentos.aspx" Text="Medicamentos" 
-                                Value="Medicamentos"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/PedidosEquipamentos.aspx" Text="Equipamentos" 
-                                Value="Equipamentos"></asp:MenuItem>
-                        </asp:MenuItem>
                         <asp:MenuItem Text="Equipamentos" Value="Equipamentos">
-                            <asp:MenuItem NavigateUrl="~/Equipamentos.aspx" Text="Cadastro" Value="Cadastro"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Equipamentos.aspx" Text="Cadastro" 
+                                Value="Cadastro"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/CatalogoEquipamentos.aspx" Text="Catalogo" 
+                                Value="Catalogo"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/Disponibilidades.aspx" Text="Disponíveis" 
                                 Value="Disponíveis"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/PedidosEquipamentos.aspx" Text="Pedidos" 
+                                Value="Pedidos"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Medicamento" Value="Medicamento" 
+                            NavigateUrl="~/Medicamentos.aspx">
+                            <asp:MenuItem NavigateUrl="~/Medicamentos.aspx" Text="Cadastro" 
+                                Value="Cadastro"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/CatalogoMedicamentos.aspx" Text="Catalogo" 
+                                Value="Catalogo"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Estoques.aspx" Text="Estoque" Value="Estoque">
+                            </asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/EspacosFisicos.aspx" Text="Espacos Fisicos" 
                             Value="Espacos Fisicos"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Medicamentos.aspx" Text="Medicamento" Value="Medicamento"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Fornecedores.aspx" Text="Fornecedor" Value="Fornecedor"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Estoques.aspx" Text="Estoque" Value="Estoque"></asp:MenuItem>
-                        <asp:MenuItem Text="Catalogo" Value="Catalogo">
-                            <asp:MenuItem NavigateUrl="~/CatalogoMedicamentos.aspx" Text="Medicamentos" 
-                                Value="Medicamentos"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/CatalogoEquipamentos.aspx" Text="Equipamentos" 
-                                Value="Equipamentos"></asp:MenuItem>
-                        </asp:MenuItem>
                         <asp:MenuItem Text="Gerencia" Value="Gerencia">
                             <asp:MenuItem NavigateUrl="~/GerenciaEstMed.aspx" Text="Medicamentos" 
                                 Value="Medicamentos"></asp:MenuItem>
