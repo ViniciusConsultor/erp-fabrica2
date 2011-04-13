@@ -24,6 +24,8 @@ namespace ERP.Logistica
                 tbValidade.Visible = false;
                 lbValidade.Visible = false;
 
+                lbValorVerba.Text = Caixa.obterCaixa().Verba.ToString();
+
                 // Pedido Existente
                 if (Request.QueryString["ID"] != "Novo" && Request.QueryString["ID"] != null)
                 {
@@ -49,7 +51,12 @@ namespace ERP.Logistica
         {
             if (hfId.Value == "Novo")
             {
-                PedidosMedicamentosController.criar(Convert.ToInt32(tbQuant.Text), DateTime.Now, Convert.ToInt32(ddlMedForn.SelectedValue), 1);
+                if (PedidosMedicamentosController.criar(Convert.ToInt32(tbQuant.Text), DateTime.Now, Convert.ToInt32(ddlMedForn.SelectedValue), 1) == -1)
+                {
+                    vVerba.IsValid = false;
+                    lbValorVerba.Text = Caixa.obterCaixa().Verba.ToString();
+                    return;
+                }
             }
             else
             {

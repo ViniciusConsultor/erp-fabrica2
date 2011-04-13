@@ -14,6 +14,14 @@
         Width="150px" onclick="btnMes_Click" />
     <br />
     <br />
+    Legenda Efetuado:<br />
+    0 = Estornado
+    <asp:Label ID="lbAviso" runat="server" 
+        Text="(Apenas Estornos já Reportados ao Financeiro podem ser Removidos)"></asp:Label>
+    <br />
+    1 = Aguardando<br />
+    2 = Efetuado (Recebido)<br />
+    <br />
     <asp:GridView ID="gvPedidos" runat="server" style="margin-bottom: 2px" 
         AutoGenerateColumns="False" DataKeyNames="Id" 
         onrowdeleting="gvPedidos_RowDeleting" 
@@ -48,5 +56,6 @@
     <br />
     <asp:Button ID="btnAdicionar" runat="server" onclick="btnAdicionar_Click" 
         Text="Realizar Pedido" Width="150px" />
+    <br />
     <br />
 </asp:Content>

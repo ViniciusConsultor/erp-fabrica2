@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using ERP.Logistica.Controllers;
 using ERP.Logistica.Models;
+using System.Drawing;
 
 namespace ERP.Logistica
 {
@@ -33,8 +34,14 @@ namespace ERP.Logistica
 
         protected void gvPedidos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            PedidosEquipamentosController.apagar(Convert.ToInt32(gvPedidos.DataKeys[e.RowIndex].Values[0].ToString()));
-            atualizar();
+            if (!PedidosEquipamentosController.apagar(Convert.ToInt32(gvPedidos.DataKeys[e.RowIndex].Values[0].ToString())))
+            {
+                lbAviso.ForeColor = Color.Red;
+            }
+            else
+            {
+                atualizar();
+            }
         }
 
         protected void gvPedidos_RowEditing(object sender, GridViewEditEventArgs e)

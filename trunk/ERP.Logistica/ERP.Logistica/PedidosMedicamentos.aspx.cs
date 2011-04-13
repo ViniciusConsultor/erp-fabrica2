@@ -28,8 +28,14 @@ namespace ERP.Logistica
 
         protected void gvPedidos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            PedidosMedicamentosController.apagar(Convert.ToInt32(gvPedidos.DataKeys[e.RowIndex].Values[0].ToString()));
-            atualizar();
+            if (!PedidosMedicamentosController.apagar(Convert.ToInt32(gvPedidos.DataKeys[e.RowIndex].Values[0].ToString())))
+            {
+                lbAviso.ForeColor = Color.Red;
+            }
+            else
+            {
+                atualizar();
+            }
         }
 
         protected void btnAdicionar_Click(object sender, EventArgs e)

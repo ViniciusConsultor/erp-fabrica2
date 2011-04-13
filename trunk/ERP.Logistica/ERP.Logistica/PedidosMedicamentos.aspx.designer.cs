@@ -49,6 +49,15 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Button btnMes;
         
         /// <summary>
+        /// lbAviso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAviso;
+        
+        /// <summary>
         /// gvPedidos control.
         /// </summary>
         /// <remarks>
