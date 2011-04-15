@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ERP.Manutencao.Controllers.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ERP_Manutencao_Controllers_br_usp_pcs_labsoft_DisponibilidadeWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://labsoft.pcs.usp.br:3002/DisponibilidadeWS.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
