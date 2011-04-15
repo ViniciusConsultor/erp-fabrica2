@@ -1,0 +1,7 @@
+C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\ERP.Logistica.Controllers.dll
+C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\ERP.Logistica.Controllers.pdb
+C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\ERP.Logistica.Models.dll
+C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\ERP.Logistica.Models.pdb
+C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\obj\Debug\ERP.Logistica.Controllers.dll
+C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\obj\Debug\ERP.Logistica.Controllers.pdb
