@@ -117,6 +117,11 @@ namespace ERP.Logistica.Models
             return EspacoFisicoDAO.listarEspacosFisicosDisponiveis();
         }
 
+        public static DataTable WebListar()
+        {
+            return EspacoFisicoDAO.WebListar();
+        }
+
         #endregion
     }
 }

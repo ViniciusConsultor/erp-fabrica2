@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ERP.Logistica.Models.RHServico;
+using ERP.Logistica.Controllers.RHServico;
 using System.Data;
 
 

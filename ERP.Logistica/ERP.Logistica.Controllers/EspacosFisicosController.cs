@@ -58,5 +58,10 @@ namespace ERP.Logistica.Controllers
         {
             return EspacoFisico.listarEspacosFisicosDisponiveis();
         }
+
+        public static DataTable WebListar()
+        {
+            return EspacoFisico.WebListar();
+        }
     }
 }

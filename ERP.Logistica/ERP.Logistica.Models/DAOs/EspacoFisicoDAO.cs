@@ -133,5 +133,25 @@ namespace ERP.Logistica.Models.DAOs
             }
         }
 
+        public static DataTable WebListar()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                connection.Open();
+                string sql = "SELECT * FROM Espaco_Fisico;";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método WebListar: " + ex.Message);
+            }
+        }
     }
 }

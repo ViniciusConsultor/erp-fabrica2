@@ -64,6 +64,7 @@
     <Content Include="DisponibilidadeWS.asmx" />
     <Content Include="Equipamentos.aspx" />
     <Content Include="EquipamentosForm.aspx" />
+    <Content Include="EspacoFisicoWS.asmx" />
     <Content Include="EspacosFisicos.aspx" />
     <Content Include="EspacosFisicosForm.aspx" />
     <Content Include="Estoques.aspx" />
@@ -202,6 +203,10 @@
     </Compile>
     <Compile Include="EquipamentosForm.aspx.designer.cs">
       <DependentUpon>EquipamentosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EspacoFisicoWS.asmx.cs">
+      <DependentUpon>EspacoFisicoWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="EspacosFisicos.aspx.cs">
       <DependentUpon>EspacosFisicos.aspx</DependentUpon>
@@ -357,7 +362,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2119</DevelopmentServerPort>
+          <DevelopmentServerPort>9111</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
