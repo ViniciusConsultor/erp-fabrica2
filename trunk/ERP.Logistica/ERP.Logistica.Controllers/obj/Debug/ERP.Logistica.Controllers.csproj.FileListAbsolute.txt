@@ -5,3 +5,11 @@ C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\E
 C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\obj\Debug\ERP.Logistica.Controllers.dll
 C:\Users\5944412\Desktop\ERP\ERP.Logistica\ERP.Logistica.Controllers\obj\Debug\ERP.Logistica.Controllers.pdb
+C:\Users\Renato\Desktop\ERP versao final\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\ERP.Logistica.Controllers.dll
+C:\Users\Renato\Desktop\ERP versao final\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\ERP.Logistica.Controllers.pdb
+C:\Users\Renato\Desktop\ERP versao final\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\ERP.Logistica.Models.dll
+C:\Users\Renato\Desktop\ERP versao final\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\ERP.Logistica.Models.pdb
+C:\Users\Renato\Desktop\ERP versao final\ERP.Logistica\ERP.Logistica.Controllers\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Renato\Desktop\ERP versao final\ERP.Logistica\ERP.Logistica.Controllers\obj\Debug\ERP.Logistica.Controllers.dll
+C:\Users\Renato\Desktop\ERP versao final\ERP.Logistica\ERP.Logistica.Controllers\obj\Debug\ERP.Logistica.Controllers.pdb
+C:\Users\Renato\Desktop\ERP versao final\ERP.Logistica\ERP.Logistica.Controllers\bin\Debug\ERP.Logistica.Controllers.dll.config
