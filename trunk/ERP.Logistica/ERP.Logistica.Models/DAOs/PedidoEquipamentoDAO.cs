@@ -105,7 +105,7 @@ namespace ERP.Logistica.Models.DAOs
                }
                else
                {
-                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Equipamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "') AS PM LEFT JOIN Catalogo_Equipamento AS L ON PM.Catalogo_Equipamento = L.id;";
+                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Equipamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Efetuado = 0) AS PM LEFT JOIN Catalogo_Equipamento AS L ON PM.Catalogo_Equipamento = L.id;";
                }
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
@@ -225,7 +225,7 @@ namespace ERP.Logistica.Models.DAOs
                string sql;
                if (apenasEfetuados)
                {
-                   sql = "SELECT PE.id, E.Nome AS 'Produto', F.Nome AS 'Fornecedor', 1 AS 'Quantidade', EN.Preco_Unitario AS 'Preco', PE.Requisicao AS 'Requisicao' FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PE.Efetuado = 1 ORDER BY Requisicao DESC;";
+                   sql = "SELECT PE.id, E.Nome AS 'Produto', F.Nome AS 'Fornecedor', 1 AS 'Quantidade', EN.Preco_Unitario AS 'Preco', PE.Requisicao AS 'Requisicao' FROM ((Pedido_Equipamento AS PE LEFT JOIN Catalogo_Equipamento AS EN ON PE.Catalogo_Equipamento = EN.id) LEFT JOIN Equipamento AS E ON EN.Equipamento = E.id) LEFT JOIN Fornecedor AS F ON EN.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PE.Efetuado >= 1 ORDER BY Requisicao DESC;";
                }
                else
                {

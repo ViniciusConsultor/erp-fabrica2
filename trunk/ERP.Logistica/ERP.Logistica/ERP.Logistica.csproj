@@ -63,6 +63,7 @@
     <Content Include="DisponibilidadesForm.aspx" />
     <Content Include="DisponibilidadeWS.asmx" />
     <Content Include="Equipamentos.aspx" />
+    <Content Include="EquipamentosESalasWS.asmx" />
     <Content Include="EquipamentosForm.aspx" />
     <Content Include="EspacoFisicoWS.asmx" />
     <Content Include="EspacosFisicos.aspx" />
@@ -196,6 +197,9 @@
     </Compile>
     <Compile Include="Equipamentos.aspx.designer.cs">
       <DependentUpon>Equipamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EquipamentosESalasWS.asmx.cs">
+      <DependentUpon>EquipamentosESalasWS.asmx</DependentUpon>
     </Compile>
     <Compile Include="EquipamentosForm.aspx.cs">
       <DependentUpon>EquipamentosForm.aspx</DependentUpon>
