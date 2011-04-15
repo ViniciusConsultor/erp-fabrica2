@@ -13,3 +13,11 @@ C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Deb
 C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutencao.Controllers\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutencao.Controllers\obj\Debug\ERP.Manutencao.Controllers.dll
 C:\Users\5944412\Desktop\ERP\ERP.Manutenção\ERP.Manutencao.Controllers\obj\Debug\ERP.Manutencao.Controllers.pdb
+C:\Users\Renato\Desktop\ERP versao final\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Debug\ERP.Manutencao.Controllers.dll.config
+C:\Users\Renato\Desktop\ERP versao final\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Debug\ERP.Manutencao.Controllers.dll
+C:\Users\Renato\Desktop\ERP versao final\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Debug\ERP.Manutencao.Controllers.pdb
+C:\Users\Renato\Desktop\ERP versao final\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Debug\ERP.Manutencao.Models.dll
+C:\Users\Renato\Desktop\ERP versao final\ERP.Manutenção\ERP.Manutencao.Controllers\bin\Debug\ERP.Manutencao.Models.pdb
+C:\Users\Renato\Desktop\ERP versao final\ERP.Manutenção\ERP.Manutencao.Controllers\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Renato\Desktop\ERP versao final\ERP.Manutenção\ERP.Manutencao.Controllers\obj\Debug\ERP.Manutencao.Controllers.dll
+C:\Users\Renato\Desktop\ERP versao final\ERP.Manutenção\ERP.Manutencao.Controllers\obj\Debug\ERP.Manutencao.Controllers.pdb

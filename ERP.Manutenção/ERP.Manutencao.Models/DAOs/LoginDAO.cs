@@ -11,8 +11,9 @@ namespace ERP.Manutencao.Models.DAOs
     class LoginDAO
     {
         //private static string connectionSettings = System.Configuration.ConfigurationManager.AppSettings["ERPLogisticaConnectionString"];
-        private static string connectionSettings = "Data Source=ls01;Initial Catalog=erp_manutencao;Integrated Security=True";
+        //private static string connectionSettings = "Data Source=ls01;Initial Catalog=erp_manutencao;Integrated Security=True";
         //private static string connectionSettings = "Data Source=JUN-PC;Initial Catalog=erp_logistica;Integrated Security=True";
+        private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_manutencao; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
 
         public static void criar(string username, string senha, string email)
         {

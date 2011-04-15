@@ -114,6 +114,11 @@ namespace ERP.Manutencao.Models
         {
             return TarefaManutencaoDAO.listar();
         }
+
+        public static DataTable WebListar()
+        {
+            return TarefaManutencaoDAO.WebListar();
+        }
         #endregion
     }
 }

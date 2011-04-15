@@ -46,6 +46,11 @@ namespace ERP.Manutencao.Controllers
             return TarefaManutencao.listar();
         }
 
+        public static DataTable WebListar()
+        {
+            return TarefaManutencao.WebListar();
+        }
+
     }
 }
 

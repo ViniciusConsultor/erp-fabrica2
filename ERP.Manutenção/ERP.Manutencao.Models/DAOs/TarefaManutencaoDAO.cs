@@ -10,8 +10,9 @@ namespace ERP.Manutencao.Models
     class TarefaManutencaoDAO
     {
         //private static string connectionSettings = System.Configuration.ConfigurationManager.AppSettings["ERPLogisticaConnectionString"];
-        private static string connectionSettings = "Data Source=ls01;Initial Catalog=erp_manutencao;Integrated Security=True";
+        //private static string connectionSettings = "Data Source=ls01;Initial Catalog=erp_manutencao;Integrated Security=True";
         //private static string connectionSettings = "Data Source=JUN-PC;Initial Catalog=erp_logistica;Integrated Security=True";
+        private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_manutencao; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
 
         public static void criar(string descricao, string local, string equipamento, string estado, DateTime iniciomanutencao, DateTime fimmanutencao)
         {
@@ -109,6 +110,27 @@ namespace ERP.Manutencao.Models
             {
                 throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
             }
+        }
+
+        public static DataTable WebListar()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                connection.Open();
+                string sql = "SELECT TM.Id, TM.Local AS Local, TM.Inicio_Manutencao AS Inicio_Manutencao, TM.Fim_Manutencao AS Fim_Manutencao FROM TarefaManutencao AS TM WHERE TM.Estado <> 'Concluído' ORDER BY TM.Id;";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+            }   
         }
 
     }
