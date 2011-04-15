@@ -24,25 +24,9 @@ namespace ERP.Manutenção
         private static string connectionSettings = "Data Source=ls01;Initial Catalog=erp_manutencao;Integrated Security=True";
 
         [WebMethod]
-        public DataTable Manutencao()
+        public DataTable obterDatasManutencao()
         {
-            try
-            {
-                SqlConnection connection = new SqlConnection(connectionSettings);
-                connection.Open();
-                string sql = "SELECT TM.Id, TM.Local AS Local, TM.Inicio_Manutencao AS Inicio_Manutencao, TM.Fim_Manutencao AS Fim_Manutencao FROM TarefaManutencao AS TM WHERE TM.Estado <> 'Concluído' ORDER BY TM.Id;";
-                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
-
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-                connection.Close();
-
-                return ds.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
-            }   
+            return TarefaManutencaoController.WebListar(); 
         }
     }
 }
