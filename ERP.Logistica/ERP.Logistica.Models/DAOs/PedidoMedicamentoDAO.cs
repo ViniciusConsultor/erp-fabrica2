@@ -126,7 +126,7 @@ namespace ERP.Logistica.Models.DAOs
                }
                else
                {
-                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Medicamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Medicamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "') AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id;";
+                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Medicamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Medicamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Efetuado = 0) AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id;";
                }
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
@@ -218,7 +218,7 @@ namespace ERP.Logistica.Models.DAOs
                string sql;
                if (apenasEfetuados)
                {
-                   sql = "SELECT PM.id AS 'Id', M.Nome AS 'Produto', F.Nome AS 'Fornecedor', PM.Quantidade AS 'Quantidade', L.Preco_Unitario AS 'Preco', PM.Requisicao AS 'Requisicao' FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PM.Efetuado = 1 ORDER BY Requisicao DESC;";
+                   sql = "SELECT PM.id AS 'Id', M.Nome AS 'Produto', F.Nome AS 'Fornecedor', PM.Quantidade AS 'Quantidade', L.Preco_Unitario AS 'Preco', PM.Requisicao AS 'Requisicao' FROM ((Pedido_Medicamento AS PM LEFT JOIN Catalogo_Medicamento AS L ON PM.Catalogo_Medicamento = L.id) LEFT JOIN Medicamento AS M ON L.Medicamento = M.id) LEFT JOIN Fornecedor AS F ON L.Fornecedor = F.id WHERE Requisicao >= '" + inicio.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Requisicao <= '" + fim.ToString("yyyy-MM-dd HH:mm:ss") + "' AND PM.Efetuado >= 1 ORDER BY Requisicao DESC;";
                }
                else
                {

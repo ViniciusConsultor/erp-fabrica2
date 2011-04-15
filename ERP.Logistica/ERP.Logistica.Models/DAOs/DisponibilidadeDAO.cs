@@ -112,7 +112,6 @@ namespace ERP.Logistica.Models.DAOs
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
-                // TODO: Incluir nomes
                 string sql = "SELECT D.Id, E.Nome AS 'Equipamento', EF.Nome AS 'Espaco', EF.Andar AS 'Andar', EF.Numero AS 'Numero' FROM ((Disponibilidade AS D LEFT JOIN Equipamento AS E ON D.Equipamento = E.id) LEFT JOIN Espaco_Fisico AS EF ON D.Espaco_Fisico = EF.id);";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
@@ -134,7 +133,7 @@ namespace ERP.Logistica.Models.DAOs
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
-                string sql = "SELECT Id, Nome + ' (' + CONVERT(VARCHAR(50), Id) + ') ' AS 'Equipamento' FROM Equipamento WHERE Id NOT IN (SELECT Equipamento FROM Disponibilidade);";
+                string sql = "SELECT Id, Nome + ' (' + CONVERT(VARCHAR(50), Id) + ') ' AS 'Equipamento' FROM Equipamento";// WHERE Id NOT IN (SELECT Equipamento FROM Disponibilidade);";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 DataSet ds = new DataSet();
