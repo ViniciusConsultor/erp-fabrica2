@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="\\ls01\fabricas\fabrica2" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="PedidosMedicamentosForm.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="Global.asax" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="Site.Master" publishTime="04/06/2011 16:12:44" />
+    <file relUrl="Styles/Site.css" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="Fornecedores.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="PedidosEquipamentos.aspx" publishTime="04/06/2011 16:43:38" />
+    <file relUrl="Medicamentos.aspx" publishTime="04/06/2011 16:12:44" />
+    <file relUrl="About.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="EstoquesForm.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="EspacosFisicosForm.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="CatalogoMedicamentosForm.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="bin/ERP.Logistica.dll" publishTime="04/06/2011 17:21:49" />
+    <file relUrl="Account/Web.config" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="Account/Register.aspx" publishTime="04/06/2011 16:35:51" />
+    <file relUrl="GerenciaEstMed.aspx" publishTime="04/06/2011 16:43:38" />
+    <file relUrl="EspacosFisicos.aspx" publishTime="04/06/2011 16:05:26" />
+    <file relUrl="PedidosWS.asmx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="FornecedoresForm.aspx" publishTime="04/06/2011 16:05:26" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="PedidosMedicamentos.aspx" publishTime="04/06/2011 16:43:38" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="Estoques.aspx" publishTime="04/06/2011 16:05:26" />
+    <file relUrl="bin/ERP.Logistica.Models.dll" publishTime="04/06/2011 17:21:48" />
+    <file relUrl="Default.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="bin/ERP.Logistica.Controllers.dll" publishTime="04/06/2011 17:21:48" />
+    <file relUrl="PedidosEquipamentosForm.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="bin/ERP.Logistica.pdb" publishTime="04/06/2011 17:21:49" />
+    <file relUrl="Disponibilidades.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="CatalogoEquipamentos.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="DisponibilidadesForm.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="CatalogoEquipamentosForm.aspx" publishTime="04/06/2011 16:05:26" />
+    <file relUrl="bin/ERP.Logistica.Models.pdb" publishTime="04/06/2011 17:21:48" />
+    <file relUrl="Equipamentos.aspx" publishTime="04/06/2011 16:12:44" />
+    <file relUrl="Account/Login.aspx" publishTime="04/06/2011 16:15:39" />
+    <file relUrl="GerenciaEstMedLotes.aspx" publishTime="04/06/2011 16:05:26" />
+    <file relUrl="CatalogoMedicamentos.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="MedicamentosForm.aspx" publishTime="04/06/2011 16:12:44" />
+    <file relUrl="GerenciaLotesQuantidades.aspx" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="04/06/2011 16:05:25" />
+    <file relUrl="bin/ERP.Logistica.Controllers.pdb" publishTime="04/06/2011 17:21:48" />
+    <file relUrl="EquipamentosForm.aspx" publishTime="04/06/2011 16:12:44" />
+    <file relUrl="Web.config" publishTime="04/06/2011 17:26:56" />
+  </publishProfile>
+</publishData>
