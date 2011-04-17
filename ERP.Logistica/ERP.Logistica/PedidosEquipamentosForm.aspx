@@ -12,7 +12,8 @@
     ErrorMessage="* Não Há Verba Suficiente" ForeColor="Red"></asp:CustomValidator>
 <br />
 <br />
-    <asp:Label ID="lbEquipForn" runat="server" Text="Equipamento e Fornecedor"></asp:Label>
+    <asp:Label ID="lbEquipForn" runat="server" 
+        Text="Equipamento - Fornecedor - Preço"></asp:Label>
     &nbsp;<asp:RequiredFieldValidator ID="rfvMedForn" runat="server" 
         ControlToValidate="ddlEquipForn" ErrorMessage="* Campo Obrigatório" 
         ForeColor="Red"></asp:RequiredFieldValidator>
