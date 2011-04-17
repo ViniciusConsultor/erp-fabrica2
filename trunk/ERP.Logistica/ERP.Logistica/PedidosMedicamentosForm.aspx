@@ -25,7 +25,8 @@
         ForeColor="Red"></asp:RequiredFieldValidator>
     <br />
     <br />
-    <asp:Label ID="lbMedForn" runat="server" Text="Medicamento e Fornecedor"></asp:Label>
+    <asp:Label ID="lbMedForn" runat="server" 
+        Text="Medicamento - Fornecedor - Preço"></asp:Label>
     &nbsp;<br />
     <asp:DropDownList ID="ddlMedForn" runat="server" Height="22px" Width="403px">
     </asp:DropDownList>

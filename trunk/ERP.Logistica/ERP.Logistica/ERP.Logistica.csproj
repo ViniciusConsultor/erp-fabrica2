@@ -200,6 +200,7 @@
     </Compile>
     <Compile Include="EquipamentosESalasWS.asmx.cs">
       <DependentUpon>EquipamentosESalasWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="EquipamentosForm.aspx.cs">
       <DependentUpon>EquipamentosForm.aspx</DependentUpon>
