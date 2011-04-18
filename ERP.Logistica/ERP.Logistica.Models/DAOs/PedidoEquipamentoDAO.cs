@@ -101,11 +101,11 @@ namespace ERP.Logistica.Models.DAOs
                string sql;
                if (!todos)
                {
-                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Equipamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Reportar_Estorno = 1) AS PM LEFT JOIN Catalogo_Equipamento AS L ON PM.Catalogo_Equipamento = L.id;";
+                   sql = "SELECT PM.id, 1 AS 'Quantidade', PM.Requisicao, PM.Catalogo_Equipamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Reportar_Estorno = 1) AS PM LEFT JOIN Catalogo_Equipamento AS L ON PM.Catalogo_Equipamento = L.id;";
                }
                else
                {
-                   sql = "SELECT PM.id, PM.Quantidade, PM.Requisicao, PM.Catalogo_Equipamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Efetuado = 0) AS PM LEFT JOIN Catalogo_Equipamento AS L ON PM.Catalogo_Equipamento = L.id;";
+                   sql = "SELECT PM.id, 1 AS 'Quantidade', PM.Requisicao, PM.Catalogo_Equipamento, L.Preco_Unitario, PM.Efetuado FROM (SELECT * FROM Pedido_Equipamento WHERE Requisicao <= '" + limite.ToString("yyyy-MM-dd HH:mm:ss") + "' AND Efetuado = 0) AS PM LEFT JOIN Catalogo_Equipamento AS L ON PM.Catalogo_Equipamento = L.id;";
                }
                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 

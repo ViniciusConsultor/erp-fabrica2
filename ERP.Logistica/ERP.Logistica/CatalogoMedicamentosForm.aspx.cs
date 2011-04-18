@@ -46,7 +46,7 @@ namespace ERP.Logistica
         {
             if (hfId.Value == "Novo")
             {
-                CatalogoMedicamentoController.criar(Convert.ToInt32(ddlMedicamento.SelectedValue), Convert.ToInt32(ddlFornecedor.SelectedValue), Convert.ToInt32(tbPreco.Text), Convert.ToDateTime(tbVigencia.Text));
+                CatalogoMedicamentoController.criar(Convert.ToInt32(ddlMedicamento.SelectedValue), Convert.ToInt32(ddlFornecedor.SelectedValue), Convert.ToDouble(tbPreco.Text), Convert.ToDateTime(tbVigencia.Text));
             }
             else
             {

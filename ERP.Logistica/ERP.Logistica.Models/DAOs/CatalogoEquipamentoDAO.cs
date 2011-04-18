@@ -18,8 +18,10 @@ namespace ERP.Logistica.Models
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 string sql = "INSERT INTO Catalogo_Equipamento (Equipamento, Fornecedor, Preco_Unitario, Vigencia_Inicio) VALUES (";
-                sql += equipamentoId + "," + fornecedorId + "," + preco + ",'" + Vigencia_Inicio.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                sql += equipamentoId + "," + fornecedorId + ", @preco,'" + Vigencia_Inicio.ToString("yyyy-MM-dd HH:mm:ss") + "')";
                 SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.Add("@preco", SqlDbType.Float);
+                cmd.Parameters["@preco"].Value = preco;
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
                 cmd.ExecuteNonQuery();

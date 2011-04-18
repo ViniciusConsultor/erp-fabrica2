@@ -22,19 +22,21 @@
     Width="403px">
     </asp:DropDownList>
     <br />
-<br />
+    <br />
     <asp:Label ID="lbAloc" runat="server" Text="Alocar Em"></asp:Label>
     <br />
     <asp:DropDownList ID="ddlAloc" runat="server" Height="22px" Width="403px">
     </asp:DropDownList>
     <br />
-<br />
-    <asp:Label ID="lbEstado" runat="server" Text="Estado do Pedido"></asp:Label>
-    <asp:RadioButtonList ID="rblEfetuado" runat="server">
-        <asp:ListItem Value="0">Estornado</asp:ListItem>
-        <asp:ListItem Value="2" Selected="True">Efetuado</asp:ListItem>
-    </asp:RadioButtonList>
     <br />
+    <asp:Panel ID="pEdit" runat="server">
+        <asp:Label ID="lbEstado" runat="server" Text="Estado do Pedido"></asp:Label>
+        <asp:RadioButtonList ID="rblEfetuado" runat="server">
+            <asp:ListItem Value="0">Estornado</asp:ListItem>
+            <asp:ListItem Value="2" Selected="True">Efetuado</asp:ListItem>
+        </asp:RadioButtonList>
+        <br />
+    </asp:Panel>
     <asp:Button ID="btnOK" runat="server" onclick="btnOK_Click" Text="Executar" 
         Width="100px" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
