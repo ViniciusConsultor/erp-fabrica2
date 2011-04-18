@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ERP.Logistica.Models;
 using System.Data;
+using ERP.Logistica.Controllers.FinServico;
 
 namespace ERP.Logistica.Controllers
 {
@@ -17,12 +18,22 @@ namespace ERP.Logistica.Controllers
             if (!utilizarVerba(pedido.calcularValor()))
             {
                 // Pede verba adicional e verifica se a compra pode ser efetuada
-                double verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
-                Caixa caixa = Caixa.obterCaixa();
-                caixa.adicionar(verbaAdicional, true);
+                //double verbaAdicional = FinanceiroTeste.obterVerba(pedido.calcularValor());
+                try
+                {
+                    FinlogWS serv = new FinlogWS();
 
-                // Considera que o processo de calculo da verba já leva em conta a obtenção de todos os estornos
-                PedidoMedicamento.marcarEstornoReportado(DateTime.Now);
+                    double verbaAdicional = serv.geraCota(pedido.calcularValor());
+                    Caixa caixa = Caixa.obterCaixa();
+                    caixa.adicionar(verbaAdicional, true);
+
+                    // Considera que o processo de calculo da verba já leva em conta a obtenção de todos os estornos
+                    PedidoMedicamento.marcarEstornoReportado(DateTime.Now);
+                }
+                catch
+                {
+                    return -1;
+                }
 
                 if (!utilizarVerba(pedido.calcularValor()))
                 {

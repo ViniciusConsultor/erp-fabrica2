@@ -20,8 +20,10 @@ namespace ERP.Logistica.Models.DAOs
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "UPDATE Caixa SET Quantidade = " + verba + ", Ultimo_Acrescimo = '" + ultimoAcrescimo.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE Recurso = 'Verba'";
+                string sql = "UPDATE Caixa SET Quantidade = @verba, Ultimo_Acrescimo = '" + ultimoAcrescimo.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE Recurso = 'Verba'";
                 SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.Add("@verba", SqlDbType.Float);
+                cmd.Parameters["@verba"].Value = verba;
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
                 cmd.ExecuteNonQuery();

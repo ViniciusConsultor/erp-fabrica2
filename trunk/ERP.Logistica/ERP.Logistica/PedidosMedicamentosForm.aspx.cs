@@ -23,6 +23,7 @@ namespace ERP.Logistica
                 lbEstado.Visible = false;
                 tbValidade.Visible = false;
                 lbValidade.Visible = false;
+                pEdit.Visible = false;
 
                 lbValorVerba.Text = Caixa.obterCaixa().Verba.ToString();
 
@@ -42,6 +43,7 @@ namespace ERP.Logistica
                         lbEstado.Visible = true;
                         tbValidade.Visible = true;
                         lbValidade.Visible = true;
+                        pEdit.Visible = true;
                     }
                 }
             }

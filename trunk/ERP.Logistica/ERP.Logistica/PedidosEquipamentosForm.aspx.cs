@@ -25,6 +25,7 @@ namespace ERP.Logistica
                 ddlAloc.DataBind();
                 rblEfetuado.Visible = false;
                 lbEstado.Visible = false;
+                pEdit.Visible = false;
 
                 lbValorVerba.Text = Caixa.obterCaixa().Verba.ToString();
 
@@ -48,6 +49,7 @@ namespace ERP.Logistica
                         rblEfetuado.SelectedValue = "2";
                         rblEfetuado.Visible = true;
                         lbEstado.Visible = true;
+                        pEdit.Visible = true;
                     }
                 }
             }
