@@ -28,13 +28,14 @@ namespace ERP.Logistica.Models
             this._efetuado = efetuado;
         }
 
-        public PedidoEquipamento(int id, DateTime requisicao, int catalogoEquip, int disponibilidade, int efetuado)
+        public PedidoEquipamento(int id, DateTime requisicao, int catalogoEquip, int disponibilidade, int efetuado, int reportarEstorno)
             : this(requisicao, catalogoEquip, disponibilidade, efetuado)
         {
             this._id = id;
+            this._reportarEstorno = reportarEstorno;
         }
 
-        public PedidoEquipamento(int id, DateTime requisicao, int catalogoEquip, double preco, int disponibilidade, int efetuado)
+        public PedidoEquipamento(int id, DateTime requisicao, int catalogoEquip, double preco, int disponibilidade, int efetuado, int reportarEstorno)
         {
             this._id = id;
             this._requisicao = requisicao;
@@ -42,6 +43,7 @@ namespace ERP.Logistica.Models
             this._catalogoEquipPreco = preco;
             this._disponibilidade = Disponibilidade.buscarPorId(disponibilidade);
             this._efetuado = efetuado;
+            this._reportarEstorno = reportarEstorno;
         }
 
         #endregion
@@ -161,7 +163,7 @@ namespace ERP.Logistica.Models
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = (DataRow)ds.Tables[0].Rows[0];
-                pedido = new PedidoEquipamento(id, (DateTime)row["Requisicao"], (int)row["Catalogo_Equipamento"], (int)row["Disponibilidade"], (int)row["Efetuado"]);
+                pedido = new PedidoEquipamento(id, (DateTime)row["Requisicao"], (int)row["Catalogo_Equipamento"], (int)row["Disponibilidade"], (int)row["Efetuado"], (int)row["Reportar_Estorno"]);
             }
 
             return pedido;
