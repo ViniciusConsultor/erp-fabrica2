@@ -45,6 +45,10 @@ namespace ERP.Logistica
                         lbValidade.Visible = true;
                         pEdit.Visible = true;
                     }
+                    else
+                    {
+                        btnOK.Enabled = false;
+                    }
                 }
             }
         }
