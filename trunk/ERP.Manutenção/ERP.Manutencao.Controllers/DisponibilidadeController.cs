@@ -32,7 +32,9 @@ namespace ERP.Manutencao.Controllers
                     }
 
                 }
+                
                 if (!pertence)
+                {
                     novaRow = locais.NewRow();
                     novaRow["Equipamento"] = row1["Equipamento"];
                     novaRow["EquipamentoId"] = row1["EquipamentoId"];
@@ -41,6 +43,7 @@ namespace ERP.Manutencao.Controllers
                     novaRow["Andar"] = row1["Andar"];
                     novaRow["Numero"] = row1["Numero"];
                     locais.Rows.Add(novaRow);
+                }
             }
 
             return locais;
@@ -70,7 +73,9 @@ namespace ERP.Manutencao.Controllers
                     }
 
                 }
+                
                 if (!pertence)
+                {
                     novaRow = equipamentos.NewRow();
                     novaRow["Equipamento"] = row1["Equipamento"];
                     novaRow["EquipamentoId"] = row1["EquipamentoId"];
@@ -79,6 +84,7 @@ namespace ERP.Manutencao.Controllers
                     novaRow["Andar"] = row1["Andar"];
                     novaRow["Numero"] = row1["Numero"];
                     equipamentos.Rows.Add(novaRow);
+                }
             }
 
             return equipamentos;
