@@ -42,7 +42,7 @@
                             <asp:MenuItem NavigateUrl="~/PedidosEquipamentos.aspx" Text="Pedidos" 
                                 Value="Pedidos"></asp:MenuItem>
                         </asp:MenuItem>
-                        <asp:MenuItem Text="Medicamento" Value="Medicamento" 
+                        <asp:MenuItem Text="Medicamentos" Value="Medicamentos" 
                             NavigateUrl="~/Medicamentos.aspx">
                             <asp:MenuItem NavigateUrl="~/Medicamentos.aspx" Text="Cadastro" 
                                 Value="Cadastro"></asp:MenuItem>
@@ -55,7 +55,8 @@
                         </asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/EspacosFisicos.aspx" Text="Espacos Fisicos" 
                             Value="Espacos Fisicos"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Fornecedores.aspx" Text="Fornecedor" Value="Fornecedor"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Fornecedores.aspx" Text="Fornecedores" 
+                            Value="Fornecedores"></asp:MenuItem>
                         <asp:MenuItem Text="Gerencia" Value="Gerencia">
                             <asp:MenuItem NavigateUrl="~/GerenciaEstMed.aspx" Text="Medicamentos" 
                                 Value="Medicamentos"></asp:MenuItem>
