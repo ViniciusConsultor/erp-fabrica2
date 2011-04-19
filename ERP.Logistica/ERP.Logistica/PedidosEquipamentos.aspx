@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Panel ID="Panel1" runat="server" Height="299px">
         <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" 
             Text="Lista de Pedidos de Equipamentos"></asp:Label>
         <br />
@@ -53,5 +52,5 @@
         <br />
         <asp:Button ID="btnAdicionar" runat="server" onclick="btnAdicionar_Click" 
             Text="Realizar Pedido" Width="150px" />
-    </asp:Panel>
+        <br />
 </asp:Content>
