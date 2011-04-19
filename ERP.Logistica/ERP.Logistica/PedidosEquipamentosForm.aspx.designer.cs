@@ -76,24 +76,6 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.DropDownList ddlEquipForn;
         
         /// <summary>
-        /// lbAloc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbAloc;
-        
-        /// <summary>
-        /// ddlAloc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAloc;
-        
-        /// <summary>
         /// pEdit control.
         /// </summary>
         /// <remarks>
@@ -119,6 +101,24 @@ namespace ERP.Logistica {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblEfetuado;
+        
+        /// <summary>
+        /// lbAloc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAloc;
+        
+        /// <summary>
+        /// ddlAloc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAloc;
         
         /// <summary>
         /// btnOK control.
