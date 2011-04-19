@@ -43,7 +43,31 @@ namespace ERP.Manutencao.Controllers
 
         public static DataTable listar()
         {
-            return TarefaManutencao.listar();
+            DataTable tarefas = TarefaManutencao.listar();
+            DataTable locais = DisponibilidadeController.listarLocais();
+            DataTable equipamentos = DisponibilidadeController.listarEquipamentos();
+
+            foreach (DataRow row1 in locais.Rows)
+            {
+                foreach (DataRow row2 in tarefas.Rows)
+                {
+                    if (row2.ItemArray[2].Equals(row1.ItemArray[2].ToString()))
+                        row2.SetField(tarefas.Columns[2], row1.ItemArray[3]);
+                }
+            }
+
+            foreach (DataRow row1 in equipamentos.Rows)
+            {
+                foreach (DataRow row2 in tarefas.Rows)
+                {
+                    if (row2.ItemArray[3].Equals(row1.ItemArray[0].ToString()))
+                        row2.SetField(tarefas.Columns[3], row1.ItemArray[1]);
+                }
+            }
+
+
+
+            return tarefas;
         }
 
         public static DataTable WebListar()
