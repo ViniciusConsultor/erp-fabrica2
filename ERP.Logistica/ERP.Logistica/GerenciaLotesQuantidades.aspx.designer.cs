@@ -22,6 +22,24 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
+        /// vSucesso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator vSucesso;
+        
+        /// <summary>
+        /// vRetirada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator vRetirada;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>

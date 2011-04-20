@@ -4,6 +4,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="Label6" runat="server" Font-Size="Large" ForeColor="Black" 
         Text="Lote"></asp:Label>
+<asp:CustomValidator ID="vSucesso" runat="server" 
+    ErrorMessage="* Mudança no estoque realizado com sucesso" 
+    ForeColor="#009900"></asp:CustomValidator>
+    <br />
+    <asp:CustomValidator ID="vRetirada" runat="server" 
+    ErrorMessage="* Não foi possivel retirar a quantidade selecionada." 
+    ForeColor="Red"></asp:CustomValidator>
     <br />
     <br />
     <asp:Label ID="Label1" runat="server" Text="Medicamento"></asp:Label>
