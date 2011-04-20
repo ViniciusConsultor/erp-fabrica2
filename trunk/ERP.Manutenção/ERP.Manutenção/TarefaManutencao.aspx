@@ -31,10 +31,11 @@
             <asp:BoundField DataField="Fim_Manutencao" HeaderText="Data Final">
             <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
-            <asp:CommandField ShowDeleteButton="True" DeleteText="Remover">
+            <asp:CommandField ShowDeleteButton="True" DeleteText="Remover" 
+                HeaderText="Remover">
             <ItemStyle HorizontalAlign="Center" />
             </asp:CommandField>
-            <asp:CommandField EditText="Editar" ShowEditButton="True" />
+            <asp:CommandField EditText="Editar" ShowEditButton="True" HeaderText="Editar" />
         </Columns>
     </asp:GridView>
     <br />
