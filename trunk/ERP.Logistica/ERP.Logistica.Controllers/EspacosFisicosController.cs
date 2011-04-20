@@ -58,13 +58,21 @@ namespace ERP.Logistica.Controllers
             DataTable espaco = EspacoFisico.listar(); 
             DataTable especialidades = EspecialidadeController.listaEspecialidades();
 
-            foreach (DataRow row1 in especialidades.Rows)
+            Boolean achou = false;
+
+            foreach (DataRow row2 in espaco.Rows)
             {
-                foreach (DataRow row2 in espaco.Rows)
+                achou = false;
+                foreach (DataRow row1 in especialidades.Rows)
                 {
                     if (row2.ItemArray[4].Equals(row1.ItemArray[0]))
-                        row2.SetField(espaco.Columns[4],row1.ItemArray[1]);
+                    {
+                        row2.SetField(espaco.Columns[4], row1.ItemArray[1]);
+                        achou = true;
+                    }
                 }
+                if (!achou)
+                    row2.SetField(espaco.Columns[4], "Sem Especialidade");
             }
 
             return espaco;

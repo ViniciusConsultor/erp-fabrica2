@@ -30,6 +30,7 @@ namespace ERP.Manutenção
                 ddEquipamento.DataValueField = "EquipamentoId";
                 ddEquipamento.DataSource = DisponibilidadeController.listarEquipamentos();
                 ddEquipamento.DataBind();
+                ddEquipamento.Items.Insert(0, "Sem Equipamento");
 
                 if (Request.QueryString["ID"] != "Novo" && Request.QueryString["ID"] != null)
                 {

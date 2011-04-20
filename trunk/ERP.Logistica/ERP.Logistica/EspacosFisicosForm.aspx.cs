@@ -21,7 +21,8 @@ namespace ERP.Logistica
                 ddEspecialidade.DataValueField = "Id";
                 ddEspecialidade.DataSource = EspecialidadeController.listaEspecialidades();
                 ddEspecialidade.DataBind();
-                //ddEspecialidade.Items.Insert(0, "Selecione a Especialidade");
+                ddEspecialidade.Items.Insert(0, "Sem Especialidade");
+                ddEspecialidade.Items[0].Value = "0";
 
                 // Pedido Existente
                 if (Request.QueryString["ID"] != "Novo" && Request.QueryString["ID"] != null)
