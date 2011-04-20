@@ -88,7 +88,7 @@ namespace ERP.Logistica.Models.DAOs
            }
            catch (Exception ex)
            {
-               throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+               throw new Exception("Ocorreu um erro no método buscar por id: " + ex.Message);
            }
        }
 
@@ -109,7 +109,7 @@ namespace ERP.Logistica.Models.DAOs
            }
            catch (Exception ex)
            {
-               throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+               throw new Exception("Ocorreu um erro no método buscar: " + ex.Message);
            }
        }
 
@@ -138,7 +138,7 @@ namespace ERP.Logistica.Models.DAOs
            }
            catch (Exception ex)
            {
-               throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+               throw new Exception("Ocorreu um erro no método buscar estornados ate: " + ex.Message);
            }
        }
 
@@ -156,7 +156,7 @@ namespace ERP.Logistica.Models.DAOs
            }
            catch (Exception ex)
            {
-               throw new Exception("Ocorreu um erro no método marcarEstornoReportado: " + ex.Message);
+               throw new Exception("Ocorreu um erro no método marcar estorno reportado: " + ex.Message);
            }
        }
 
@@ -184,7 +184,7 @@ namespace ERP.Logistica.Models.DAOs
            }
            catch (Exception ex)
            {
-               throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+               throw new Exception("Ocorreu um erro no método buscar preco de lote: " + ex.Message);
            }
        }
 
@@ -234,7 +234,7 @@ namespace ERP.Logistica.Models.DAOs
            }
            catch (Exception ex)
            {
-               throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+               throw new Exception("Ocorreu um erro no método listar por requisicao: " + ex.Message);
            }
        }
 
@@ -256,7 +256,7 @@ namespace ERP.Logistica.Models.DAOs
            }
            catch (Exception ex)
            {
-               throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+               throw new Exception("Ocorreu um erro no método listar catalogo med disp: " + ex.Message);
            }
        }
     }

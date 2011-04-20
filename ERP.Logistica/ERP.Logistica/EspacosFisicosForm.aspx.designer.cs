@@ -31,6 +31,15 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label lbNome;
         
         /// <summary>
+        /// vNomeUnico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator vNomeUnico;
+        
+        /// <summary>
         /// tbNome control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace ERP.Logistica {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbNome;
+        
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
         /// lbAndar control.

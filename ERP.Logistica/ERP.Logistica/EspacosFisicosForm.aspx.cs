@@ -48,17 +48,29 @@ namespace ERP.Logistica
             {
                 if (tbAndar.Text != "")
                 {
-                    EspacosFisicosController.criar(tbNome.Text, Convert.ToInt32(tbAndar.Text), Convert.ToInt32(tbNumero.Text), ddEspecialidade.SelectedValue);
+                    if (EspacosFisicosController.criar(tbNome.Text, Convert.ToInt32(tbAndar.Text), Convert.ToInt32(tbNumero.Text), ddEspecialidade.SelectedValue) == -1)
+                    {
+                        vNomeUnico.IsValid = false;
+                        return;
+                    }
                 }
                 else
                 {
-                    EspacosFisicosController.criar(tbNome.Text, 0, Convert.ToInt32(tbNumero.Text), ddEspecialidade.SelectedValue);
+                    if (EspacosFisicosController.criar(tbNome.Text, 0, Convert.ToInt32(tbNumero.Text), ddEspecialidade.SelectedValue) == -1)
+                    {
+                        vNomeUnico.IsValid = false;
+                        return;
+                    }
                 }
             }
             else
             {
                 EspacoFisico espaco = EspacosFisicosController.buscarPorId(Convert.ToInt32(hfId.Value));
-                EspacosFisicosController.atualizar(espaco.Id, tbNome.Text, Convert.ToInt32(tbAndar.Text), Convert.ToInt32(tbNumero.Text), ddEspecialidade.SelectedValue);
+                if (EspacosFisicosController.atualizar(espaco.Id, tbNome.Text, Convert.ToInt32(tbAndar.Text), Convert.ToInt32(tbNumero.Text), ddEspecialidade.SelectedValue) == -1)
+                {
+                    vNomeUnico.IsValid = false;
+                    return;
+                }
             }
             Response.Redirect("/EspacosFisicos.aspx");
         }

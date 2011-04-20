@@ -87,7 +87,28 @@ namespace ERP.Logistica.Models.DAOs
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+                throw new Exception("Ocorreu um erro no método buscar por id: " + ex.Message);
+            }
+        }
+
+        public static DataSet buscarPorNome(string nome)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                connection.Open();
+                string sql = "SELECT * FROM Espaco_Fisico WHERE Nome = '" + nome + "'";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método buscar por nome: " + ex.Message);
             }
         }
 
@@ -129,7 +150,7 @@ namespace ERP.Logistica.Models.DAOs
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+                throw new Exception("Ocorreu um erro no método listar espacos fisicos disponiveis: " + ex.Message);
             }
         }
 

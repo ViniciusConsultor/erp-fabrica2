@@ -87,7 +87,7 @@ namespace ERP.Logistica.Models.DAOs
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+                throw new Exception("Ocorreu um erro no método buscar por id: " + ex.Message);
             }
         }
 
