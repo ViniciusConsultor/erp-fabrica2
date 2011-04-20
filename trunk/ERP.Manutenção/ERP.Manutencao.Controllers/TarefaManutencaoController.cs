@@ -90,7 +90,7 @@ namespace ERP.Manutencao.Controllers
             }
 
             foreach (DataRow row in tarefas.Rows)
-                if (row.ItemArray[3] == "Sem Equipamento")
+                if (row.ItemArray[2] == "Local Inexistente")
                     row.Delete();
 
 
