@@ -37,7 +37,7 @@ namespace ERP.Logistica
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            int aux = EstoqueController.alterar_quantidade(Convert.ToInt32(hfIdEst.Value), Convert.ToInt32(tbAdicao.Text));
+            int aux = EstoqueController.alterar_quantidade(Convert.ToInt32(hfIdEst.Value), Convert.ToInt32(tbAdicao.Text), ddlConsulta.SelectedValue.ToString());
             switch (aux)
             {
                 case 0:
