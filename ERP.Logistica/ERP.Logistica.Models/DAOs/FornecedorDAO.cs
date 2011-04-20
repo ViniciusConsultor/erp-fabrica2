@@ -48,7 +48,7 @@ namespace ERP.Logistica.Models
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro no método apagar: " + ex.Message);
+                //throw new Exception("Ocorreu um erro no método apagar: " + ex.Message);
             }
         }
 
@@ -97,7 +97,7 @@ namespace ERP.Logistica.Models
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
                 connection.Open();
-                string sql = "SELECT * FROM Fornecedor";
+                string sql = "SELECT * FROM Fornecedor ORDER BY Ranking";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 DataSet ds = new DataSet();

@@ -157,6 +157,15 @@ namespace ERP.Logistica {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
+        /// CompareValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
+        
+        /// <summary>
         /// tbRanking control.
         /// </summary>
         /// <remarks>
