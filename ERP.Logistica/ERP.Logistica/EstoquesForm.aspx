@@ -23,7 +23,8 @@
     <asp:CompareValidator ID="CompareValidator1" runat="server" 
         ControlToValidate="tbQuantidade" 
         ErrorMessage="* Deve Conter um Valor Numérico Maior ou Igual a 0" 
-        ForeColor="Red" Operator="GreaterThanEqual" ValueToCompare="0"></asp:CompareValidator>
+        ForeColor="Red" Operator="GreaterThanEqual" ValueToCompare="0" 
+        Type="Integer"></asp:CompareValidator>
 <br />
 <asp:TextBox ID="tbQuantidade" runat="server"></asp:TextBox>
 <br />
