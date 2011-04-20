@@ -47,24 +47,51 @@ namespace ERP.Manutencao.Controllers
             DataTable locais = DisponibilidadeController.listarLocais();
             DataTable equipamentos = DisponibilidadeController.listarEquipamentos();
 
-            foreach (DataRow row1 in locais.Rows)
+            Boolean achou = false;
+            /*foreach (DataRow row1 in locais.Rows)
             {
                 foreach (DataRow row2 in tarefas.Rows)
+                {
+                        if (row2.ItemArray[2].Equals(row1.ItemArray[2].ToString()))
+                            row2.SetField(tarefas.Columns[2], row1.ItemArray[3]);  
+                }             
+            }
+            */
+
+            foreach (DataRow row2 in tarefas.Rows)
+            {
+                achou = false;
+                foreach (DataRow row1 in locais.Rows)
                 {
                     if (row2.ItemArray[2].Equals(row1.ItemArray[2].ToString()))
+                    {
                         row2.SetField(tarefas.Columns[2], row1.ItemArray[3]);
+                        achou = true;
+                    }
                 }
+                if (!achou)
+                    row2.SetField(tarefas.Columns[2], "Local Inexistente");
             }
 
-            foreach (DataRow row1 in equipamentos.Rows)
+
+            foreach (DataRow row2 in tarefas.Rows)
             {
-                foreach (DataRow row2 in tarefas.Rows)
+                achou = false;
+                foreach (DataRow row1 in equipamentos.Rows)
                 {
                     if (row2.ItemArray[3].Equals(row1.ItemArray[0].ToString()))
+                    {
                         row2.SetField(tarefas.Columns[3], row1.ItemArray[1]);
+                        achou = true;
+                    }
                 }
+                if (!achou)
+                    row2.SetField(tarefas.Columns[3], "Sem Equipamento");
             }
 
+            foreach (DataRow row in tarefas.Rows)
+                if (row.ItemArray[3] == "Sem Equipamento")
+                    row.Delete();
 
 
             return tarefas;
