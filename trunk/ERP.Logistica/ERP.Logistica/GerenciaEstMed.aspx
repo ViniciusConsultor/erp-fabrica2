@@ -4,8 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="Label2" runat="server" Font-Size="Large" ForeColor="Black" 
         Text="Gerência de Estoque"></asp:Label>
-    <asp:CustomValidator ID="vRetirada" runat="server" 
-    ErrorMessage="* Não foi possivel retirar a quantidade selecionada." 
+    <asp:CustomValidator ID="vPedido" runat="server" 
+    ErrorMessage="* Não foi possivel gerar o pedido." 
     ForeColor="Red"></asp:CustomValidator>
 <br />
 <asp:CustomValidator ID="vSucesso" runat="server" 

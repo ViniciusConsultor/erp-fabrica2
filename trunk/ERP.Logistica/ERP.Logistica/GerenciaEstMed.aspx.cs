@@ -14,10 +14,18 @@ namespace ERP.Logistica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // if (Request.QueryString["Status"] != null)
-            //{
-
-            //}
+            if (Request.QueryString["Status"] != null)
+            {
+                switch (Request.QueryString["Status"])
+                {
+                    case "1":
+                        vSucesso.IsValid = false;
+                        break;
+                    case "-1":
+                        vPedido.IsValid = false;
+                        break;
+                }
+            }
             atualizar();
         }
 
