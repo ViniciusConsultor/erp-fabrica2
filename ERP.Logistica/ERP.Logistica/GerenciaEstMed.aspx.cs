@@ -14,6 +14,10 @@ namespace ERP.Logistica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // if (Request.QueryString["Status"] != null)
+            //{
+
+            //}
             atualizar();
         }
 

@@ -13,7 +13,8 @@
             <asp:BoundField DataField="Medicamento" HeaderText="Medicamento" />
             <asp:BoundField DataField="Fornecedor" HeaderText="Fornecedor" />
             <asp:BoundField DataField="Preco_Unitario" HeaderText="Preço" />
-            <asp:BoundField DataField="Vigencia_Inicio" HeaderText="Vigencia_Inicio" />
+            <asp:BoundField DataField="Vigencia_Inicio" HeaderText="Vigencia_Inicio" 
+                DataFormatString="&quot;{0:dd/MM/yyyy}&quot;" />
             <asp:CommandField HeaderText="Edit" ShowEditButton="True" />
             <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" />
         </Columns>

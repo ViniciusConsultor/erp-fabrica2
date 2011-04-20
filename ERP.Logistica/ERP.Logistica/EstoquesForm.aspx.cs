@@ -29,7 +29,7 @@ namespace ERP.Logistica
                     ddlMedicamento.Enabled = false;
                     tbQuantidade.Text = estoque.Quantidade.ToString();
                     tbQuantidade.Enabled = true;
-                    tbValidade.Text = estoque.Validade.ToString();
+                    tbValidade.Text = estoque.Validade.ToString("dd/MM/yyyy");
                     tbValidade.Enabled = true;
                     tbLocalizacao.Text = estoque.Localizacao.ToString();
                     tbLocalizacao.Enabled = true;
