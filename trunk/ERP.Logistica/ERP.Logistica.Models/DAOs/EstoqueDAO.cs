@@ -45,7 +45,7 @@ namespace ERP.Logistica.Models
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro no método apagar: " + ex.Message);
+                //throw new Exception("Ocorreu um erro no método apagar: " + ex.Message);
             }
         }
 

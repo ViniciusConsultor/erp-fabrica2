@@ -44,6 +44,11 @@
 <br />
 <br />
 <asp:Label ID="Label6" runat="server" Text="Ranking"></asp:Label>
+    <asp:CompareValidator ID="CompareValidator1" runat="server" 
+        ControlToValidate="tbRanking" 
+        ErrorMessage="* Deve Conter um Valor Numérico Maior ou Igual a 0" 
+        ForeColor="Red" Operator="GreaterThanEqual" ValueToCompare="0" 
+        Type="Integer"></asp:CompareValidator>
 <br />
 <asp:TextBox ID="tbRanking" runat="server"></asp:TextBox>
 <br />
