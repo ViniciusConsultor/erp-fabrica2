@@ -50,10 +50,12 @@
     <Compile Include="DAOs\CatalogoMedicamentoDAO.cs" />
     <Compile Include="DAOs\EstoqueDAO.cs" />
     <Compile Include="DAOs\FornecedorDAO.cs" />
+    <Compile Include="DAOs\HistoricoMedicamentoDAO.cs" />
     <Compile Include="DAOs\LoginDAO.cs" />
     <Compile Include="DAOs\MedicamentoDAO.cs" />
     <Compile Include="Estoque.cs" />
     <Compile Include="Fornecedor.cs" />
+    <Compile Include="HistoricoMedicamento.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Medicamento.cs" />
     <Compile Include="PedidoEquipamento.cs" />

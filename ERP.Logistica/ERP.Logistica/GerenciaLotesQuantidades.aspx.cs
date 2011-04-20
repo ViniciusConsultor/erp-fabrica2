@@ -18,6 +18,10 @@ namespace ERP.Logistica
             {
                 ERP.Logistica.Models.Estoque estoque = EstoqueController.buscarPorId(Convert.ToInt32(Request.QueryString["ID"]));
                 Medicamento medicamento = MedicamentoController.buscarPorId(Convert.ToInt32(Request.QueryString["MEDID"]));
+
+                ddlConsulta.DataSource = ConsultaController.obterMedico();
+                ddlConsulta.DataBind();
+
                 hfIdMed.Value = medicamento.Id.ToString();
                 hfIdEst.Value = estoque.Id.ToString();
                 tbMedicamento.Text = medicamento.Nome.ToString();
