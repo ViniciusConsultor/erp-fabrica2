@@ -7,9 +7,15 @@
     <br />
 <br />
     <asp:Label ID="lbNome" runat="server" Text="Nome"></asp:Label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:CustomValidator ID="vNomeUnico" runat="server" 
+        ErrorMessage="* Já Existe uma Sala com este Nome" ForeColor="Red"></asp:CustomValidator>
     <br />
     <asp:TextBox ID="tbNome" runat="server" Font-Size="Small" Height="20px" 
         Width="200px" MaxLength="50"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
+    runat="server" ControlToValidate="tbNome" ErrorMessage="* Obrigatório" 
+    ForeColor="Red"></asp:RequiredFieldValidator>
     <br />
 <br />
     <asp:Label ID="lbAndar" runat="server" Text="Andar"></asp:Label>

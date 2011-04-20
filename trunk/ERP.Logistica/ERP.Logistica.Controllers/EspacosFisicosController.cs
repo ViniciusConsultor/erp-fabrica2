@@ -10,10 +10,18 @@ namespace ERP.Logistica.Controllers
 {
     public class EspacosFisicosController
     {
-        public static void criar(string nome, int andar, int numero, string especialidade)
+        public static int criar(string nome, int andar, int numero, string especialidade)
         {
             EspacoFisico espaco = new EspacoFisico(nome, andar, numero, especialidade);
-            espaco.criar();
+            if (espaco.verificaNome())
+            {
+                espaco.criar();
+                return 0;
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public static void apagar(int id)
@@ -22,14 +30,22 @@ namespace ERP.Logistica.Controllers
             espaco.apagar();
         }
 
-        public static void atualizar(int id, string nome, int andar, int numero, string especialidade)
+        public static int atualizar(int id, string nome, int andar, int numero, string especialidade)
         {
             EspacoFisico espaco = EspacoFisico.buscarPorId(id);
             espaco.Nome = nome;
             espaco.Andar = andar;
             espaco.Numero = numero;
             espaco.Especialidade = especialidade;
-            espaco.atualizar();
+            if (espaco.verificaNome())
+            {
+                espaco.atualizar();
+                return 0;
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public static EspacoFisico buscarPorId(int id)

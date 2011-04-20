@@ -31,7 +31,7 @@ namespace ERP.Logistica.Models.DAOs
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro no método atualizar: " + ex.Message);
+                throw new Exception("Ocorreu um erro no método atualizar verba: " + ex.Message);
             }
         }
 
@@ -52,7 +52,7 @@ namespace ERP.Logistica.Models.DAOs
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+                throw new Exception("Ocorreu um erro no método obter verba: " + ex.Message);
             }
         }
     }

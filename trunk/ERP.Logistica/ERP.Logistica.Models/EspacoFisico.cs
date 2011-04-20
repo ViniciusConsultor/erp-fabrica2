@@ -91,6 +91,17 @@ namespace ERP.Logistica.Models
             EspacoFisicoDAO.apagar(Id);
         }
 
+        // Verifica se ha um nome e se ele e unico
+        public bool verificaNome()
+        {
+            if(Nome != null && Nome != "")
+            {
+                DataSet ds = EspacoFisicoDAO.buscarPorNome(Nome);
+                return (ds.Tables[0].Rows.Count == 0);
+            }
+            return false;
+        }
+
         #region Static Methods
 
         public static EspacoFisico buscarPorId(int id)
