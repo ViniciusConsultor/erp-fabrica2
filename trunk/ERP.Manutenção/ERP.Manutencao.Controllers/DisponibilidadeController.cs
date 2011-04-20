@@ -11,83 +11,98 @@ namespace ERP.Manutencao.Controllers
     {
         public static DataTable listarLocais()
         {
-            DisponibilidadeWS servico = new DisponibilidadeWS();
-            DataTable disponibilidade = servico.obterListagemDisponibilade();
-
-            DataTable locais = disponibilidade.Clone();
-            locais.Clear();
-
-            DataRow novaRow = null;
-            Boolean pertence = false;
-
-            foreach (DataRow row1 in disponibilidade.Rows)
+            try
             {
-                pertence = false;
-                foreach (DataRow row2 in locais.Rows)
+                DisponibilidadeWS servico = new DisponibilidadeWS();
+                DataTable disponibilidade = servico.obterListagemDisponibilade();
+
+                DataTable locais = disponibilidade.Clone();
+                locais.Clear();
+
+                DataRow novaRow = null;
+                Boolean pertence = false;
+
+                foreach (DataRow row1 in disponibilidade.Rows)
                 {
-                    if (row2.ItemArray[3].Equals(row1.ItemArray[3]))
+                    pertence = false;
+                    foreach (DataRow row2 in locais.Rows)
                     {
-                        pertence = true;
-                        break;
+                        if (row2.ItemArray[3].Equals(row1.ItemArray[3]))
+                        {
+                            pertence = true;
+                            break;
+                        }
+
                     }
 
+                    if (!pertence)
+                    {
+                        novaRow = locais.NewRow();
+                        novaRow["Equipamento"] = row1["Equipamento"];
+                        novaRow["EquipamentoId"] = row1["EquipamentoId"];
+                        novaRow["Espaco"] = row1["Espaco"];
+                        novaRow["EspacoFisicoId"] = row1["EspacoFisicoId"];
+                        novaRow["Andar"] = row1["Andar"];
+                        novaRow["Numero"] = row1["Numero"];
+                        locais.Rows.Add(novaRow);
+                    }
                 }
-                
-                if (!pertence)
-                {
-                    novaRow = locais.NewRow();
-                    novaRow["Equipamento"] = row1["Equipamento"];
-                    novaRow["EquipamentoId"] = row1["EquipamentoId"];
-                    novaRow["Espaco"] = row1["Espaco"];
-                    novaRow["EspacoFisicoId"] = row1["EspacoFisicoId"];
-                    novaRow["Andar"] = row1["Andar"];
-                    novaRow["Numero"] = row1["Numero"];
-                    locais.Rows.Add(novaRow);
-                }
+
+                return locais;
             }
 
-            return locais;
+            catch
+            {
+                return null;
+            }
         }
 
         public static DataTable listarEquipamentos()
         {
-            DisponibilidadeWS servico = new DisponibilidadeWS();
-            DataTable disponibilidade = servico.obterListagemDisponibilade();
-
-            DataTable equipamentos = disponibilidade.Clone();
-            equipamentos.Clear();
-
-            Boolean pertence = false;
-            DataRow novaRow = null;
-
-
-            foreach (DataRow row1 in disponibilidade.Rows)
+            try
             {
-                pertence = false;
-                foreach (DataRow row2 in equipamentos.Rows)
+                DisponibilidadeWS servico = new DisponibilidadeWS();
+                DataTable disponibilidade = servico.obterListagemDisponibilade();
+
+                DataTable equipamentos = disponibilidade.Clone();
+                equipamentos.Clear();
+
+                Boolean pertence = false;
+                DataRow novaRow = null;
+
+
+                foreach (DataRow row1 in disponibilidade.Rows)
                 {
-                    if (row2.ItemArray[1].Equals(row1.ItemArray[1]))
+                    pertence = false;
+                    foreach (DataRow row2 in equipamentos.Rows)
                     {
-                        pertence = true;
-                        break;
+                        if (row2.ItemArray[1].Equals(row1.ItemArray[1]))
+                        {
+                            pertence = true;
+                            break;
+                        }
+
                     }
 
+                    if (!pertence)
+                    {
+                        novaRow = equipamentos.NewRow();
+                        novaRow["Equipamento"] = row1["Equipamento"];
+                        novaRow["EquipamentoId"] = row1["EquipamentoId"];
+                        novaRow["Espaco"] = row1["Espaco"];
+                        novaRow["EspacoFisicoId"] = row1["EspacoFisicoId"];
+                        novaRow["Andar"] = row1["Andar"];
+                        novaRow["Numero"] = row1["Numero"];
+                        equipamentos.Rows.Add(novaRow);
+                    }
                 }
-                
-                if (!pertence)
-                {
-                    novaRow = equipamentos.NewRow();
-                    novaRow["Equipamento"] = row1["Equipamento"];
-                    novaRow["EquipamentoId"] = row1["EquipamentoId"];
-                    novaRow["Espaco"] = row1["Espaco"];
-                    novaRow["EspacoFisicoId"] = row1["EspacoFisicoId"];
-                    novaRow["Andar"] = row1["Andar"];
-                    novaRow["Numero"] = row1["Numero"];
-                    equipamentos.Rows.Add(novaRow);
-                }
-            }
 
-            return equipamentos;
+                return equipamentos;
+            }
+            catch
+            {
+                return null;
+            }
         }        
 
     }
