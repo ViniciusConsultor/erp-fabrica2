@@ -34,10 +34,14 @@
     <br />
     <br />
     <asp:Label ID="Label5" runat="server" Text="Adição ou Remoção"></asp:Label>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-        ControlToValidate="tbAdicao" ErrorMessage="* Campo Obrigatório" ForeColor="Red"></asp:RequiredFieldValidator>
+    <asp:CompareValidator ID="CompareValidator1" runat="server" 
+        ControlToValidate="tbAdicao" 
+        ErrorMessage="* Deve Conter um Valor Numérico" 
+        ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
     <br />
     <asp:TextBox ID="tbAdicao" runat="server"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+        ControlToValidate="tbAdicao" ErrorMessage="* Campo Obrigatório" ForeColor="Red"></asp:RequiredFieldValidator>
     <br />
     <br />
     <asp:Button ID="btnOk" runat="server" onclick="btnOk_Click" Text="Salvar" />
