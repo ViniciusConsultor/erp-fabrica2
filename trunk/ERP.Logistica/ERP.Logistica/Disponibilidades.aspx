@@ -14,8 +14,9 @@
                 <asp:BoundField DataField="Espaco" HeaderText="Nome do Espaço" />
                 <asp:BoundField DataField="Andar" HeaderText="Andar" />
                 <asp:BoundField DataField="Numero" HeaderText="Numero" />
-                <asp:CommandField DeleteText="Remover" ShowDeleteButton="True" />
-                <asp:CommandField EditText="Editar" ShowEditButton="True" />
+                <asp:CommandField DeleteText="Remover" ShowDeleteButton="True" 
+                    HeaderText="Remover" />
+                <asp:CommandField EditText="Editar" ShowEditButton="True" HeaderText="Editar" />
             </Columns>
         </asp:GridView>
         <br />
