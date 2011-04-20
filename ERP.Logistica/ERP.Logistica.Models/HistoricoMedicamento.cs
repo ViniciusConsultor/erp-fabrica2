@@ -56,7 +56,7 @@ namespace ERP.Logistica.Models
 
         public void criar()
         {
-            HistoricoMedicamentoDAO.criar(Medicamento.Id, consulta);
+            HistoricoMedicamentoDAO.criar(Medicamento.Id, consulta, add_red);
         }
 
         #region Static Methods
