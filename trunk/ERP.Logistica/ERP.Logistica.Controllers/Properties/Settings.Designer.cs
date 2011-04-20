@@ -42,5 +42,15 @@ namespace ERP.Logistica.Controllers.Properties {
                 return ((string)(this["ERP_Logistica_Controllers_br_usp_pcs_labsoft_FinlogWS"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://labsoft.pcs.usp.br:3004/FornecedorServicos.asmx")]
+        public string ERP_Logistica_Controllers_consulta_FornecedorServicos {
+            get {
+                return ((string)(this["ERP_Logistica_Controllers_consulta_FornecedorServicos"]));
+            }
+        }
     }
 }

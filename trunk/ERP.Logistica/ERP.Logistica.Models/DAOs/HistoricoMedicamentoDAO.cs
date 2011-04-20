@@ -11,7 +11,7 @@ namespace ERP.Logistica.Models
     public class HistoricoMedicamentoDAO
     {
         private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_logistica; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
-        public static void criar(int medicamentoId, int consultaId, DateTime data, int add_red)
+        public static void criar(int medicamentoId, string consulta,)
         {
             try
             {

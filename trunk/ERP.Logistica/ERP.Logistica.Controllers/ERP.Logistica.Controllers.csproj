@@ -46,10 +46,12 @@
   <ItemGroup>
     <Compile Include="CatalogoEquipamentoController.cs" />
     <Compile Include="CatalogoMedicamentoController.cs" />
+    <Compile Include="ConsultaController.cs" />
     <Compile Include="EquipamentoController.cs" />
     <Compile Include="EspecialidadeController.cs" />
     <Compile Include="EstoqueController.cs" />
     <Compile Include="FornecedorController.cs" />
+    <Compile Include="HistoricoMedicamentoController.cs" />
     <Compile Include="LoginController.cs" />
     <Compile Include="MedicamentoController.cs" />
     <Compile Include="PedidosEquipamentosController.cs" />
@@ -61,6 +63,11 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\consulta\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\FinServico\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -108,12 +115,34 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>ERP_Logistica_Controllers_br_usp_pcs_labsoft_FinlogWS</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://labsoft.pcs.usp.br:3004/FornecedorServicos.asmx%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\consulta\</RelPath>
+      <UpdateFromURL>http://labsoft.pcs.usp.br:3004/FornecedorServicos.asmx%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ERP_Logistica_Controllers_consulta_FornecedorServicos</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\consulta\Agendamento.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\consulta\FornecedorServicos.wsdl" />
+    <None Include="Web References\consulta\Paciente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\consulta\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\FinServico\FinlogWS.wsdl" />
     <None Include="Web References\FinServico\Reference.map">
