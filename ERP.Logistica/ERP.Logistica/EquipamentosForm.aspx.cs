@@ -20,7 +20,7 @@ namespace ERP.Logistica
                     ERP.Logistica.Models.Equipamento equipamento = EquipamentoController.buscarPorId(Convert.ToInt32(Request.QueryString["ID"]));
                     hfId.Value = equipamento.Id.ToString();
                     tbNome.Text = equipamento.Nome.ToString();
-                    tbNome.Enabled = false;
+                    tbNome.Enabled = true;
                     tbDescricao.Text = equipamento.Descricao.ToString();
                     tbDescricao.Enabled = true;
                 }

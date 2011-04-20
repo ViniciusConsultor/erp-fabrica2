@@ -13,8 +13,9 @@
             <asp:BoundField DataField="Nome" HeaderText="Nome" />
             <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
             <asp:BoundField DataField="Medida" HeaderText="Medida" />
-            <asp:CommandField HeaderText="Edit" ShowEditButton="True" />
-            <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" />
+            <asp:CommandField HeaderText="Remover" ShowDeleteButton="True" 
+                DeleteText="Remover" />
+            <asp:CommandField HeaderText="Editar" ShowEditButton="True" EditText="Editar" />
         </Columns>
     </asp:GridView>
     <br />

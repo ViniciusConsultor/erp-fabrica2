@@ -15,8 +15,9 @@
         <asp:BoundField DataField="Email" HeaderText="Email" />
         <asp:BoundField DataField="Localizacao" HeaderText="Localização" />
         <asp:BoundField DataField="Ranking" HeaderText="Ranking" />
-        <asp:CommandField HeaderText="Edit" ShowEditButton="True" />
-        <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" />
+        <asp:CommandField HeaderText="Remover" ShowDeleteButton="True" 
+            DeleteText="Remover" />
+        <asp:CommandField HeaderText="Editar" ShowEditButton="True" EditText="Editar" />
     </Columns>
 </asp:GridView>
 <br />

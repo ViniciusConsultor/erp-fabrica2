@@ -20,7 +20,7 @@ namespace ERP.Logistica
                     Medicamento medicamento = MedicamentoController.buscarPorId(Convert.ToInt32(Request.QueryString["ID"]));
                     hfId.Value = medicamento.Id.ToString();
                     tbNome.Text = medicamento.Nome.ToString();
-                    tbNome.Enabled = false;
+                    tbNome.Enabled = true;
                     tbDescricao.Text = medicamento.Descricao.ToString();
                     tbDescricao.Enabled = true;
                     tbMedida.Text = medicamento.Medida.ToString();

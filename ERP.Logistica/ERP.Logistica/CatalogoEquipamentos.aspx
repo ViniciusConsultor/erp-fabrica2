@@ -15,8 +15,9 @@
         <asp:BoundField DataField="Preco_Unitario" HeaderText="Preço" />
         <asp:BoundField DataField="Vigencia_Inicio" HeaderText="Vigencia_Inicio" 
             DataFormatString="&quot;{0:dd/MM/yyyy}&quot;" />
-        <asp:CommandField HeaderText="Edit" ShowEditButton="True" />
-        <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" />
+        <asp:CommandField HeaderText="Remover" ShowDeleteButton="True" 
+            DeleteText="Remover" />
+        <asp:CommandField HeaderText="Editar" ShowEditButton="True" EditText="Editar" />
     </Columns>
 </asp:GridView>
 <br />
