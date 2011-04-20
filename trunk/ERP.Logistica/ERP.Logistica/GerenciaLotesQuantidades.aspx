@@ -44,6 +44,12 @@
         ControlToValidate="tbAdicao" ErrorMessage="* Campo Obrigatório" ForeColor="Red"></asp:RequiredFieldValidator>
     <br />
     <br />
+    <asp:Label ID="Label7" runat="server" Text="Consulta"></asp:Label>
+    <br />
+    <asp:DropDownList ID="ddlConsulta" runat="server">
+    </asp:DropDownList>
+    <br />
+    <br />
     <asp:Button ID="btnOk" runat="server" onclick="btnOk_Click" Text="Salvar" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
