@@ -12,7 +12,8 @@
 <asp:BoundField DataField="Id" HeaderText="Código"></asp:BoundField>
             <asp:BoundField DataField="Medicamento" HeaderText="Medicamento" />
             <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" />
-            <asp:BoundField DataField="Validade" HeaderText="Validade" />
+            <asp:BoundField DataField="Validade" HeaderText="Validade" 
+                DataFormatString="&quot;{0:dd/MM/yyyy}&quot;" />
             <asp:BoundField DataField="Localizacao" HeaderText="Localização" />
             <asp:CommandField HeaderText="Edit" 
                 ShowEditButton="True" />

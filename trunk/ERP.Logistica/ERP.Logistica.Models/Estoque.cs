@@ -92,9 +92,9 @@ namespace ERP.Logistica.Models
             return estoque;
         }
 
-        public static int buscar_Quantidade_por_Medicamento(int medicamentoId)
+        public static int buscar_Quantidade_por_Medicamento(Medicamento medicamento)
         {
-            DataSet ds = EstoqueDAO.buscar_Quantidade_por_Medicamento(medicamentoId);
+            DataSet ds = EstoqueDAO.buscar_Quantidade_por_Medicamento(medicamento.Id);
             DataRow row = (DataRow)ds.Tables[0].Rows[0];
             int quantidade_Total = (int)row["Quantidade"];
            

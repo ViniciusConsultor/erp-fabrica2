@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-&nbsp;<br />
+    &nbsp;<br />
     <asp:Label ID="Label1" runat="server" Text="Medicamento"></asp:Label>
     <br />
     <asp:TextBox ID="tbMedicamento" runat="server"></asp:TextBox>
@@ -23,7 +23,8 @@
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="Código" />
             <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" />
-            <asp:BoundField DataField="Validade" HeaderText="Validade" />
+            <asp:BoundField DataField="Validade" HeaderText="Validade" 
+                DataFormatString="&quot;{0:dd/MM/yyyy}&quot;" />
             <asp:BoundField DataField="Localizacao" HeaderText="Localização" />
             <asp:CommandField EditText="Adicionar/Remover" HeaderText="Adicionar/Remover" 
                 ShowEditButton="True" />

@@ -24,7 +24,7 @@ namespace ERP.Logistica
                 tbMedicamento.Enabled = false;
                 tbQuantidade.Text = estoque.Quantidade.ToString();
                 tbQuantidade.Enabled = false;
-                tbValidade.Text = estoque.Validade.ToString();
+                tbValidade.Text = estoque.Validade.ToString("dd/MM/yyyy");
                 tbValidade.Enabled = false;
                 tbLocalizacao.Text = estoque.Localizacao.ToString();
                 tbLocalizacao.Enabled = false;
@@ -35,7 +35,7 @@ namespace ERP.Logistica
         {
 
             EstoqueController.alterar_quantidade(Convert.ToInt32(hfIdEst.Value), Convert.ToInt32(tbAdicao.Text));
-            Response.Redirect("/GerenciaEstMedLotes.aspx?ID=" + hfIdMed.Value);
+            Response.Redirect("/GerenciaEstMed.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

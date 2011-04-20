@@ -93,6 +93,30 @@ namespace ERP.Logistica.Models
             return catalogo;
         }
 
+        public static CatalogoMedicamento buscarPorMedicamento(Medicamento medicamento)
+        {
+            DataSet ds = CatalogoMedicamentoDAO.buscarPorRecenteEMedicamento(medicamento.Id);
+            DataRow row = (DataRow)ds.Tables[0].Rows[0];
+            Fornecedor fornecedor = Fornecedor.buscarPorId((int)row["Fornecedor"]);
+            CatalogoMedicamento catalogo = new CatalogoMedicamento((int)row["id"], medicamento, fornecedor, (double)row["Preco_Unitario"], (DateTime)row["Vigencia_Inicio"]);
+
+            return catalogo;
+        }
+
+        public static bool ExisteCatalagoParaMedicamento(Medicamento medicamento)
+        {
+            DataSet ds = CatalogoMedicamentoDAO.buscarPorRecenteEMedicamento(medicamento.Id);
+            int row = ds.Tables[0].Rows.Count;
+            if (row > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static DataTable listar()
         {
             return CatalogoMedicamentoDAO.listar();

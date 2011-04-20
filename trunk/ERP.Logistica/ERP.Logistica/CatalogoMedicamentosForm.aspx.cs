@@ -36,7 +36,7 @@ namespace ERP.Logistica
                     ddlFornecedor.Enabled = false;
                     tbPreco.Text = catalogo.Preco_unitario.ToString();
                     tbPreco.Enabled = true;
-                    tbVigencia.Text = catalogo.Vigencia_inicio.ToString();
+                    tbVigencia.Text = catalogo.Vigencia_inicio.ToString("dd/MM/yyyy");
                     tbVigencia.Enabled = true;
                 }
             }

@@ -113,5 +113,49 @@ namespace ERP.Logistica.Models
                 throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
             }
         }
+
+        public static DataSet buscarPorRecenteEMedicamento(int medicamentoid)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                connection.Open();
+                string sql = "SELECT TOP 1 * FROM Catalogo_Medicamento WHERE Medicamento = " + medicamentoid + " ORDER BY Vigencia_Inicio DESC";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método buscar por id: " + ex.Message);
+            }
+        }
+
+        public static DataTable listarx()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionSettings);
+                connection.Open();
+                string sql = "SELECT R.id as id,R.Nome AS Medicamento, R.Preco_Unitario AS Preco_Unitario, F.Nome AS Fornecedor, R.Vigencia_Inicio AS Vigencia_Inicio FROM Fornecedor AS F inner join (SELECT TOP 1 CM.id,M.Nome, CM.Preco_Unitario, CM.Fornecedor, CM.Vigencia_Inicio FROM Catalogo_Medicamento AS CM inner join Medicamento AS M on CM.Medicamento=M.id ORDER BY CM.Vigencia_Inicio DESC) AS R ON R.Fornecedor=F.id";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+
+                return ds.Tables[0];
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro no método listar: " + ex.Message);
+            }
+        }
     }
 }
