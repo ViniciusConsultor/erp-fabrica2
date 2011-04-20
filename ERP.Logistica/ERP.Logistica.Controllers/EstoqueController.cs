@@ -62,9 +62,11 @@ namespace ERP.Logistica.Controllers
             return Estoque.listar_por_Medicamento(medicamentoId);
         }
 
-        public static int alterar_quantidade(int id, int quantidade_adicionada)
+        public static int alterar_quantidade(int id, int quantidade_adicionada, int consultaId, int add_red, DateTime data)
         {
             Estoque estoque = Estoque.buscarPorId(id);
+            HistoricoMedicamento historico = new HistoricoMedicamento(estoque.Medicamento, consultaId, add_red, data);
+            historico.criar();
             if (quantidade_adicionada < 0)
             {
                 if (Math.Abs(quantidade_adicionada) > estoque.Quantidade)
