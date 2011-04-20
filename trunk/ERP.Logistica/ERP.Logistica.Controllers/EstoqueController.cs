@@ -65,7 +65,7 @@ namespace ERP.Logistica.Controllers
         public static int alterar_quantidade(int id, int quantidade_adicionada, string consulta)
         {
             Estoque estoque = Estoque.buscarPorId(id);
-            HistoricoMedicamento historico = new HistoricoMedicamento(estoque.Medicamento, consulta);
+            HistoricoMedicamento historico = new HistoricoMedicamento(estoque.Medicamento, consulta, quantidade_adicionada);
             historico.criar();
             if (quantidade_adicionada < 0)
             {
