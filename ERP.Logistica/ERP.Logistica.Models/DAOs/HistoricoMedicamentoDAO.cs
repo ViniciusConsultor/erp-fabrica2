@@ -16,8 +16,8 @@ namespace ERP.Logistica.Models
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "INSERT INTO Historico_Medicamento (Medicamento_Id, Consulta_ID, Add_Red) VALUES (";
-                sql += medicamentoId + ",'" + consulta + "'," + add_red + ")";
+                string sql = "INSERT INTO Historico_Medicamento (Medicamento_Id, Consulta_ID, Add_Red, Data) VALUES (";
+                sql += medicamentoId + ",'" + consulta + "'," + add_red + ",'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
