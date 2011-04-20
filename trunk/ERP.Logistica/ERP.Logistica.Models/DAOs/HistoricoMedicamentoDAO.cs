@@ -11,13 +11,13 @@ namespace ERP.Logistica.Models
     public class HistoricoMedicamentoDAO
     {
         private static string connectionSettings = "Data Source=143.107.102.24;Initial Catalog=erp_logistica; User ID=erp_logistica; Password=labsoft-2011; MultipleActiveResultSets=True";
-        public static void criar(int medicamentoId, string consulta,)
+        public static void criar(int medicamentoId, string consulta, int add_red)
         {
             try
             {
                 SqlConnection connection = new SqlConnection(connectionSettings);
-                string sql = "INSERT INTO Historico_Medicamento (Medicamento_Id, Consulta_Id, Data, Add_Red) VALUES (";
-                sql += medicamentoId + "," + consultaId + ",'" + data.ToString("yyyy-MM-dd HH:mm:ss") + "'," + add_red + ")";
+                string sql = "INSERT INTO Historico_Medicamento (Medicamento_Id, Consulta_ID, Add_Red) VALUES (";
+                sql += medicamentoId + ",'" + consulta + "'," + add_red + ")";
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 cmd.CommandType = CommandType.Text;
                 connection.Open();
