@@ -76,7 +76,7 @@ namespace ERP.Manutencao.Controllers
                     pertence = false;
                     foreach (DataRow row2 in equipamentos.Rows)
                     {
-                        if (row2.ItemArray[1].Equals(row1.ItemArray[1]))
+                        if (row2.ItemArray[1].Equals(row1.ItemArray[1]) || row1.ItemArray[1] == System.DBNull.Value)
                         {
                             pertence = true;
                             break;
