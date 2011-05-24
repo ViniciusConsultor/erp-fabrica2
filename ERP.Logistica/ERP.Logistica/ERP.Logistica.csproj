@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{83028B10-BBD3-412F-B1B1-C2A2937D50C2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Logistica</RootNamespace>
+    <AssemblyName>ERP.Logistica</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="CatalogoEquipamentos.aspx" />
+    <Content Include="CatalogoEquipamentosForm.aspx" />
+    <Content Include="CatalogoMedicamentos.aspx" />
+    <Content Include="CatalogoMedicamentosForm.aspx" />
+    <Content Include="Disponibilidades.aspx" />
+    <Content Include="DisponibilidadesForm.aspx" />
+    <Content Include="DisponibilidadeWS.asmx" />
+    <Content Include="Equipamentos.aspx" />
+    <Content Include="EquipamentosESalasWS.asmx" />
+    <Content Include="EquipamentosForm.aspx" />
+    <Content Include="EspacoFisicoWS.asmx" />
+    <Content Include="EspacosFisicos.aspx" />
+    <Content Include="EspacosFisicosForm.aspx" />
+    <Content Include="Estoques.aspx" />
+    <Content Include="EstoquesForm.aspx" />
+    <Content Include="Fornecedores.aspx" />
+    <Content Include="FornecedoresForm.aspx" />
+    <Content Include="GerenciaEstMed.aspx" />
+    <Content Include="GerenciaEstMedLotes.aspx" />
+    <Content Include="GerenciaLotesQuantidades.aspx" />
+    <Content Include="Historico.aspx" />
+    <Content Include="HistoricosEstoques.aspx" />
+    <Content Include="Medicamentos.aspx" />
+    <Content Include="MedicamentosForm.aspx" />
+    <Content Include="PedidosEquipamentos.aspx" />
+    <Content Include="PedidosEquipamentosForm.aspx" />
+    <Content Include="PedidosMedicamentos.aspx" />
+    <Content Include="PedidosMedicamentosForm.aspx" />
+    <Content Include="PedidosWS.asmx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoEquipamentos.aspx.cs">
+      <DependentUpon>CatalogoEquipamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoEquipamentos.aspx.designer.cs">
+      <DependentUpon>CatalogoEquipamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoEquipamentosForm.aspx.cs">
+      <DependentUpon>CatalogoEquipamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoEquipamentosForm.aspx.designer.cs">
+      <DependentUpon>CatalogoEquipamentosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoMedicamentos.aspx.cs">
+      <DependentUpon>CatalogoMedicamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoMedicamentos.aspx.designer.cs">
+      <DependentUpon>CatalogoMedicamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoMedicamentosForm.aspx.cs">
+      <DependentUpon>CatalogoMedicamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoMedicamentosForm.aspx.designer.cs">
+      <DependentUpon>CatalogoMedicamentosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Disponibilidades.aspx.cs">
+      <DependentUpon>Disponibilidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Disponibilidades.aspx.designer.cs">
+      <DependentUpon>Disponibilidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DisponibilidadesForm.aspx.cs">
+      <DependentUpon>DisponibilidadesForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DisponibilidadesForm.aspx.designer.cs">
+      <DependentUpon>DisponibilidadesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DisponibilidadeWS.asmx.cs">
+      <DependentUpon>DisponibilidadeWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Equipamentos.aspx.cs">
+      <DependentUpon>Equipamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Equipamentos.aspx.designer.cs">
+      <DependentUpon>Equipamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EquipamentosESalasWS.asmx.cs">
+      <DependentUpon>EquipamentosESalasWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EquipamentosForm.aspx.cs">
+      <DependentUpon>EquipamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EquipamentosForm.aspx.designer.cs">
+      <DependentUpon>EquipamentosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EspacoFisicoWS.asmx.cs">
+      <DependentUpon>EspacoFisicoWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EspacosFisicos.aspx.cs">
+      <DependentUpon>EspacosFisicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EspacosFisicos.aspx.designer.cs">
+      <DependentUpon>EspacosFisicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EspacosFisicosForm.aspx.cs">
+      <DependentUpon>EspacosFisicosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EspacosFisicosForm.aspx.designer.cs">
+      <DependentUpon>EspacosFisicosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Estoques.aspx.cs">
+      <DependentUpon>Estoques.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Estoques.aspx.designer.cs">
+      <DependentUpon>Estoques.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EstoquesForm.aspx.cs">
+      <DependentUpon>EstoquesForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EstoquesForm.aspx.designer.cs">
+      <DependentUpon>EstoquesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fornecedores.aspx.cs">
+      <DependentUpon>Fornecedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fornecedores.aspx.designer.cs">
+      <DependentUpon>Fornecedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FornecedoresForm.aspx.cs">
+      <DependentUpon>FornecedoresForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FornecedoresForm.aspx.designer.cs">
+      <DependentUpon>FornecedoresForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GerenciaEstMed.aspx.cs">
+      <DependentUpon>GerenciaEstMed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GerenciaEstMed.aspx.designer.cs">
+      <DependentUpon>GerenciaEstMed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GerenciaEstMedLotes.aspx.cs">
+      <DependentUpon>GerenciaEstMedLotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GerenciaEstMedLotes.aspx.designer.cs">
+      <DependentUpon>GerenciaEstMedLotes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GerenciaLotesQuantidades.aspx.cs">
+      <DependentUpon>GerenciaLotesQuantidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GerenciaLotesQuantidades.aspx.designer.cs">
+      <DependentUpon>GerenciaLotesQuantidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Historico.aspx.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Historico.aspx.designer.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricosEstoques.aspx.cs">
+      <DependentUpon>HistoricosEstoques.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistoricosEstoques.aspx.designer.cs">
+      <DependentUpon>HistoricosEstoques.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Medicamentos.aspx.cs">
+      <DependentUpon>Medicamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Medicamentos.aspx.designer.cs">
+      <DependentUpon>Medicamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MedicamentosForm.aspx.cs">
+      <DependentUpon>MedicamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MedicamentosForm.aspx.designer.cs">
+      <DependentUpon>MedicamentosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosEquipamentos.aspx.cs">
+      <DependentUpon>PedidosEquipamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidosEquipamentos.aspx.designer.cs">
+      <DependentUpon>PedidosEquipamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosEquipamentosForm.aspx.cs">
+      <DependentUpon>PedidosEquipamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidosEquipamentosForm.aspx.designer.cs">
+      <DependentUpon>PedidosEquipamentosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosMedicamentos.aspx.cs">
+      <DependentUpon>PedidosMedicamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidosMedicamentos.aspx.designer.cs">
+      <DependentUpon>PedidosMedicamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosMedicamentosForm.aspx.cs">
+      <DependentUpon>PedidosMedicamentosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidosMedicamentosForm.aspx.designer.cs">
+      <DependentUpon>PedidosMedicamentosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosWS.asmx.cs">
+      <DependentUpon>PedidosWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Logistica.Controllers\ERP.Logistica.Controllers.csproj">
+      <Project>{B446EBA1-CED2-4022-AEDA-7B82D9C83A99}</Project>
+      <Name>ERP.Logistica.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Logistica.Models\ERP.Logistica.Models.csproj">
+      <Project>{94185F33-8564-4545-AC6A-9772DD59A4EE}</Project>
+      <Name>ERP.Logistica.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>9111</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
